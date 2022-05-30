@@ -31,6 +31,19 @@
 		71C475F02844D9FC005EC1F1 /* DummyThingNO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C475EF2844D9FC005EC1F1 /* DummyThingNO.swift */; };
 		71C475F22844DB25005EC1F1 /* DummyThingNOMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C475F12844DB25005EC1F1 /* DummyThingNOMapper.swift */; };
 		71C475F52844E0CF005EC1F1 /* FindViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C475F42844E0CF005EC1F1 /* FindViewControllerExtension.swift */; };
+		71C475F7284512B3005EC1F1 /* DealNO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C475F6284512B3005EC1F1 /* DealNO.swift */; };
+		71C475F9284514CD005EC1F1 /* DetailedDealNO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C475F8284514CD005EC1F1 /* DetailedDealNO.swift */; };
+		71C475FB284523A3005EC1F1 /* DealGameNO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C475FA284523A3005EC1F1 /* DealGameNO.swift */; };
+		71C475FD284523FE005EC1F1 /* DealCheaperStoreNO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C475FC284523FE005EC1F1 /* DealCheaperStoreNO.swift */; };
+		71C475FF28452431005EC1F1 /* DealCheapestPriceNO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C475FE28452431005EC1F1 /* DealCheapestPriceNO.swift */; };
+		71C4760328452590005EC1F1 /* GameNO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4760228452590005EC1F1 /* GameNO.swift */; };
+		71C47605284525D6005EC1F1 /* DetailedGameNO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C47604284525D6005EC1F1 /* DetailedGameNO.swift */; };
+		71C4760728452602005EC1F1 /* GameInfoNO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4760628452602005EC1F1 /* GameInfoNO.swift */; };
+		71C476092845263D005EC1F1 /* GameDealNO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C476082845263D005EC1F1 /* GameDealNO.swift */; };
+		71C4760B28452729005EC1F1 /* NetworkDealDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4760A28452729005EC1F1 /* NetworkDealDS.swift */; };
+		71C4760D28452813005EC1F1 /* GameSortingEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4760C28452813005EC1F1 /* GameSortingEnum.swift */; };
+		71C47610284529A0005EC1F1 /* ListOfDealsParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4760F284529A0005EC1F1 /* ListOfDealsParameters.swift */; };
+		71C4761228452AC8005EC1F1 /* NetworkGameDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4761128452AC8005EC1F1 /* NetworkGameDS.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +69,19 @@
 		71C475EF2844D9FC005EC1F1 /* DummyThingNO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyThingNO.swift; sourceTree = "<group>"; };
 		71C475F12844DB25005EC1F1 /* DummyThingNOMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyThingNOMapper.swift; sourceTree = "<group>"; };
 		71C475F42844E0CF005EC1F1 /* FindViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindViewControllerExtension.swift; sourceTree = "<group>"; };
+		71C475F6284512B3005EC1F1 /* DealNO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealNO.swift; sourceTree = "<group>"; };
+		71C475F8284514CD005EC1F1 /* DetailedDealNO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDealNO.swift; sourceTree = "<group>"; };
+		71C475FA284523A3005EC1F1 /* DealGameNO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealGameNO.swift; sourceTree = "<group>"; };
+		71C475FC284523FE005EC1F1 /* DealCheaperStoreNO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealCheaperStoreNO.swift; sourceTree = "<group>"; };
+		71C475FE28452431005EC1F1 /* DealCheapestPriceNO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealCheapestPriceNO.swift; sourceTree = "<group>"; };
+		71C4760228452590005EC1F1 /* GameNO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNO.swift; sourceTree = "<group>"; };
+		71C47604284525D6005EC1F1 /* DetailedGameNO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedGameNO.swift; sourceTree = "<group>"; };
+		71C4760628452602005EC1F1 /* GameInfoNO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfoNO.swift; sourceTree = "<group>"; };
+		71C476082845263D005EC1F1 /* GameDealNO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDealNO.swift; sourceTree = "<group>"; };
+		71C4760A28452729005EC1F1 /* NetworkDealDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDealDS.swift; sourceTree = "<group>"; };
+		71C4760C28452813005EC1F1 /* GameSortingEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSortingEnum.swift; sourceTree = "<group>"; };
+		71C4760F284529A0005EC1F1 /* ListOfDealsParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfDealsParameters.swift; sourceTree = "<group>"; };
+		71C4761128452AC8005EC1F1 /* NetworkGameDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkGameDS.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +214,7 @@
 		71C475C82844D112005EC1F1 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				71C4760C28452813005EC1F1 /* GameSortingEnum.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -262,6 +289,7 @@
 		71C475D42844D1F1005EC1F1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				71C4760E28452991005EC1F1 /* Parameters */,
 				71C475DD2844D304005EC1F1 /* Mappers */,
 				71C475DC2844D2EF005EC1F1 /* Models */,
 				71C475D52844D1F6005EC1F1 /* DataSources */,
@@ -275,6 +303,8 @@
 			children = (
 				71C475EB2844D994005EC1F1 /* NetworkDummyDS.swift */,
 				71C475ED2844D99C005EC1F1 /* NetworkDummyDSImpl.swift */,
+				71C4760A28452729005EC1F1 /* NetworkDealDS.swift */,
+				71C4761128452AC8005EC1F1 /* NetworkGameDS.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -298,6 +328,8 @@
 		71C475DC2844D2EF005EC1F1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				71C476002845257B005EC1F1 /* Deals */,
+				71C4760128452586005EC1F1 /* Games */,
 				71C475EF2844D9FC005EC1F1 /* DummyThingNO.swift */,
 			);
 			path = Models;
@@ -331,6 +363,37 @@
 				71C475F42844E0CF005EC1F1 /* FindViewControllerExtension.swift */,
 			);
 			path = UIView;
+			sourceTree = "<group>";
+		};
+		71C476002845257B005EC1F1 /* Deals */ = {
+			isa = PBXGroup;
+			children = (
+				71C475F6284512B3005EC1F1 /* DealNO.swift */,
+				71C475F8284514CD005EC1F1 /* DetailedDealNO.swift */,
+				71C475FA284523A3005EC1F1 /* DealGameNO.swift */,
+				71C475FC284523FE005EC1F1 /* DealCheaperStoreNO.swift */,
+				71C475FE28452431005EC1F1 /* DealCheapestPriceNO.swift */,
+			);
+			path = Deals;
+			sourceTree = "<group>";
+		};
+		71C4760128452586005EC1F1 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				71C4760228452590005EC1F1 /* GameNO.swift */,
+				71C47604284525D6005EC1F1 /* DetailedGameNO.swift */,
+				71C4760628452602005EC1F1 /* GameInfoNO.swift */,
+				71C476082845263D005EC1F1 /* GameDealNO.swift */,
+			);
+			path = Games;
+			sourceTree = "<group>";
+		};
+		71C4760E28452991005EC1F1 /* Parameters */ = {
+			isa = PBXGroup;
+			children = (
+				71C4760F284529A0005EC1F1 /* ListOfDealsParameters.swift */,
+			);
+			path = Parameters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -419,20 +482,33 @@
 				71C475EE2844D99C005EC1F1 /* NetworkDummyDSImpl.swift in Sources */,
 				71C475EA2844D940005EC1F1 /* DummyRepositoryImpl.swift in Sources */,
 				71C475F52844E0CF005EC1F1 /* FindViewControllerExtension.swift in Sources */,
+				71C475F9284514CD005EC1F1 /* DetailedDealNO.swift in Sources */,
 				71C4759B2844C58A005EC1F1 /* ViewController.swift in Sources */,
 				71C475D72844D206005EC1F1 /* NetworkServiceImpl.swift in Sources */,
+				71C476092845263D005EC1F1 /* GameDealNO.swift in Sources */,
+				71C4761228452AC8005EC1F1 /* NetworkGameDS.swift in Sources */,
+				71C475F7284512B3005EC1F1 /* DealNO.swift in Sources */,
 				71C475BB2844CDC1005EC1F1 /* DemoView.swift in Sources */,
+				71C47605284525D6005EC1F1 /* DetailedGameNO.swift in Sources */,
 				71C475F22844DB25005EC1F1 /* DummyThingNOMapper.swift in Sources */,
 				71C475E62844D7E0005EC1F1 /* DummyRepository.swift in Sources */,
+				71C475FB284523A3005EC1F1 /* DealGameNO.swift in Sources */,
 				71C475F02844D9FC005EC1F1 /* DummyThingNO.swift in Sources */,
 				71C475EC2844D994005EC1F1 /* NetworkDummyDS.swift in Sources */,
+				71C475FD284523FE005EC1F1 /* DealCheaperStoreNO.swift in Sources */,
+				71C475FF28452431005EC1F1 /* DealCheapestPriceNO.swift in Sources */,
 				71C475E12844D485005EC1F1 /* Mapper.swift in Sources */,
 				71C475DA2844D288005EC1F1 /* NetworkService.swift in Sources */,
+				71C4760B28452729005EC1F1 /* NetworkDealDS.swift in Sources */,
 				71C475B72844CAB6005EC1F1 /* Services.swift in Sources */,
+				71C4760328452590005EC1F1 /* GameNO.swift in Sources */,
 				71C475B92844CBB5005EC1F1 /* DummyDependency.swift in Sources */,
 				71C475972844C58A005EC1F1 /* AppDelegate.swift in Sources */,
 				71C475E42844D51E005EC1F1 /* NetworkError.swift in Sources */,
+				71C4760728452602005EC1F1 /* GameInfoNO.swift in Sources */,
 				71C475992844C58A005EC1F1 /* SceneDelegate.swift in Sources */,
+				71C47610284529A0005EC1F1 /* ListOfDealsParameters.swift in Sources */,
+				71C4760D28452813005EC1F1 /* GameSortingEnum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
