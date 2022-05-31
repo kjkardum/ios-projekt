@@ -7,7 +7,9 @@
 
 import Foundation
 
+
+
 protocol NetworkDealDS {
-    func getListOfDeals(parameters: ListOfDealsParameters) -> [DealNO]
-    func getDeal(int: String) -> DetailedDealNO
+    func getListOfDeals(parameters: ListOfDealsParameters, completionHandler: @escaping resultHandler<[DealNO]>)
+    func getDeal(id: String, completionHandler: @escaping resultHandler<DetailedDealNO>)
 }

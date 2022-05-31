@@ -24,3 +24,35 @@ struct ListOfDealsParameters {
     public var steamworks: Bool = false
     public var onSale: Bool = false
 }
+
+extension ListOfDealsParameters {
+    func convertToParamsDictionary() -> [String : String] {
+        var params: [String : String] = [:]
+        if let storeIds = storeIds {
+            params["storeIds"] = storeIds.map({ String($0) }).joined(separator: ",")
+        }
+        params["pageNumber"] = String(pageNumber)
+        params["pageSize"] = String(pageSize)
+        params["sortBy"] = sortBy.rawValue
+        params["desc"] = desc ? "1" : "0"
+        params["lowerPrice"] = String(lowerPrice)
+        params["upperPrice"] = String(upperPrice)
+        if let metacritic = metacritic {
+            params["metacritic"] = String(metacritic)
+        }
+        if let steamRating = steamRating {
+            params["steamRating"] = String(steamRating)
+        }
+        if let steamAppID = steamAppID {
+            params["steamAppID"] = steamAppID.map({ String($0) }).joined(separator: ",")
+        }
+        if let title = title {
+            params["title"] = title
+        }
+        params["exact"] = exact ? "1" : "0"
+        params["AAA"] = AAA ? "1" : "0"
+        params["steamworks"] = steamworks ? "1" : "0"
+        params["onSale"] = onSale ? "1" : "0"
+        return params
+    }
+}
