@@ -33,14 +33,17 @@ class Services {
     
     private func registerRepositories() {
         container.autoregister(DummyRepository.self, initializer: DummyRepositoryImpl.init)
+        container.autoregister(DealsRepository.self, initializer: DealsRepositoryImpl.init)
     }
     
     private func registerDataSources() {
         container.autoregister(NetworkDummyDS.self, initializer: NetworkDummyDSImpl.init)
+        container.autoregister(NetworkDealDS.self, initializer: NetworkDealDSImpl.init)
     }
     
     private func registerMappingProfiles() {
         container.register(Mapper<DummyThingNO, DummyThing>.self) { _ in DummyThingNOMapper() }
+        container.register(Mapper<DealNO, Deal>.self, factory: { _ in DealNOMapper() })
     }
     
     func getInitialController() -> UIViewController {

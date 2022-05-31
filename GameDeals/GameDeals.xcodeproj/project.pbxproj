@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		712D9C262846A4F20012649B /* NetworkDealDSImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C252846A4F20012649B /* NetworkDealDSImpl.swift */; };
+		712D9C282846A6820012649B /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C272846A6820012649B /* Typealias.swift */; };
+		712D9C2A2846A7820012649B /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C292846A7820012649B /* Deal.swift */; };
+		712D9C2C2846A7CF0012649B /* DealNOMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C2B2846A7CF0012649B /* DealNOMapper.swift */; };
+		712D9C2E2846AB0E0012649B /* DealsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C2D2846AB0E0012649B /* DealsRepository.swift */; };
+		712D9C302846AB3C0012649B /* DealsRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C2F2846AB3C0012649B /* DealsRepositoryImpl.swift */; };
 		71C475972844C58A005EC1F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C475962844C58A005EC1F1 /* AppDelegate.swift */; };
 		71C475992844C58A005EC1F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C475982844C58A005EC1F1 /* SceneDelegate.swift */; };
 		71C4759B2844C58A005EC1F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4759A2844C58A005EC1F1 /* ViewController.swift */; };
@@ -47,6 +53,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		712D9C252846A4F20012649B /* NetworkDealDSImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDealDSImpl.swift; sourceTree = "<group>"; };
+		712D9C272846A6820012649B /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
+		712D9C292846A7820012649B /* Deal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
+		712D9C2B2846A7CF0012649B /* DealNOMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealNOMapper.swift; sourceTree = "<group>"; };
+		712D9C2D2846AB0E0012649B /* DealsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsRepository.swift; sourceTree = "<group>"; };
+		712D9C2F2846AB3C0012649B /* DealsRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsRepositoryImpl.swift; sourceTree = "<group>"; };
 		71C475932844C58A005EC1F1 /* GameDeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameDeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71C475962844C58A005EC1F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71C475982844C58A005EC1F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +148,7 @@
 				71C475CB2844D138005EC1F1 /* Wrappers */,
 				71C475CA2844D133005EC1F1 /* Protocols */,
 				71C475C92844D12C005EC1F1 /* Constants */,
+				712D9C272846A6820012649B /* Typealias.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -207,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				71C475E72844D8AD005EC1F1 /* DummyThing.swift */,
+				712D9C292846A7820012649B /* Deal.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -254,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				71C475E52844D7E0005EC1F1 /* DummyRepository.swift */,
+				712D9C2D2846AB0E0012649B /* DealsRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -304,6 +319,7 @@
 				71C475EB2844D994005EC1F1 /* NetworkDummyDS.swift */,
 				71C475ED2844D99C005EC1F1 /* NetworkDummyDSImpl.swift */,
 				71C4760A28452729005EC1F1 /* NetworkDealDS.swift */,
+				712D9C252846A4F20012649B /* NetworkDealDSImpl.swift */,
 				71C4761128452AC8005EC1F1 /* NetworkGameDS.swift */,
 			);
 			path = DataSources;
@@ -313,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				71C475E92844D940005EC1F1 /* DummyRepositoryImpl.swift */,
+				712D9C2F2846AB3C0012649B /* DealsRepositoryImpl.swift */,
 			);
 			path = RepositoryImpl;
 			sourceTree = "<group>";
@@ -339,6 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				71C475F12844DB25005EC1F1 /* DummyThingNOMapper.swift */,
+				712D9C2B2846A7CF0012649B /* DealNOMapper.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -494,6 +512,7 @@
 				71C475E62844D7E0005EC1F1 /* DummyRepository.swift in Sources */,
 				71C475FB284523A3005EC1F1 /* DealGameNO.swift in Sources */,
 				71C475F02844D9FC005EC1F1 /* DummyThingNO.swift in Sources */,
+				712D9C2E2846AB0E0012649B /* DealsRepository.swift in Sources */,
 				71C475EC2844D994005EC1F1 /* NetworkDummyDS.swift in Sources */,
 				71C475FD284523FE005EC1F1 /* DealCheaperStoreNO.swift in Sources */,
 				71C475FF28452431005EC1F1 /* DealCheapestPriceNO.swift in Sources */,
@@ -504,10 +523,15 @@
 				71C4760328452590005EC1F1 /* GameNO.swift in Sources */,
 				71C475B92844CBB5005EC1F1 /* DummyDependency.swift in Sources */,
 				71C475972844C58A005EC1F1 /* AppDelegate.swift in Sources */,
+				712D9C2A2846A7820012649B /* Deal.swift in Sources */,
 				71C475E42844D51E005EC1F1 /* NetworkError.swift in Sources */,
+				712D9C2C2846A7CF0012649B /* DealNOMapper.swift in Sources */,
+				712D9C302846AB3C0012649B /* DealsRepositoryImpl.swift in Sources */,
 				71C4760728452602005EC1F1 /* GameInfoNO.swift in Sources */,
 				71C475992844C58A005EC1F1 /* SceneDelegate.swift in Sources */,
+				712D9C282846A6820012649B /* Typealias.swift in Sources */,
 				71C47610284529A0005EC1F1 /* ListOfDealsParameters.swift in Sources */,
+				712D9C262846A4F20012649B /* NetworkDealDSImpl.swift in Sources */,
 				71C4760D28452813005EC1F1 /* GameSortingEnum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -636,6 +660,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q393RG54RZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GameDeals/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -662,6 +687,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Q393RG54RZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GameDeals/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

@@ -8,7 +8,6 @@
 import Foundation
 
 protocol NetworkService {
-    typealias resultHandler<T> = (Result<T, NetworkError>) -> Void
     
     func get<T: Decodable>(_ url: String, completionHandler: @escaping resultHandler<T>)
     
