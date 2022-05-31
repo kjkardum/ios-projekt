@@ -24,7 +24,7 @@ class Services {
     }
             
     private func registerControllers() {
-        container.autoregister(ViewController.self, initializer: ViewController.init)
+        container.autoregister(DealsViewController.self, initializer: DealsViewController.init)
     }
     
     private func registerServices() {
@@ -44,6 +44,6 @@ class Services {
     }
     
     func getInitialController() -> UIViewController {
-        return container.resolve(ViewController.self)!
+        return container.resolve(DealsViewController.self)!
     }
 }

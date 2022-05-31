@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 class ViewController: UIViewController {
-    var subview: UIView!
     private var dummyRepository: DummyRepository
 
     init(dummyRepository: DummyRepository) {
@@ -20,12 +19,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        subview = DemoView()
-        view.addSubview(subview)
-        subview.snp.makeConstraints{ make in
-            make.bottom.left.right.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-        }
+    }
+    
+    private func buildView() {
+        
     }
 
     func getData() -> [DummyThing] {

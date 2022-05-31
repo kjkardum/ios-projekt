@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		52B35E6128469D3D00104431 /* DealCellToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E6028469D3D00104431 /* DealCellToolbarView.swift */; };
+		52B9F12528464BB400385E88 /* DealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9F12428464BB400385E88 /* DealsViewController.swift */; };
+		52B9F12728464C5600385E88 /* DealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9F12628464C5600385E88 /* DealsView.swift */; };
+		52B9F12928464EB800385E88 /* DealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B9F12828464EB800385E88 /* DealCell.swift */; };
 		71C475972844C58A005EC1F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C475962844C58A005EC1F1 /* AppDelegate.swift */; };
 		71C475992844C58A005EC1F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C475982844C58A005EC1F1 /* SceneDelegate.swift */; };
 		71C4759B2844C58A005EC1F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4759A2844C58A005EC1F1 /* ViewController.swift */; };
@@ -47,6 +51,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		52B35E6028469D3D00104431 /* DealCellToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealCellToolbarView.swift; sourceTree = "<group>"; };
+		52B9F12428464BB400385E88 /* DealsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsViewController.swift; sourceTree = "<group>"; };
+		52B9F12628464C5600385E88 /* DealsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsView.swift; sourceTree = "<group>"; };
+		52B9F12828464EB800385E88 /* DealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealCell.swift; sourceTree = "<group>"; };
 		71C475932844C58A005EC1F1 /* GameDeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameDeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71C475962844C58A005EC1F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71C475982844C58A005EC1F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				71C4759A2844C58A005EC1F1 /* ViewController.swift */,
+				52B9F12428464BB400385E88 /* DealsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -185,6 +194,9 @@
 			isa = PBXGroup;
 			children = (
 				71C475BA2844CDC1005EC1F1 /* DemoView.swift */,
+				52B9F12628464C5600385E88 /* DealsView.swift */,
+				52B9F12828464EB800385E88 /* DealCell.swift */,
+				52B35E6028469D3D00104431 /* DealCellToolbarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -500,12 +512,16 @@
 				71C475E12844D485005EC1F1 /* Mapper.swift in Sources */,
 				71C475DA2844D288005EC1F1 /* NetworkService.swift in Sources */,
 				71C4760B28452729005EC1F1 /* NetworkDealDS.swift in Sources */,
+				52B9F12928464EB800385E88 /* DealCell.swift in Sources */,
+				52B35E6128469D3D00104431 /* DealCellToolbarView.swift in Sources */,
+				52B9F12528464BB400385E88 /* DealsViewController.swift in Sources */,
 				71C475B72844CAB6005EC1F1 /* Services.swift in Sources */,
 				71C4760328452590005EC1F1 /* GameNO.swift in Sources */,
 				71C475B92844CBB5005EC1F1 /* DummyDependency.swift in Sources */,
 				71C475972844C58A005EC1F1 /* AppDelegate.swift in Sources */,
 				71C475E42844D51E005EC1F1 /* NetworkError.swift in Sources */,
 				71C4760728452602005EC1F1 /* GameInfoNO.swift in Sources */,
+				52B9F12728464C5600385E88 /* DealsView.swift in Sources */,
 				71C475992844C58A005EC1F1 /* SceneDelegate.swift in Sources */,
 				71C47610284529A0005EC1F1 /* ListOfDealsParameters.swift in Sources */,
 				71C4760D28452813005EC1F1 /* GameSortingEnum.swift in Sources */,
@@ -565,7 +581,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -619,7 +635,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
