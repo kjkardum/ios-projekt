@@ -9,18 +9,32 @@ import Foundation
 
 class GameMOMapper: Mapper<GameMO, Game> {
     override func mapTo(source: GameMO, destination: inout Game) -> Game {
-        fatalError("Not yet implemented")
+        destination.gameID = source.gameId ?? ""
+        destination.steamAppID = source.steamAppId ?? ""
+        destination.cheapest = source.cheapest ?? ""
+        destination.cheapestDealID = source.cheapestDealId ?? ""
+        destination.external = source.external ?? ""
+        destination.thumb = source.thumb
+        return destination
     }
     
     override func mapTo(source: Game, destination: inout GameMO) -> GameMO {
-        fatalError("Not yet implemented")
+        destination.gameId = source.gameID
+        destination.steamAppId = source.steamAppID
+        destination.cheapest = source.cheapest
+        destination.cheapestDealId = source.cheapestDealID
+        destination.external = source.external
+        destination.thumb = source.thumb
+        return destination
     }
     
-    override func map(_: GameMO) -> Game {
-        fatalError("Not yet implemented")
+    override func map(_ from: GameMO) -> Game {
+        var game = Game()
+        return mapTo(source: from, destination: &game)
     }
     
-    override func map(_: Game) -> GameMO {
-        fatalError("Not yet implemented")
+    override func map(_ from: Game) -> GameMO {
+        var gameMO = GameMO()
+        return mapTo(source: from, destination: &gameMO)
     }
 }
