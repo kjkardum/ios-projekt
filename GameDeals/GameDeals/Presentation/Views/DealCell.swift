@@ -8,6 +8,7 @@
 import Foundation
 import SnapKit
 import UIKit
+import SFSafeSymbols
 
 class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     let dealCellView = UIView()
@@ -17,6 +18,10 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     let releaseDateLabel = UILabel()
     var gesture = UIPanGestureRecognizer()
     var pointOrigin: CGPoint?
+    let likeView = UIView()
+    let heartIconView = UIImageView()
+    var likeState = false
+    var gestureIsEnabled = false
     
     weak var scrollViewDelegate: ScrollableCollectionViewDelegate?
     
@@ -37,14 +42,16 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         dealCellView.addGestureRecognizer(gesture)
         dealCellView.isUserInteractionEnabled = true
         
+        addSubview(likeView)
         addSubview(dealCellView)
+        
+        likeView.addSubview(heartIconView)
         
         dealCellView.addSubview(thumbnailImageView)
         dealCellView.addSubview(titleLabel)
         dealCellView.addSubview(toolbarView)
         dealCellView.addSubview(releaseDateLabel)
 
-        
         thumbnailImageView.contentMode = .scaleAspectFill;
         thumbnailImageView.clipsToBounds = true;
         
@@ -59,10 +66,23 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         dealCellView.layer.cornerRadius = 20
         dealCellView.backgroundColor = .lightGray
         
+        likeView.clipsToBounds = true
+        likeView.layer.cornerRadius = dealCellView.layer.cornerRadius
+        
         backgroundColor = .white
     }
     
     private func setLayout() {
+        likeView.snp.makeConstraints {make in
+            make.top.leading.equalToSuperview().offset(15)
+            make.trailing.bottom.equalToSuperview().inset(15)
+        }
+        
+        heartIconView.snp.makeConstraints {make in
+            make.top.centerX.equalToSuperview()
+            make.width.height.equalTo(40)
+        }
+        
         dealCellView.snp.makeConstraints {make in
             make.top.leading.equalToSuperview().offset(15)
             make.trailing.bottom.equalToSuperview().inset(15)
@@ -94,6 +114,7 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     @objc func handleGesture(_ gesture: UIPanGestureRecognizer) {
         if gesture.state == .began {
+            gestureIsEnabled = true
             pointOrigin = self.dealCellView.frame.origin
         }
         
@@ -102,11 +123,14 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         guard translation.y >= 0 else { return }
         
         if dealCellView.frame.origin.y > 100 {
+            self.userSwiped()
+            gestureIsEnabled = false
             UIView.animate(withDuration: 0.3) {
                 gesture.isEnabled = false
                 self.dealCellView.frame.origin = self.pointOrigin!
                 gesture.isEnabled = true
                 self.scrollViewDelegate?.setScrollViewEnabled(true)
+                return
             }
 
         }
@@ -165,7 +189,26 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         let strDate = dateFormatter.string(from: dealData.releaseDate)
         releaseDateLabel.text = "Release date: " + strDate
         
+        if likeState {
+            self.heartIconView.image = UIImage(systemSymbol: .heartFill)
+        } else {
+            self.heartIconView.image = UIImage(systemSymbol: .heart)
+        }
+        
         pointOrigin = self.dealCellView.frame.origin
+    }
+    
+    
+    func userSwiped() {
+        if (gestureIsEnabled) {
+            if likeState {
+                likeState = false
+                self.heartIconView.image = UIImage(systemSymbol: .heart)
+            } else {
+                likeState = true
+                self.heartIconView.image = UIImage(systemSymbol: .heartFill)
+            }
+        }
     }
     
     
