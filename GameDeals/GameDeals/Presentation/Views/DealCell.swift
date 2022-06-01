@@ -9,12 +9,16 @@ import Foundation
 import SnapKit
 import UIKit
 
-class DealCell: UICollectionViewCell {
+class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     let dealCellView = UIView()
     let thumbnailImageView = UIImageView()
     let titleLabel = UILabel()
     let toolbarView = DealCellToolbarView()
     let releaseDateLabel = UILabel()
+    var gesture = UIPanGestureRecognizer()
+    var pointOrigin: CGPoint?
+    
+    weak var scrollViewDelegate: ScrollableCollectionViewDelegate?
     
     
     override init(frame: CGRect) {
@@ -28,6 +32,11 @@ class DealCell: UICollectionViewCell {
     }
     
     private func buildViews() {
+        gesture = UIPanGestureRecognizer(target: self, action: #selector(DealCell.handleGesture(_:)))
+        gesture.delegate = self
+        dealCellView.addGestureRecognizer(gesture)
+        dealCellView.isUserInteractionEnabled = true
+        
         addSubview(dealCellView)
         
         dealCellView.addSubview(thumbnailImageView)
@@ -36,7 +45,8 @@ class DealCell: UICollectionViewCell {
         dealCellView.addSubview(releaseDateLabel)
 
         
-        thumbnailImageView.contentMode = .scaleAspectFit
+        thumbnailImageView.contentMode = .scaleAspectFill;
+        thumbnailImageView.clipsToBounds = true;
         
         titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
         titleLabel.textColor = .white
@@ -60,7 +70,7 @@ class DealCell: UICollectionViewCell {
         
         thumbnailImageView.snp.makeConstraints {make in
             make.top.trailing.leading.equalToSuperview()
-            make.height.equalTo(10)
+            make.height.equalTo(168)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -82,6 +92,38 @@ class DealCell: UICollectionViewCell {
 
     }
     
+    @objc func handleGesture(_ gesture: UIPanGestureRecognizer) {
+        if gesture.state == .began {
+            pointOrigin = self.dealCellView.frame.origin
+        }
+        
+        let translation = gesture.translation(in: dealCellView)
+        
+        guard translation.y >= 0 else { return }
+        
+        if dealCellView.frame.origin.y > 100 {
+            UIView.animate(withDuration: 0.3) {
+                gesture.isEnabled = false
+                self.dealCellView.frame.origin = self.pointOrigin!
+                gesture.isEnabled = true
+                self.scrollViewDelegate?.setScrollViewEnabled(true)
+            }
+
+        }
+
+        if gesture.state == .changed {
+            dealCellView.frame.origin = CGPoint(x: dealCellView.frame.origin.x, y: self.pointOrigin!.y + translation.y)
+        }
+        
+
+        if gesture.state == .ended || gesture.state == .cancelled {
+            UIView.animate(withDuration: 0.3) {
+                self.dealCellView.frame.origin = self.pointOrigin!
+                self.scrollViewDelegate?.setScrollViewEnabled(true)
+            }
+        }
+    }
+    
     
     private func setImageConstraint() {
         if thumbnailImageView.image == nil {
@@ -93,7 +135,11 @@ class DealCell: UICollectionViewCell {
         let myViewWidth = dealCellView.frame.size.width
 
         let ratio = myViewWidth/myImageWidth
-        let scaledHeight = myImageHeight * ratio
+        var scaledHeight = myImageHeight * ratio
+        
+        if scaledHeight > 168 {
+            scaledHeight = 168
+        }
         
         thumbnailImageView.snp.updateConstraints { (make) in
             make.height.equalTo(scaledHeight)
@@ -120,6 +166,18 @@ class DealCell: UICollectionViewCell {
         let strDate = dateFormatter.string(from: date)
         releaseDateLabel.text = "Release date: " + strDate
         
+        pointOrigin = self.dealCellView.frame.origin
     }
     
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if abs(gesture.velocity(in: dealCellView).y) > abs(gesture.velocity(in: dealCellView).x) {
+            scrollViewDelegate?.setScrollViewEnabled(false)
+        }
+        return abs(gesture.velocity(in: dealCellView).y) > abs(gesture.velocity(in: dealCellView).x)
+    }
 }

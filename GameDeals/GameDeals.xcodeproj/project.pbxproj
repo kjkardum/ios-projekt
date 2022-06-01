@@ -11,6 +11,7 @@
 		52B35E672846B1EA00104431 /* DealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E642846B1EA00104431 /* DealCell.swift */; };
 		52B35E682846B1EA00104431 /* DealCellToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E652846B1EA00104431 /* DealCellToolbarView.swift */; };
 		52B35E692846B1EA00104431 /* DealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E662846B1EA00104431 /* DealsView.swift */; };
+		52B35E6B2847DFDB00104431 /* ScrollableCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E6A2847DFDB00104431 /* ScrollableCollectionViewDelegate.swift */; };
 		712D9C262846A4F20012649B /* NetworkDealDSImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C252846A4F20012649B /* NetworkDealDSImpl.swift */; };
 		712D9C282846A6820012649B /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C272846A6820012649B /* Typealias.swift */; };
 		712D9C2A2846A7820012649B /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C292846A7820012649B /* Deal.swift */; };
@@ -61,6 +62,7 @@
 		52B35E642846B1EA00104431 /* DealCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealCell.swift; sourceTree = "<group>"; };
 		52B35E652846B1EA00104431 /* DealCellToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealCellToolbarView.swift; sourceTree = "<group>"; };
 		52B35E662846B1EA00104431 /* DealsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsView.swift; sourceTree = "<group>"; };
+		52B35E6A2847DFDB00104431 /* ScrollableCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableCollectionViewDelegate.swift; sourceTree = "<group>"; };
 		712D9C252846A4F20012649B /* NetworkDealDSImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDealDSImpl.swift; sourceTree = "<group>"; };
 		712D9C272846A6820012649B /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		712D9C292846A7820012649B /* Deal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				52B35E652846B1EA00104431 /* DealCellToolbarView.swift */,
 				52B35E662846B1EA00104431 /* DealsView.swift */,
 				71C475BA2844CDC1005EC1F1 /* DemoView.swift */,
+				52B35E6A2847DFDB00104431 /* ScrollableCollectionViewDelegate.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				71C475F02844D9FC005EC1F1 /* DummyThingNO.swift in Sources */,
 				712D9C2E2846AB0E0012649B /* DealsRepository.swift in Sources */,
 				71C475EC2844D994005EC1F1 /* NetworkDummyDS.swift in Sources */,
+				52B35E6B2847DFDB00104431 /* ScrollableCollectionViewDelegate.swift in Sources */,
 				71C475FD284523FE005EC1F1 /* DealCheaperStoreNO.swift in Sources */,
 				71C475FF28452431005EC1F1 /* DealCheapestPriceNO.swift in Sources */,
 				52B35E682846B1EA00104431 /* DealCellToolbarView.swift in Sources */,
