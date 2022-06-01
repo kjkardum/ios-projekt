@@ -8,6 +8,6 @@
 import Foundation
 
 struct DealCheapestPriceNO: Codable {
-    public var price: String
-    public var date: Int?
+    public var price: String = ""
+    public var date: Int? = nil
 }

@@ -111,13 +111,12 @@ class DealCell: UICollectionViewCell {
         self.titleLabel.text = dealData.title
         
         self.toolbarView.loadToolbarData(currentPrice: dealData.salePrice, priceBeforeSale: dealData.normalPrice, rating: dealData.dealRating)
-        
-        let date = Date(timeIntervalSince1970: Double(dealData.releaseDate)) // MARK: OVO NE BI SMIJELO BITI OVDJE
+    
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateFormat = "dd-MM-YYYY" //Specify your format that you want
-        let strDate = dateFormatter.string(from: date)
+        let strDate = dateFormatter.string(from: dealData.releaseDate)
         releaseDateLabel.text = "Release date: " + strDate
         
     }

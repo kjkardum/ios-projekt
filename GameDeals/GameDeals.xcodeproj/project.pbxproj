@@ -17,6 +17,22 @@
 		712D9C2C2846A7CF0012649B /* DealNOMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C2B2846A7CF0012649B /* DealNOMapper.swift */; };
 		712D9C2E2846AB0E0012649B /* DealsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C2D2846AB0E0012649B /* DealsRepository.swift */; };
 		712D9C302846AB3C0012649B /* DealsRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C2F2846AB3C0012649B /* DealsRepositoryImpl.swift */; };
+		7152450C2847C371004E7246 /* DetailedDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152450B2847C371004E7246 /* DetailedDeal.swift */; };
+		7152450E2847C38D004E7246 /* DealGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152450D2847C38D004E7246 /* DealGame.swift */; };
+		715245102847C3A3004E7246 /* DealCheaperStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152450F2847C3A3004E7246 /* DealCheaperStore.swift */; };
+		715245122847C3B6004E7246 /* DealCheapestPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715245112847C3B6004E7246 /* DealCheapestPrice.swift */; };
+		715245142847C50D004E7246 /* DateTimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715245132847C50D004E7246 /* DateTimeService.swift */; };
+		715245162847C554004E7246 /* DateTimeServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715245152847C554004E7246 /* DateTimeServiceImpl.swift */; };
+		715245182847C90C004E7246 /* DetailedDealNOMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715245172847C90C004E7246 /* DetailedDealNOMapper.swift */; };
+		7152451A2847CE7B004E7246 /* GamesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715245192847CE7B004E7246 /* GamesRepository.swift */; };
+		7152451C2847CE99004E7246 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152451B2847CE99004E7246 /* Game.swift */; };
+		7152451E2847CF5A004E7246 /* GameNOMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152451D2847CF5A004E7246 /* GameNOMapper.swift */; };
+		715245202847D07C004E7246 /* NetworkGameDSImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152451F2847D07C004E7246 /* NetworkGameDSImpl.swift */; };
+		715245222847D222004E7246 /* GamesRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715245212847D222004E7246 /* GamesRepositoryImpl.swift */; };
+		715245242847D359004E7246 /* GameInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715245232847D359004E7246 /* GameInfo.swift */; };
+		715245262847D366004E7246 /* GameDeal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715245252847D366004E7246 /* GameDeal.swift */; };
+		715245282847D4A2004E7246 /* DetailedGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715245272847D4A2004E7246 /* DetailedGame.swift */; };
+		7152452A2847D4E7004E7246 /* DetailedGameNOMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715245292847D4E7004E7246 /* DetailedGameNOMapper.swift */; };
 		71C475972844C58A005EC1F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C475962844C58A005EC1F1 /* AppDelegate.swift */; };
 		71C475992844C58A005EC1F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C475982844C58A005EC1F1 /* SceneDelegate.swift */; };
 		71C4759B2844C58A005EC1F1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4759A2844C58A005EC1F1 /* ViewController.swift */; };
@@ -67,6 +83,22 @@
 		712D9C2B2846A7CF0012649B /* DealNOMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealNOMapper.swift; sourceTree = "<group>"; };
 		712D9C2D2846AB0E0012649B /* DealsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsRepository.swift; sourceTree = "<group>"; };
 		712D9C2F2846AB3C0012649B /* DealsRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealsRepositoryImpl.swift; sourceTree = "<group>"; };
+		7152450B2847C371004E7246 /* DetailedDeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDeal.swift; sourceTree = "<group>"; };
+		7152450D2847C38D004E7246 /* DealGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealGame.swift; sourceTree = "<group>"; };
+		7152450F2847C3A3004E7246 /* DealCheaperStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealCheaperStore.swift; sourceTree = "<group>"; };
+		715245112847C3B6004E7246 /* DealCheapestPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealCheapestPrice.swift; sourceTree = "<group>"; };
+		715245132847C50D004E7246 /* DateTimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeService.swift; sourceTree = "<group>"; };
+		715245152847C554004E7246 /* DateTimeServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeServiceImpl.swift; sourceTree = "<group>"; };
+		715245172847C90C004E7246 /* DetailedDealNOMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedDealNOMapper.swift; sourceTree = "<group>"; };
+		715245192847CE7B004E7246 /* GamesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesRepository.swift; sourceTree = "<group>"; };
+		7152451B2847CE99004E7246 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		7152451D2847CF5A004E7246 /* GameNOMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNOMapper.swift; sourceTree = "<group>"; };
+		7152451F2847D07C004E7246 /* NetworkGameDSImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkGameDSImpl.swift; sourceTree = "<group>"; };
+		715245212847D222004E7246 /* GamesRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesRepositoryImpl.swift; sourceTree = "<group>"; };
+		715245232847D359004E7246 /* GameInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameInfo.swift; sourceTree = "<group>"; };
+		715245252847D366004E7246 /* GameDeal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDeal.swift; sourceTree = "<group>"; };
+		715245272847D4A2004E7246 /* DetailedGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedGame.swift; sourceTree = "<group>"; };
+		715245292847D4E7004E7246 /* DetailedGameNOMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedGameNOMapper.swift; sourceTree = "<group>"; };
 		71C475932844C58A005EC1F1 /* GameDeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameDeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71C475962844C58A005EC1F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71C475982844C58A005EC1F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +151,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		715245092847C35D004E7246 /* Deals */ = {
+			isa = PBXGroup;
+			children = (
+				712D9C292846A7820012649B /* Deal.swift */,
+				7152450B2847C371004E7246 /* DetailedDeal.swift */,
+				7152450D2847C38D004E7246 /* DealGame.swift */,
+				7152450F2847C3A3004E7246 /* DealCheaperStore.swift */,
+				715245112847C3B6004E7246 /* DealCheapestPrice.swift */,
+			);
+			path = Deals;
+			sourceTree = "<group>";
+		};
+		7152450A2847C363004E7246 /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				7152451B2847CE99004E7246 /* Game.swift */,
+				715245272847D4A2004E7246 /* DetailedGame.swift */,
+				715245232847D359004E7246 /* GameInfo.swift */,
+				715245252847D366004E7246 /* GameDeal.swift */,
+			);
+			path = Games;
+			sourceTree = "<group>";
+		};
 		71C4758A2844C58A005EC1F1 = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +272,7 @@
 		71C475C52844D06D005EC1F1 /* ServiceImpl */ = {
 			isa = PBXGroup;
 			children = (
+				715245152847C554004E7246 /* DateTimeServiceImpl.swift */,
 			);
 			path = ServiceImpl;
 			sourceTree = "<group>";
@@ -224,6 +280,7 @@
 		71C475C62844D07A005EC1F1 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				715245132847C50D004E7246 /* DateTimeService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -231,8 +288,9 @@
 		71C475C72844D109005EC1F1 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				715245092847C35D004E7246 /* Deals */,
+				7152450A2847C363004E7246 /* Games */,
 				71C475E72844D8AD005EC1F1 /* DummyThing.swift */,
-				712D9C292846A7820012649B /* Deal.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -281,6 +339,7 @@
 			children = (
 				71C475E52844D7E0005EC1F1 /* DummyRepository.swift */,
 				712D9C2D2846AB0E0012649B /* DealsRepository.swift */,
+				715245192847CE7B004E7246 /* GamesRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -333,6 +392,7 @@
 				71C4760A28452729005EC1F1 /* NetworkDealDS.swift */,
 				712D9C252846A4F20012649B /* NetworkDealDSImpl.swift */,
 				71C4761128452AC8005EC1F1 /* NetworkGameDS.swift */,
+				7152451F2847D07C004E7246 /* NetworkGameDSImpl.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -342,6 +402,7 @@
 			children = (
 				71C475E92844D940005EC1F1 /* DummyRepositoryImpl.swift */,
 				712D9C2F2846AB3C0012649B /* DealsRepositoryImpl.swift */,
+				715245212847D222004E7246 /* GamesRepositoryImpl.swift */,
 			);
 			path = RepositoryImpl;
 			sourceTree = "<group>";
@@ -369,6 +430,9 @@
 			children = (
 				71C475F12844DB25005EC1F1 /* DummyThingNOMapper.swift */,
 				712D9C2B2846A7CF0012649B /* DealNOMapper.swift */,
+				715245172847C90C004E7246 /* DetailedDealNOMapper.swift */,
+				7152451D2847CF5A004E7246 /* GameNOMapper.swift */,
+				715245292847D4E7004E7246 /* DetailedGameNOMapper.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -508,6 +572,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71C475D22844D1BA005EC1F1 /* CoreDataStack.swift in Sources */,
+				715245182847C90C004E7246 /* DetailedDealNOMapper.swift in Sources */,
 				71C475E82844D8AD005EC1F1 /* DummyThing.swift in Sources */,
 				71C475EE2844D99C005EC1F1 /* NetworkDummyDSImpl.swift in Sources */,
 				71C475EA2844D940005EC1F1 /* DummyRepositoryImpl.swift in Sources */,
@@ -519,13 +584,17 @@
 				71C4761228452AC8005EC1F1 /* NetworkGameDS.swift in Sources */,
 				71C475F7284512B3005EC1F1 /* DealNO.swift in Sources */,
 				71C475BB2844CDC1005EC1F1 /* DemoView.swift in Sources */,
+				7152451C2847CE99004E7246 /* Game.swift in Sources */,
 				71C47605284525D6005EC1F1 /* DetailedGameNO.swift in Sources */,
 				71C475F22844DB25005EC1F1 /* DummyThingNOMapper.swift in Sources */,
 				71C475E62844D7E0005EC1F1 /* DummyRepository.swift in Sources */,
+				7152451E2847CF5A004E7246 /* GameNOMapper.swift in Sources */,
 				71C475FB284523A3005EC1F1 /* DealGameNO.swift in Sources */,
 				52B35E692846B1EA00104431 /* DealsView.swift in Sources */,
 				71C475F02844D9FC005EC1F1 /* DummyThingNO.swift in Sources */,
 				712D9C2E2846AB0E0012649B /* DealsRepository.swift in Sources */,
+				7152450C2847C371004E7246 /* DetailedDeal.swift in Sources */,
+				715245202847D07C004E7246 /* NetworkGameDSImpl.swift in Sources */,
 				71C475EC2844D994005EC1F1 /* NetworkDummyDS.swift in Sources */,
 				71C475FD284523FE005EC1F1 /* DealCheaperStoreNO.swift in Sources */,
 				71C475FF28452431005EC1F1 /* DealCheapestPriceNO.swift in Sources */,
@@ -535,18 +604,29 @@
 				52B35E672846B1EA00104431 /* DealCell.swift in Sources */,
 				71C4760B28452729005EC1F1 /* NetworkDealDS.swift in Sources */,
 				71C475B72844CAB6005EC1F1 /* Services.swift in Sources */,
+				715245262847D366004E7246 /* GameDeal.swift in Sources */,
 				71C4760328452590005EC1F1 /* GameNO.swift in Sources */,
 				71C475B92844CBB5005EC1F1 /* DummyDependency.swift in Sources */,
 				71C475972844C58A005EC1F1 /* AppDelegate.swift in Sources */,
+				715245122847C3B6004E7246 /* DealCheapestPrice.swift in Sources */,
 				712D9C2A2846A7820012649B /* Deal.swift in Sources */,
+				715245102847C3A3004E7246 /* DealCheaperStore.swift in Sources */,
 				71C475E42844D51E005EC1F1 /* NetworkError.swift in Sources */,
+				715245282847D4A2004E7246 /* DetailedGame.swift in Sources */,
+				715245162847C554004E7246 /* DateTimeServiceImpl.swift in Sources */,
+				715245242847D359004E7246 /* GameInfo.swift in Sources */,
+				715245222847D222004E7246 /* GamesRepositoryImpl.swift in Sources */,
 				712D9C2C2846A7CF0012649B /* DealNOMapper.swift in Sources */,
+				7152451A2847CE7B004E7246 /* GamesRepository.swift in Sources */,
+				7152452A2847D4E7004E7246 /* DetailedGameNOMapper.swift in Sources */,
 				712D9C302846AB3C0012649B /* DealsRepositoryImpl.swift in Sources */,
 				71C4760728452602005EC1F1 /* GameInfoNO.swift in Sources */,
+				715245142847C50D004E7246 /* DateTimeService.swift in Sources */,
 				71C475992844C58A005EC1F1 /* SceneDelegate.swift in Sources */,
 				712D9C282846A6820012649B /* Typealias.swift in Sources */,
 				52B35E632846B1DA00104431 /* DealsViewController.swift in Sources */,
 				71C47610284529A0005EC1F1 /* ListOfDealsParameters.swift in Sources */,
+				7152450E2847C38D004E7246 /* DealGame.swift in Sources */,
 				712D9C262846A4F20012649B /* NetworkDealDSImpl.swift in Sources */,
 				71C4760D28452813005EC1F1 /* GameSortingEnum.swift in Sources */,
 			);

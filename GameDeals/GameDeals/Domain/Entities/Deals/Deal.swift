@@ -23,8 +23,8 @@ struct Deal {
     public var steamRatingPercent: String? = nil
     public var steamRatingCount: String? = nil
     public var steamAppID: String? = nil
-    public var releaseDate: Int = 0
-    public var lastChange: Int = 0
+    public var releaseDate: Date = Date()
+    public var lastChange: Date = Date()
     public var dealRating: String = ""
     public var thumb: Data? = nil
 }

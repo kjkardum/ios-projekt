@@ -8,7 +8,7 @@
 import Foundation
 
 struct GameInfoNO: Codable {
-    public var title: String
-    public var steamAppID: String
-    public var thumb: String
+    public var title: String = ""
+    public var steamAppID: String = ""
+    public var thumb: String = ""
 }

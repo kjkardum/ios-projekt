@@ -8,6 +8,11 @@
 import UIKit
 
 class DealNOMapper: Mapper<DealNO, Deal> {
+    let dateService: DateTimeService
+    init(dateService: DateTimeService) {
+        self.dateService = dateService
+    }
+    
     override func mapTo(source: DealNO, destination: inout Deal) -> Deal {
         destination.internalName = source.internalName
         destination.title = source.title
@@ -24,8 +29,8 @@ class DealNOMapper: Mapper<DealNO, Deal> {
         destination.steamRatingPercent = source.steamRatingPercent
         destination.steamRatingCount = source.steamRatingCount
         destination.steamAppID = source.steamAppID
-        destination.releaseDate = source.releaseDate
-        destination.lastChange = source.lastChange
+        destination.releaseDate = dateService.parse(source.releaseDate)
+        destination.lastChange = dateService.parse(source.lastChange)
         destination.dealRating = source.dealRating
         
         let betterSource = source.thumb.replacingOccurrences(of: "capsule_sm_120", with: "header")
@@ -53,8 +58,8 @@ class DealNOMapper: Mapper<DealNO, Deal> {
         destination.steamRatingPercent = source.steamRatingPercent
         destination.steamRatingCount = source.steamRatingCount
         destination.steamAppID = source.steamAppID
-        destination.releaseDate = source.releaseDate
-        destination.lastChange = source.lastChange
+        destination.releaseDate = dateService.toEpoch(source.releaseDate)
+        destination.lastChange = dateService.toEpoch(source.lastChange)
         destination.dealRating = source.dealRating
         destination.thumb = ""
         return destination
