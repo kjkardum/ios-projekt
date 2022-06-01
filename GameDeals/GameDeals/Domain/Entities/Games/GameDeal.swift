@@ -1,13 +1,13 @@
 //
-//  GameDealNO.swift
+//  GameDeal.swift
 //  GameDeals
 //
-//  Created by Karlo Josip Kardum on 30.05.2022..
+//  Created by Karlo Josip Kardum on 01.06.2022..
 //
 
 import Foundation
 
-struct GameDealNO: Codable {
+struct GameDeal {
     public var storeID: String = ""
     public var dealID: String = ""
     public var price: String = ""

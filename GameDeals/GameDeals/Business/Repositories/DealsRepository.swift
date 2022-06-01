@@ -9,4 +9,5 @@ import Foundation
 
 protocol DealsRepository {
     func getListOfDeals(parameters: ListOfDealsParameters, completionHandler: @escaping resultHandler<[Deal]>)
+    func getDeal(id: String, completionHandler: @escaping resultHandler<DetailedDeal>)
 }
