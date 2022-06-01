@@ -9,19 +9,36 @@ import Foundation
 
 class DealsRepositoryImpl: DealsRepository {
     let networkDataSource: NetworkDealDS
-    let networkMapper: Mapper<DealNO, Deal>
+    let dbDataSource: DbDealDS
+    let networkDealMapper: Mapper<DealNO, Deal>
+    let networkDetailedDealMapper: Mapper<DetailedDealNO, DetailedDeal>
     
     init(networkDS: NetworkDealDS,
-         networkMapper: Mapper<DealNO, Deal>) {
+         dbDS: DbDealDS,
+         networkDealMapper: Mapper<DealNO, Deal>,
+         networkDetailedDealMapper: Mapper<DetailedDealNO, DetailedDeal>) {
         self.networkDataSource = networkDS
-        self.networkMapper = networkMapper
+        self.dbDataSource = dbDS
+        self.networkDealMapper = networkDealMapper
+        self.networkDetailedDealMapper = networkDetailedDealMapper
     }
     
     func getListOfDeals(parameters: ListOfDealsParameters, completionHandler: @escaping resultHandler<[Deal]>) {
         networkDataSource.getListOfDeals(parameters: parameters, completionHandler: { result in
             switch (result) {
             case .success(let data):
-                completionHandler(.success(data.map{ self.networkMapper.map($0) }))
+                completionHandler(.success(data.map{ self.networkDealMapper.map($0) }))
+            case .failure(let error):
+                completionHandler(.failure(error))
+            }
+        })
+    }
+    
+    func getDeal(id: String, completionHandler: @escaping resultHandler<DetailedDeal>) {
+        networkDataSource.getDeal(id: id, completionHandler: { result in
+            switch (result) {
+            case .success(let data):
+                completionHandler(.success(self.networkDetailedDealMapper.map(data)))
             case .failure(let error):
                 completionHandler(.failure(error))
             }

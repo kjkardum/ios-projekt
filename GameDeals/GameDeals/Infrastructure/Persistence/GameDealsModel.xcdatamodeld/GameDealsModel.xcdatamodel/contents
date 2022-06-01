@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DealMO" representedClassName="DealMO" syncable="YES">
+        <attribute name="dealId" attributeType="String"/>
+        <attribute name="dealRating" attributeType="String"/>
+        <attribute name="gameId" attributeType="String"/>
+        <attribute name="internalName" attributeType="String"/>
+        <attribute name="isOnSale" attributeType="String"/>
+        <attribute name="lastChange" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="metacriticLink" optional="YES" attributeType="String"/>
+        <attribute name="metacriticScore" attributeType="String"/>
+        <attribute name="normalPrice" attributeType="String"/>
+        <attribute name="releaseDate" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="salePrice" attributeType="String"/>
+        <attribute name="savings" attributeType="String"/>
+        <attribute name="steamAppId" optional="YES" attributeType="String"/>
+        <attribute name="steamRatingCount" optional="YES" attributeType="String"/>
+        <attribute name="steamRatingPercent" optional="YES" attributeType="String"/>
+        <attribute name="steamRatingText" optional="YES" attributeType="String"/>
+        <attribute name="storeId" attributeType="String"/>
+        <attribute name="thumb" optional="YES" attributeType="Binary"/>
+        <attribute name="title" attributeType="String"/>
+    </entity>
+    <entity name="GameMO" representedClassName="GameMO" syncable="YES">
+        <attribute name="cheapest" attributeType="String"/>
+        <attribute name="cheapestDealId" attributeType="String"/>
+        <attribute name="external" attributeType="String"/>
+        <attribute name="gameId" attributeType="String"/>
+        <attribute name="liked" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="steamAppId" attributeType="String"/>
+        <attribute name="thumb" optional="YES" attributeType="Binary" storedInTruthFile="YES"/>
+    </entity>
+    <elements>
+        <element name="DealMO" positionX="-63" positionY="-18" width="128" height="314"/>
+        <element name="GameMO" positionX="-54" positionY="-9" width="128" height="134"/>
+    </elements>
+</model>

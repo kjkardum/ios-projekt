@@ -8,13 +8,22 @@
 import Foundation
 import SnapKit
 import UIKit
+import SFSafeSymbols
 
-class DealCell: UICollectionViewCell {
+class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     let dealCellView = UIView()
     let thumbnailImageView = UIImageView()
     let titleLabel = UILabel()
     let toolbarView = DealCellToolbarView()
     let releaseDateLabel = UILabel()
+    var gesture = UIPanGestureRecognizer()
+    var pointOrigin: CGPoint?
+    let likeView = UIView()
+    let heartIconView = UIImageView()
+    var likeState = false
+    var gestureIsEnabled = false
+    
+    weak var scrollViewDelegate: ScrollableCollectionViewDelegate?
     
     
     override init(frame: CGRect) {
@@ -28,15 +37,23 @@ class DealCell: UICollectionViewCell {
     }
     
     private func buildViews() {
+        gesture = UIPanGestureRecognizer(target: self, action: #selector(DealCell.handleGesture(_:)))
+        gesture.delegate = self
+        dealCellView.addGestureRecognizer(gesture)
+        dealCellView.isUserInteractionEnabled = true
+        
+        addSubview(likeView)
         addSubview(dealCellView)
+        
+        likeView.addSubview(heartIconView)
         
         dealCellView.addSubview(thumbnailImageView)
         dealCellView.addSubview(titleLabel)
         dealCellView.addSubview(toolbarView)
         dealCellView.addSubview(releaseDateLabel)
 
-        
-        thumbnailImageView.contentMode = .scaleAspectFit
+        thumbnailImageView.contentMode = .scaleAspectFill;
+        thumbnailImageView.clipsToBounds = true;
         
         titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
         titleLabel.textColor = .white
@@ -49,10 +66,23 @@ class DealCell: UICollectionViewCell {
         dealCellView.layer.cornerRadius = 20
         dealCellView.backgroundColor = .lightGray
         
+        likeView.clipsToBounds = true
+        likeView.layer.cornerRadius = dealCellView.layer.cornerRadius
+        
         backgroundColor = .white
     }
     
     private func setLayout() {
+        likeView.snp.makeConstraints {make in
+            make.top.leading.equalToSuperview().offset(15)
+            make.trailing.bottom.equalToSuperview().inset(15)
+        }
+        
+        heartIconView.snp.makeConstraints {make in
+            make.top.centerX.equalToSuperview()
+            make.width.height.equalTo(40)
+        }
+        
         dealCellView.snp.makeConstraints {make in
             make.top.leading.equalToSuperview().offset(15)
             make.trailing.bottom.equalToSuperview().inset(15)
@@ -60,7 +90,7 @@ class DealCell: UICollectionViewCell {
         
         thumbnailImageView.snp.makeConstraints {make in
             make.top.trailing.leading.equalToSuperview()
-            make.height.equalTo(10)
+            make.height.equalTo(168)
         }
         
         titleLabel.snp.makeConstraints { make in
@@ -82,6 +112,42 @@ class DealCell: UICollectionViewCell {
 
     }
     
+    @objc func handleGesture(_ gesture: UIPanGestureRecognizer) {
+        if gesture.state == .began {
+            gestureIsEnabled = true
+            pointOrigin = self.dealCellView.frame.origin
+        }
+        
+        let translation = gesture.translation(in: dealCellView)
+        
+        guard translation.y >= 0 else { return }
+        
+        if dealCellView.frame.origin.y > 100 {
+            self.userSwiped()
+            gestureIsEnabled = false
+            UIView.animate(withDuration: 0.3) {
+                gesture.isEnabled = false
+                self.dealCellView.frame.origin = self.pointOrigin!
+                gesture.isEnabled = true
+                self.scrollViewDelegate?.setScrollViewEnabled(true)
+                return
+            }
+
+        }
+
+        if gesture.state == .changed {
+            dealCellView.frame.origin = CGPoint(x: dealCellView.frame.origin.x, y: self.pointOrigin!.y + translation.y)
+        }
+        
+
+        if gesture.state == .ended || gesture.state == .cancelled {
+            UIView.animate(withDuration: 0.3) {
+                self.dealCellView.frame.origin = self.pointOrigin!
+                self.scrollViewDelegate?.setScrollViewEnabled(true)
+            }
+        }
+    }
+    
     
     private func setImageConstraint() {
         if thumbnailImageView.image == nil {
@@ -93,7 +159,11 @@ class DealCell: UICollectionViewCell {
         let myViewWidth = dealCellView.frame.size.width
 
         let ratio = myViewWidth/myImageWidth
-        let scaledHeight = myImageHeight * ratio
+        var scaledHeight = myImageHeight * ratio
+        
+        if scaledHeight > 168 {
+            scaledHeight = 168
+        }
         
         thumbnailImageView.snp.updateConstraints { (make) in
             make.height.equalTo(scaledHeight)
@@ -111,15 +181,45 @@ class DealCell: UICollectionViewCell {
         self.titleLabel.text = dealData.title
         
         self.toolbarView.loadToolbarData(currentPrice: dealData.salePrice, priceBeforeSale: dealData.normalPrice, rating: dealData.dealRating)
-        
-        let date = Date(timeIntervalSince1970: Double(dealData.releaseDate)) // MARK: OVO NE BI SMIJELO BITI OVDJE
+    
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
         dateFormatter.locale = NSLocale.current
         dateFormatter.dateFormat = "dd-MM-YYYY" //Specify your format that you want
-        let strDate = dateFormatter.string(from: date)
+        let strDate = dateFormatter.string(from: dealData.releaseDate)
         releaseDateLabel.text = "Release date: " + strDate
         
+        if likeState {
+            self.heartIconView.image = UIImage(systemSymbol: .heartFill)
+        } else {
+            self.heartIconView.image = UIImage(systemSymbol: .heart)
+        }
+        
+        pointOrigin = self.dealCellView.frame.origin
     }
     
+    
+    func userSwiped() {
+        if (gestureIsEnabled) {
+            if likeState {
+                likeState = false
+                self.heartIconView.image = UIImage(systemSymbol: .heart)
+            } else {
+                likeState = true
+                self.heartIconView.image = UIImage(systemSymbol: .heartFill)
+            }
+        }
+    }
+    
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+    override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        if abs(gesture.velocity(in: dealCellView).y) > abs(gesture.velocity(in: dealCellView).x) {
+            scrollViewDelegate?.setScrollViewEnabled(false)
+        }
+        return abs(gesture.velocity(in: dealCellView).y) > abs(gesture.velocity(in: dealCellView).x)
+    }
 }

@@ -8,6 +8,6 @@
 import Foundation
 
 protocol NetworkGameDS {
-    func getListOfGames(title: String, exact: Bool, steamAppId: Int?, limit: Int?) -> [GameNO]
-    func getGame(id: Int) -> DetailedGameNO
+    func getListOfGames(title: String, exact: Bool, steamAppId: Int?, limit: Int?, completionHandler: @escaping resultHandler<[GameNO]>)
+    func getGame(id: Int, completionHandler: @escaping resultHandler<DetailedGameNO>)
 }

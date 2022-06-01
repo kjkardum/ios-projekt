@@ -8,7 +8,7 @@
 import Foundation
 
 struct DetailedDealNO: Codable {
-    public var gameInfo: DealGameNO
-    public var cheaperStores: [DealCheaperStoreNO]
-    public var cheapestPrice: DealCheapestPriceNO
+    public var gameInfo: DealGameNO = DealGameNO()
+    public var cheaperStores: [DealCheaperStoreNO] = []
+    public var cheapestPrice: DealCheapestPriceNO = DealCheapestPriceNO()
 }
