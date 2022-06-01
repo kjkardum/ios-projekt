@@ -10,6 +10,7 @@ import SnapKit
 import UIKit
 
 class DealCell: UICollectionViewCell {
+    let dealCellView = UIView()
     let thumbnailImageView = UIImageView()
     let titleLabel = UILabel()
     let toolbarView = DealCellToolbarView()
@@ -27,10 +28,12 @@ class DealCell: UICollectionViewCell {
     }
     
     private func buildViews() {
-        addSubview(thumbnailImageView)
-        addSubview(titleLabel)
-        addSubview(toolbarView)
-        addSubview(releaseDateLabel)
+        addSubview(dealCellView)
+        
+        dealCellView.addSubview(thumbnailImageView)
+        dealCellView.addSubview(titleLabel)
+        dealCellView.addSubview(toolbarView)
+        dealCellView.addSubview(releaseDateLabel)
 
         
         thumbnailImageView.contentMode = .scaleAspectFit
@@ -42,13 +45,19 @@ class DealCell: UICollectionViewCell {
         
         releaseDateLabel.textColor = .white
         
-        clipsToBounds = true
-        layer.cornerRadius = 20
+        dealCellView.clipsToBounds = true
+        dealCellView.layer.cornerRadius = 20
+        dealCellView.backgroundColor = .lightGray
         
-        backgroundColor = .lightGray
+        backgroundColor = .white
     }
     
     private func setLayout() {
+        dealCellView.snp.makeConstraints {make in
+            make.top.leading.equalToSuperview().offset(15)
+            make.trailing.bottom.equalToSuperview().inset(15)
+        }
+        
         thumbnailImageView.snp.makeConstraints {make in
             make.top.trailing.leading.equalToSuperview()
             make.height.equalTo(10)
@@ -81,7 +90,7 @@ class DealCell: UICollectionViewCell {
         
         let myImageWidth = thumbnailImageView.image!.size.width
         let myImageHeight = thumbnailImageView.image!.size.height
-        let myViewWidth = safeAreaLayoutGuide.layoutFrame.size.width
+        let myViewWidth = dealCellView.frame.size.width
 
         let ratio = myViewWidth/myImageWidth
         let scaledHeight = myImageHeight * ratio
@@ -92,23 +101,18 @@ class DealCell: UICollectionViewCell {
     }
     
     
-    func setup(dealData: TestData) {
+    func setup(dealData: Deal) {
         
-        // MARK: NIJE HANDLEANO AKO URL NIJE VALJAN
-        DispatchQueue.global().async {
-            if let data = try? Data(contentsOf: URL(string: dealData.thumb)!) { // lose - ako ne postoji URL
-                DispatchQueue.main.async {
-                    self.thumbnailImageView.image = UIImage(data: data)!
-                    self.setImageConstraint()
-                }
-            }
+        if let thumb = dealData.thumb {
+            self.thumbnailImageView.image = UIImage(data: thumb)
+            self.setImageConstraint()
         }
         
         self.titleLabel.text = dealData.title
         
         self.toolbarView.loadToolbarData(currentPrice: dealData.salePrice, priceBeforeSale: dealData.normalPrice, rating: dealData.dealRating)
         
-        let date = Date(timeIntervalSince1970: Double(dealData.releaseDate)!) // MARK: OVO NE BI SMIJELO BITI OVDJE
+        let date = Date(timeIntervalSince1970: Double(dealData.releaseDate)) // MARK: OVO NE BI SMIJELO BITI OVDJE
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
         dateFormatter.locale = NSLocale.current

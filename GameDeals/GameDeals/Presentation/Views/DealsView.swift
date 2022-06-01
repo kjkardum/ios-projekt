@@ -15,11 +15,11 @@ class DealsView: UIView {
     private let collectionView : UICollectionView = {
         let flowlayout = UICollectionViewFlowLayout()
         flowlayout.scrollDirection = .horizontal
-        flowlayout.minimumInteritemSpacing = 7
-        flowlayout.minimumLineSpacing = 30
+//        flowlayout.minimumInteritemSpacing = 7
+//        flowlayout.minimumLineSpacing = 30
         return UICollectionView(frame: CGRect.zero, collectionViewLayout: flowlayout)
     }()
-    var dealsData : [TestData] = []
+    var dealsData : [Deal] = []
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -41,8 +41,9 @@ class DealsView: UIView {
         collectionView.register(DealCell.self, forCellWithReuseIdentifier: cellIdentifier)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+//        collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         collectionView.automaticallyAdjustsScrollIndicatorInsets = false
+        collectionView.isPagingEnabled = true
     }
     
     
@@ -55,7 +56,7 @@ class DealsView: UIView {
         }
     }
     
-    func loadData(dealsData: [TestData]) {
+    func loadData(dealsData: [Deal]) {
         self.dealsData = dealsData
         collectionView.reloadData()
     }
@@ -83,6 +84,10 @@ extension DealsView: UICollectionViewDataSource {
 
 extension DealsView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.size.width-30, height: collectionView.frame.size.height)
+        return CGSize(width: frame.size.width, height: collectionView.frame.size.height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }
