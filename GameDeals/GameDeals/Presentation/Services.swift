@@ -25,6 +25,8 @@ class Services {
             
     private func registerControllers() {
         container.autoregister(DealsViewController.self, initializer: DealsViewController.init)
+        container.autoregister(SearchViewController.self, initializer: SearchViewController.init)
+    
     }
     
     private func registerServices() {
