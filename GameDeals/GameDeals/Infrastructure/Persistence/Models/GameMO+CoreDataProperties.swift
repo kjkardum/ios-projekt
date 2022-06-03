@@ -22,6 +22,7 @@ extension GameMO {
     @NSManaged public var cheapestDealId: String?
     @NSManaged public var external: String?
     @NSManaged public var thumb: Data?
+    @NSManaged public var liked: Bool
 
 }
 

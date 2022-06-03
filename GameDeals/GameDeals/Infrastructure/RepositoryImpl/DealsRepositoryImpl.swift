@@ -9,13 +9,16 @@ import Foundation
 
 class DealsRepositoryImpl: DealsRepository {
     let networkDataSource: NetworkDealDS
+    let dbDataSource: DbDealDS
     let networkDealMapper: Mapper<DealNO, Deal>
     let networkDetailedDealMapper: Mapper<DetailedDealNO, DetailedDeal>
     
     init(networkDS: NetworkDealDS,
+         dbDS: DbDealDS,
          networkDealMapper: Mapper<DealNO, Deal>,
          networkDetailedDealMapper: Mapper<DetailedDealNO, DetailedDeal>) {
         self.networkDataSource = networkDS
+        self.dbDataSource = dbDS
         self.networkDealMapper = networkDealMapper
         self.networkDetailedDealMapper = networkDetailedDealMapper
     }

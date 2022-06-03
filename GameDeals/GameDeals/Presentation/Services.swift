@@ -25,6 +25,8 @@ class Services {
             
     private func registerControllers() {
         container.autoregister(DealsViewController.self, initializer: DealsViewController.init)
+        container.autoregister(SearchViewController.self, initializer: SearchViewController.init)
+    
     }
     
     private func registerServices() {
@@ -41,6 +43,8 @@ class Services {
     private func registerDataSources() {
         container.autoregister(NetworkDealDS.self, initializer: NetworkDealDSImpl.init)
         container.autoregister(NetworkGameDS.self, initializer: NetworkGameDSImpl.init)
+        container.autoregister(DbDealDS.self, initializer: DbDealDSImpl.init)
+        container.autoregister(DbGameDS.self, initializer: DbGameDSImpl.init)
     }
     
     private func registerMappingProfiles() {

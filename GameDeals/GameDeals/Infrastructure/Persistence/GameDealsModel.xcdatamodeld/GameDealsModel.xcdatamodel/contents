@@ -26,11 +26,12 @@
         <attribute name="cheapestDealId" attributeType="String"/>
         <attribute name="external" attributeType="String"/>
         <attribute name="gameId" attributeType="String"/>
+        <attribute name="liked" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="steamAppId" attributeType="String"/>
         <attribute name="thumb" optional="YES" attributeType="Binary" storedInTruthFile="YES"/>
     </entity>
     <elements>
         <element name="DealMO" positionX="-63" positionY="-18" width="128" height="314"/>
-        <element name="GameMO" positionX="-54" positionY="-9" width="128" height="119"/>
+        <element name="GameMO" positionX="-54" positionY="-9" width="128" height="134"/>
     </elements>
 </model>

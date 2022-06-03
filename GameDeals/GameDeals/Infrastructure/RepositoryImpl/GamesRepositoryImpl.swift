@@ -9,13 +9,16 @@ import Foundation
 
 class GamesRepositoryImpl: GamesRepository {
     let networkDataSource: NetworkGameDS
+    let dbDataSource: DbGameDS
     let networkGameMapper: Mapper<GameNO, Game>
     let networkDetailedGameMapper: Mapper<DetailedGameNO, DetailedGame>
     
     init(networkDS: NetworkGameDS,
+         dbDS: DbGameDS,
          networkGameMapper: Mapper<GameNO, Game>,
          networkDetailedGameMapper: Mapper<DetailedGameNO, DetailedGame>) {
         self.networkDataSource = networkDS
+        self.dbDataSource = dbDS
         self.networkGameMapper = networkGameMapper
         self.networkDetailedGameMapper = networkDetailedGameMapper
     }
