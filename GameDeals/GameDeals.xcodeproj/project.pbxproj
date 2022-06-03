@@ -12,6 +12,12 @@
 		52B35E682846B1EA00104431 /* DealCellToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E652846B1EA00104431 /* DealCellToolbarView.swift */; };
 		52B35E692846B1EA00104431 /* DealsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E662846B1EA00104431 /* DealsView.swift */; };
 		52B35E6B2847DFDB00104431 /* ScrollableCollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E6A2847DFDB00104431 /* ScrollableCollectionViewDelegate.swift */; };
+		52B35E6D2848A94600104431 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E6C2848A94600104431 /* FiltersViewController.swift */; };
+		52B35E6F2848EE8700104431 /* FilterSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E6E2848EE8700104431 /* FilterSelectionView.swift */; };
+		52B35E712848F21400104431 /* FilterSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E702848F21400104431 /* FilterSliderView.swift */; };
+		52B35E7328493DA600104431 /* ActionButtonsForFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E7228493DA600104431 /* ActionButtonsForFiltersView.swift */; };
+		52B35E762849615800104431 /* FilterSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E752849615800104431 /* FilterSelectionCell.swift */; };
+		52B35E78284A45EC00104431 /* FilterWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E77284A45EC00104431 /* FilterWrapperView.swift */; };
 		712D9C262846A4F20012649B /* NetworkDealDSImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C252846A4F20012649B /* NetworkDealDSImpl.swift */; };
 		712D9C282846A6820012649B /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C272846A6820012649B /* Typealias.swift */; };
 		712D9C2A2846A7820012649B /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C292846A7820012649B /* Deal.swift */; };
@@ -77,6 +83,12 @@
 		52B35E652846B1EA00104431 /* DealCellToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealCellToolbarView.swift; sourceTree = "<group>"; };
 		52B35E662846B1EA00104431 /* DealsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsView.swift; sourceTree = "<group>"; };
 		52B35E6A2847DFDB00104431 /* ScrollableCollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableCollectionViewDelegate.swift; sourceTree = "<group>"; };
+		52B35E6C2848A94600104431 /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		52B35E6E2848EE8700104431 /* FilterSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectionView.swift; sourceTree = "<group>"; };
+		52B35E702848F21400104431 /* FilterSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSliderView.swift; sourceTree = "<group>"; };
+		52B35E7228493DA600104431 /* ActionButtonsForFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonsForFiltersView.swift; sourceTree = "<group>"; };
+		52B35E752849615800104431 /* FilterSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectionCell.swift; sourceTree = "<group>"; };
+		52B35E77284A45EC00104431 /* FilterWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterWrapperView.swift; sourceTree = "<group>"; };
 		712D9C252846A4F20012649B /* NetworkDealDSImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDealDSImpl.swift; sourceTree = "<group>"; };
 		712D9C272846A6820012649B /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		712D9C292846A7820012649B /* Deal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
@@ -251,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				52B35E622846B1DA00104431 /* DealsViewController.swift */,
+				52B35E6C2848A94600104431 /* FiltersViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -261,8 +274,12 @@
 				52B35E642846B1EA00104431 /* DealCell.swift */,
 				52B35E652846B1EA00104431 /* DealCellToolbarView.swift */,
 				52B35E662846B1EA00104431 /* DealsView.swift */,
-				71C475BA2844CDC1005EC1F1 /* DemoView.swift */,
 				52B35E6A2847DFDB00104431 /* ScrollableCollectionViewDelegate.swift */,
+				52B35E6E2848EE8700104431 /* FilterSelectionView.swift */,
+				52B35E752849615800104431 /* FilterSelectionCell.swift */,
+				52B35E702848F21400104431 /* FilterSliderView.swift */,
+				52B35E7228493DA600104431 /* ActionButtonsForFiltersView.swift */,
+				52B35E77284A45EC00104431 /* FilterWrapperView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -570,10 +587,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				71C475D22844D1BA005EC1F1 /* CoreDataStack.swift in Sources */,
+				52B35E712848F21400104431 /* FilterSliderView.swift in Sources */,
 				715245182847C90C004E7246 /* DetailedDealNOMapper.swift in Sources */,
+				52B35E7328493DA600104431 /* ActionButtonsForFiltersView.swift in Sources */,
 				71C475F52844E0CF005EC1F1 /* FindViewControllerExtension.swift in Sources */,
 				71C475F9284514CD005EC1F1 /* DetailedDealNO.swift in Sources */,
 				71C475D72844D206005EC1F1 /* NetworkServiceImpl.swift in Sources */,
+				52B35E78284A45EC00104431 /* FilterWrapperView.swift in Sources */,
 				71C476092845263D005EC1F1 /* GameDealNO.swift in Sources */,
 				71C4761228452AC8005EC1F1 /* NetworkGameDS.swift in Sources */,
 				71C475F7284512B3005EC1F1 /* DealNO.swift in Sources */,
@@ -583,10 +603,11 @@
 				7152451E2847CF5A004E7246 /* GameNOMapper.swift in Sources */,
 				71C475FB284523A3005EC1F1 /* DealGameNO.swift in Sources */,
 				52B35E692846B1EA00104431 /* DealsView.swift in Sources */,
+				52B35E6F2848EE8700104431 /* FilterSelectionView.swift in Sources */,
 				712D9C2E2846AB0E0012649B /* DealsRepository.swift in Sources */,
-				71C475EC2844D994005EC1F1 /* NetworkDummyDS.swift in Sources */,
 				52B35E6B2847DFDB00104431 /* ScrollableCollectionViewDelegate.swift in Sources */,
 				7152450C2847C371004E7246 /* DetailedDeal.swift in Sources */,
+				52B35E762849615800104431 /* FilterSelectionCell.swift in Sources */,
 				715245202847D07C004E7246 /* NetworkGameDSImpl.swift in Sources */,
 				71C475FD284523FE005EC1F1 /* DealCheaperStoreNO.swift in Sources */,
 				71C475FF28452431005EC1F1 /* DealCheapestPriceNO.swift in Sources */,
@@ -604,6 +625,7 @@
 				712D9C2A2846A7820012649B /* Deal.swift in Sources */,
 				715245102847C3A3004E7246 /* DealCheaperStore.swift in Sources */,
 				715245392847DF53004E7246 /* GameMOMapper.swift in Sources */,
+				52B35E6D2848A94600104431 /* FiltersViewController.swift in Sources */,
 				71C475E42844D51E005EC1F1 /* NetworkError.swift in Sources */,
 				715245282847D4A2004E7246 /* DetailedGame.swift in Sources */,
 				715245162847C554004E7246 /* DateTimeServiceImpl.swift in Sources */,

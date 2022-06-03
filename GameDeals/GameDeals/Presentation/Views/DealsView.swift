@@ -15,8 +15,6 @@ class DealsView: UIView {
     private let collectionView : UICollectionView = {
         let flowlayout = UICollectionViewFlowLayout()
         flowlayout.scrollDirection = .horizontal
-//        flowlayout.minimumInteritemSpacing = 7
-//        flowlayout.minimumLineSpacing = 30
         return UICollectionView(frame: CGRect.zero, collectionViewLayout: flowlayout)
     }()
     var dealsData : [Deal] = []

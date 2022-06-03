@@ -175,7 +175,7 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         
         if let thumb = dealData.thumb {
             self.thumbnailImageView.image = UIImage(data: thumb)
-            self.setImageConstraint()
+//            self.setImageConstraint()
         }
         
         self.titleLabel.text = dealData.title
@@ -201,13 +201,15 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     func userSwiped() {
         if (gestureIsEnabled) {
-            if likeState {
-                likeState = false
+            if self.likeState {
+                self.likeState = false
                 self.heartIconView.image = UIImage(systemSymbol: .heart)
             } else {
-                likeState = true
+                self.likeState = true
                 self.heartIconView.image = UIImage(systemSymbol: .heartFill)
             }
+            
+            
         }
     }
     
