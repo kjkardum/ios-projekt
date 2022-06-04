@@ -54,6 +54,7 @@
 		71C4760D28452813005EC1F1 /* GameSortingEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4760C28452813005EC1F1 /* GameSortingEnum.swift */; };
 		71C47610284529A0005EC1F1 /* ListOfDealsParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4760F284529A0005EC1F1 /* ListOfDealsParameters.swift */; };
 		71C4761228452AC8005EC1F1 /* NetworkGameDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4761128452AC8005EC1F1 /* NetworkGameDS.swift */; };
+		794B2BE62847C22000AB89C4 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794B2BE52847C22000AB89C4 /* SearchBarView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,7 @@
 		71C4760C28452813005EC1F1 /* GameSortingEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSortingEnum.swift; sourceTree = "<group>"; };
 		71C4760F284529A0005EC1F1 /* ListOfDealsParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfDealsParameters.swift; sourceTree = "<group>"; };
 		71C4761128452AC8005EC1F1 /* NetworkGameDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkGameDS.swift; sourceTree = "<group>"; };
+		794B2BE52847C22000AB89C4 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 				52B35E652846B1EA00104431 /* DealCellToolbarView.swift */,
 				52B35E662846B1EA00104431 /* DealsView.swift */,
 				71C475BA2844CDC1005EC1F1 /* DemoView.swift */,
+				794B2BE52847C22000AB89C4 /* SearchBarView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				71C475F52844E0CF005EC1F1 /* FindViewControllerExtension.swift in Sources */,
 				71C475F9284514CD005EC1F1 /* DetailedDealNO.swift in Sources */,
 				71C4759B2844C58A005EC1F1 /* ViewController.swift in Sources */,
+				794B2BE62847C22000AB89C4 /* SearchBarView.swift in Sources */,
 				71C475D72844D206005EC1F1 /* NetworkServiceImpl.swift in Sources */,
 				71C476092845263D005EC1F1 /* GameDealNO.swift in Sources */,
 				71C4761228452AC8005EC1F1 /* NetworkGameDS.swift in Sources */,
