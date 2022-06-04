@@ -17,12 +17,15 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
     func onSearchBoxFocus() {
         label.isHidden = true
         recommended.isHidden = true
+        searchV.isHidden = false
         recommended.snp.makeConstraints {make in
             make.top.equalTo(search.snp.bottom).offset(15)
         }
     }
     
     func onSearchBoxUnfocus() {
+        
+        searchV.isHidden = true
         label.isHidden = false
         recommended.isHidden = false
         label.snp.makeConstraints {make in
@@ -43,6 +46,7 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
     private var dealsRepository: DealsRepository
     private let search = SearchBarView()
     private let recommended = RecommendedView()
+    private let searchV = SearchView()
     private let label = UILabel()
   
     init(dealsRepository: DealsRepository) {
@@ -67,7 +71,8 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
         search.delegate = self
         view.addSubview(search)
         view.addSubview(recommended)
-        
+        view.addSubview(searchV)
+        searchV.isHidden = true
         
         
     }
@@ -75,8 +80,8 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
     private func setLayout() {
         search.snp.makeConstraints {make in
         make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-        make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-        make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+        make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(10)
+        make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(10)
         make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
         
     }
@@ -87,6 +92,13 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
         make.bottom.equalTo(search.snp.bottom).offset(30)
         
     }
+        searchV.snp.makeConstraints {make in
+        make.top.equalTo(search.snp.bottom).offset(15)
+        make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+        make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+        make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+    }
+        
         recommended.snp.makeConstraints {make in
         make.top.equalTo(label.snp.bottom).offset(15)
         make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
@@ -103,6 +115,7 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
             case .success(let data):
                 DispatchQueue.main.sync {
                     self.recommended.loadData(dealsData: data)
+                    self.searchV.loadData(dealsData: data)
                 }
             default:
                 return

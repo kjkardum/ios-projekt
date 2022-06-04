@@ -1,22 +1,23 @@
 //
-//  RecommendedView.swift
+//  SearchCell.swift
 //  GameDeals
 //
-//  Created by Tomislav Žiger  on 01.06.2022..
+//  Created by Tomislav Žiger  on 04.06.2022..
 //
 
+import Foundation
 import Foundation
 import UIKit
 import SnapKit
 
     
-class RecommendedCell: UICollectionViewCell {
-    let recommendedCellView = UIView()
+class SearchCell: UICollectionViewCell {
+    let searchCellView = UIView()
     let img = UIImageView()
     let titleLabel = UILabel()
     let priceLabel = UILabel()
-    let pom = UIView()
-    let button = UIButton()
+   
+    var pom = UIView()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -29,14 +30,12 @@ class RecommendedCell: UICollectionViewCell {
     }
     
     private func buildViews() {
-        addSubview(recommendedCellView)
-        
-        recommendedCellView.addSubview(img)
+        addSubview(searchCellView)
+        searchCellView.addSubview(img)
         pom.addSubview(titleLabel)
         pom.addSubview(priceLabel)
-        recommendedCellView.addSubview(pom)
+        searchCellView.addSubview(pom)
         
-        recommendedCellView.addSubview(button)
         
         img.contentMode = .scaleAspectFit
         
@@ -49,22 +48,19 @@ class RecommendedCell: UICollectionViewCell {
         priceLabel.textColor = .black
         priceLabel.lineBreakMode = .byWordWrapping
         priceLabel.numberOfLines = 0
-        
-        button.setTitle( "like", for: .normal)
-        
-        button.setTitleColor(.white, for: .normal)
-
+       
         
         
-        recommendedCellView.clipsToBounds = true
-        recommendedCellView.layer.cornerRadius = 5
-        recommendedCellView.backgroundColor = .lightGray
+        
+        searchCellView.clipsToBounds = true
+        searchCellView.layer.cornerRadius = 5
+        searchCellView.backgroundColor = .lightGray
         
         backgroundColor = .white
     }
     
     private func setLayout() {
-        recommendedCellView.snp.makeConstraints {make in
+        searchCellView.snp.makeConstraints {make in
             make.top.bottom.equalToSuperview()
             make.trailing.equalToSuperview().offset(-10)
             make.leading.equalToSuperview().offset(10)
@@ -87,15 +83,10 @@ class RecommendedCell: UICollectionViewCell {
         pom.snp.makeConstraints { make in
             make.leading.equalTo(img.snp.trailing).offset(10)
             make.bottom.top.equalToSuperview()
-            make.trailing.equalTo(button.snp.leading).offset(-10)
+            make.trailing.equalTo(super.snp.trailing).offset(-10)
             
         }
-        button.snp.makeConstraints { make in
-            make.bottom.top.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.leading.equalTo(super.snp.trailing).offset(-60)
-            
-        }
+       
         
         
         
@@ -110,7 +101,7 @@ class RecommendedCell: UICollectionViewCell {
         
         let myImageWidth = img.image!.size.width
         let myImageHeight = img.image!.size.height
-        let myViewWidth = recommendedCellView.frame.size.width
+        let myViewWidth = searchCellView.frame.size.width
 
         let ratio = myViewWidth/myImageWidth
         let scaledHeight = myImageHeight * ratio

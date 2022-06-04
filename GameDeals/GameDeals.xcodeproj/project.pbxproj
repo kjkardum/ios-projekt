@@ -80,6 +80,7 @@
 		71C4760D28452813005EC1F1 /* GameSortingEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4760C28452813005EC1F1 /* GameSortingEnum.swift */; };
 		71C47610284529A0005EC1F1 /* ListOfDealsParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4760F284529A0005EC1F1 /* ListOfDealsParameters.swift */; };
 		71C4761228452AC8005EC1F1 /* NetworkGameDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4761128452AC8005EC1F1 /* NetworkGameDS.swift */; };
+		795F5453284B844C00A13845 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F5452284B844C00A13845 /* SearchCell.swift */; };
 		799CD7E32847C553004ED6DF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799CD7E22847C553004ED6DF /* SearchViewController.swift */; };
 		799CD7E52847C729004ED6DF /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799CD7E42847C729004ED6DF /* SearchBarView.swift */; };
 		799CD7E92847CD08004ED6DF /* RecommendedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799CD7E82847CD08004ED6DF /* RecommendedCell.swift */; };
@@ -163,6 +164,7 @@
 		71C4760C28452813005EC1F1 /* GameSortingEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSortingEnum.swift; sourceTree = "<group>"; };
 		71C4760F284529A0005EC1F1 /* ListOfDealsParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfDealsParameters.swift; sourceTree = "<group>"; };
 		71C4761128452AC8005EC1F1 /* NetworkGameDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkGameDS.swift; sourceTree = "<group>"; };
+		795F5452284B844C00A13845 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		799CD7E22847C553004ED6DF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		799CD7E42847C729004ED6DF /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		799CD7E82847CD08004ED6DF /* RecommendedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedCell.swift; sourceTree = "<group>"; };
@@ -305,8 +307,9 @@
 				52B35E662846B1EA00104431 /* DealsView.swift */,
 				799CD7F22847F230004ED6DF /* SearchBoxDelegate.swift */,
 				799CD7E42847C729004ED6DF /* SearchBarView.swift */,
-				799CD7E82847CD08004ED6DF /* RecommendedCell.swift */,
 				799CD7EA2847D392004ED6DF /* RecommendedView.swift */,
+				799CD7E82847CD08004ED6DF /* RecommendedCell.swift */,
+				795F5452284B844C00A13845 /* SearchCell.swift */,
 				799CD7F02847EF4B004ED6DF /* SearchView.swift */,
 				52B35E6A2847DFDB00104431 /* ScrollableCollectionViewDelegate.swift */,
 				52B35E6E2848EE8700104431 /* FilterSelectionView.swift */,
@@ -645,6 +648,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71C475D22844D1BA005EC1F1 /* CoreDataStack.swift in Sources */,
+				795F5453284B844C00A13845 /* SearchCell.swift in Sources */,
 				52B35E712848F21400104431 /* FilterSliderView.swift in Sources */,
 				715245182847C90C004E7246 /* DetailedDealNOMapper.swift in Sources */,
 				52B35E7328493DA600104431 /* ActionButtonsForFiltersView.swift in Sources */,

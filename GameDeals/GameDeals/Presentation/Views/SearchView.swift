@@ -1,5 +1,12 @@
 //
-//  SearchView.swift
+//  RecommendedView.swift
+//  GameDeals
+//
+//  Created by Tomislav Žiger  on 01.06.2022..
+//
+
+//
+//  RecommendedView.swift
 //  GameDeals
 //
 //  Created by Tomislav Žiger  on 01.06.2022..
@@ -37,7 +44,7 @@ class SearchView: UIView {
     private func buildViews() {
         addSubview(collectionView)
         backgroundColor = .white
-        collectionView.register(RecommendedCell.self, forCellWithReuseIdentifier: cellIdentifier2)
+        collectionView.register(SearchCell.self, forCellWithReuseIdentifier: cellIdentifier2)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.automaticallyAdjustsScrollIndicatorInsets = false
@@ -70,7 +77,7 @@ extension SearchView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: cellIdentifier2,
-                for: indexPath) as! RecommendedCell
+                for: indexPath) as! SearchCell
         
         cell.setup(dealData: dealsData[indexPath.row])
             
