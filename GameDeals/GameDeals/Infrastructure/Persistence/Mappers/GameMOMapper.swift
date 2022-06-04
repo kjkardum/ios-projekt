@@ -6,8 +6,14 @@
 //
 
 import Foundation
+import CoreData
 
 class GameMOMapper: Mapper<GameMO, Game> {
+    let context: NSManagedObjectContext
+    init(coreDataStack: CoreDataStack) {
+        self.context = coreDataStack.persistentContainer.viewContext
+    }
+    
     override func mapTo(source: GameMO, destination: inout Game) -> Game {
         destination.gameID = source.gameId ?? ""
         destination.steamAppID = source.steamAppId ?? ""
@@ -34,7 +40,7 @@ class GameMOMapper: Mapper<GameMO, Game> {
     }
     
     override func map(_ from: Game) -> GameMO {
-        var gameMO = GameMO()
+        var gameMO = GameMO(context: context)
         return mapTo(source: from, destination: &gameMO)
     }
 }

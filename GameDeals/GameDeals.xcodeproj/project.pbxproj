@@ -44,14 +44,28 @@
 		7152452D2847DBCB004E7246 /* GameDealsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7152452B2847DBCB004E7246 /* GameDealsModel.xcdatamodeld */; };
 		715245372847DF4B004E7246 /* DealMOMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715245362847DF4B004E7246 /* DealMOMapper.swift */; };
 		715245392847DF53004E7246 /* GameMOMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715245382847DF53004E7246 /* GameMOMapper.swift */; };
-		7152453E2847E3F6004E7246 /* DealMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152453A2847E3F6004E7246 /* DealMO+CoreDataClass.swift */; };
-		7152453F2847E3F6004E7246 /* DealMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152453B2847E3F6004E7246 /* DealMO+CoreDataProperties.swift */; };
-		715245402847E3F6004E7246 /* GameMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152453C2847E3F6004E7246 /* GameMO+CoreDataClass.swift */; };
-		715245412847E3F6004E7246 /* GameMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7152453D2847E3F6004E7246 /* GameMO+CoreDataProperties.swift */; };
 		715245432847EE8C004E7246 /* DbDealDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715245422847EE8C004E7246 /* DbDealDS.swift */; };
 		715245452847EEBB004E7246 /* DbGameDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715245442847EEBB004E7246 /* DbGameDS.swift */; };
 		715245472847EFF3004E7246 /* DbDealDSImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715245462847EFF3004E7246 /* DbDealDSImpl.swift */; };
 		715245492847F156004E7246 /* DbGameDSImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715245482847F156004E7246 /* DbGameDSImpl.swift */; };
+		7195F2D4284B7D1500973383 /* ShopNO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7195F2D3284B7D1500973383 /* ShopNO.swift */; };
+		7195F2D6284B7D6600973383 /* ShopImageNO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7195F2D5284B7D6600973383 /* ShopImageNO.swift */; };
+		7195F2D9284B7E3D00973383 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7195F2D8284B7E3D00973383 /* Shop.swift */; };
+		7195F2DB284B7E4E00973383 /* ShopImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7195F2DA284B7E4E00973383 /* ShopImage.swift */; };
+		7195F2DD284B7E8700973383 /* ShopNOMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7195F2DC284B7E8700973383 /* ShopNOMapper.swift */; };
+		7195F2DF284B814F00973383 /* NetworkShopDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7195F2DE284B814F00973383 /* NetworkShopDS.swift */; };
+		7195F2E1284B817700973383 /* NetworkShopDSImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7195F2E0284B817700973383 /* NetworkShopDSImpl.swift */; };
+		7195F2E3284B829800973383 /* ShopsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7195F2E2284B829800973383 /* ShopsRepository.swift */; };
+		7195F2E5284B82A800973383 /* ShopsRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7195F2E4284B82A800973383 /* ShopsRepositoryImpl.swift */; };
+		7195F2F3284B893100973383 /* ShopMOMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7195F2F2284B893100973383 /* ShopMOMapper.swift */; };
+		7195F2FA284B899800973383 /* GameMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7195F2F4284B899800973383 /* GameMO+CoreDataClass.swift */; };
+		7195F2FB284B899800973383 /* GameMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7195F2F5284B899800973383 /* GameMO+CoreDataProperties.swift */; };
+		7195F2FC284B899800973383 /* ShopMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7195F2F6284B899800973383 /* ShopMO+CoreDataClass.swift */; };
+		7195F2FD284B899800973383 /* ShopMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7195F2F7284B899800973383 /* ShopMO+CoreDataProperties.swift */; };
+		7195F2FE284B899800973383 /* DealMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7195F2F8284B899800973383 /* DealMO+CoreDataClass.swift */; };
+		7195F2FF284B899800973383 /* DealMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7195F2F9284B899800973383 /* DealMO+CoreDataProperties.swift */; };
+		7195F301284B8C3300973383 /* DbShopDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7195F300284B8C3300973383 /* DbShopDS.swift */; };
+		7195F303284B8C5100973383 /* DbShopDSImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7195F302284B8C5100973383 /* DbShopDSImpl.swift */; };
 		71C475972844C58A005EC1F1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C475962844C58A005EC1F1 /* AppDelegate.swift */; };
 		71C475992844C58A005EC1F1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C475982844C58A005EC1F1 /* SceneDelegate.swift */; };
 		71C475A02844C58D005EC1F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71C4759F2844C58D005EC1F1 /* Assets.xcassets */; };
@@ -81,6 +95,7 @@
 		71C47610284529A0005EC1F1 /* ListOfDealsParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4760F284529A0005EC1F1 /* ListOfDealsParameters.swift */; };
 		71C4761228452AC8005EC1F1 /* NetworkGameDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4761128452AC8005EC1F1 /* NetworkGameDS.swift */; };
 		795F5453284B844C00A13845 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F5452284B844C00A13845 /* SearchCell.swift */; };
+		794B2BE62847C22000AB89C4 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794B2BE52847C22000AB89C4 /* SearchBarView.swift */; };
 		799CD7E32847C553004ED6DF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799CD7E22847C553004ED6DF /* SearchViewController.swift */; };
 		799CD7E52847C729004ED6DF /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799CD7E42847C729004ED6DF /* SearchBarView.swift */; };
 		799CD7E92847CD08004ED6DF /* RecommendedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799CD7E82847CD08004ED6DF /* RecommendedCell.swift */; };
@@ -130,14 +145,28 @@
 		7152452C2847DBCB004E7246 /* GameDealsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GameDealsModel.xcdatamodel; sourceTree = "<group>"; };
 		715245362847DF4B004E7246 /* DealMOMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealMOMapper.swift; sourceTree = "<group>"; };
 		715245382847DF53004E7246 /* GameMOMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMOMapper.swift; sourceTree = "<group>"; };
-		7152453A2847E3F6004E7246 /* DealMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealMO+CoreDataClass.swift"; sourceTree = "<group>"; };
-		7152453B2847E3F6004E7246 /* DealMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7152453C2847E3F6004E7246 /* GameMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameMO+CoreDataClass.swift"; sourceTree = "<group>"; };
-		7152453D2847E3F6004E7246 /* GameMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		715245422847EE8C004E7246 /* DbDealDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDealDS.swift; sourceTree = "<group>"; };
 		715245442847EEBB004E7246 /* DbGameDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbGameDS.swift; sourceTree = "<group>"; };
 		715245462847EFF3004E7246 /* DbDealDSImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDealDSImpl.swift; sourceTree = "<group>"; };
 		715245482847F156004E7246 /* DbGameDSImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbGameDSImpl.swift; sourceTree = "<group>"; };
+		7195F2D3284B7D1500973383 /* ShopNO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopNO.swift; sourceTree = "<group>"; };
+		7195F2D5284B7D6600973383 /* ShopImageNO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopImageNO.swift; sourceTree = "<group>"; };
+		7195F2D8284B7E3D00973383 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
+		7195F2DA284B7E4E00973383 /* ShopImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopImage.swift; sourceTree = "<group>"; };
+		7195F2DC284B7E8700973383 /* ShopNOMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopNOMapper.swift; sourceTree = "<group>"; };
+		7195F2DE284B814F00973383 /* NetworkShopDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkShopDS.swift; sourceTree = "<group>"; };
+		7195F2E0284B817700973383 /* NetworkShopDSImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkShopDSImpl.swift; sourceTree = "<group>"; };
+		7195F2E2284B829800973383 /* ShopsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopsRepository.swift; sourceTree = "<group>"; };
+		7195F2E4284B82A800973383 /* ShopsRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopsRepositoryImpl.swift; sourceTree = "<group>"; };
+		7195F2F2284B893100973383 /* ShopMOMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopMOMapper.swift; sourceTree = "<group>"; };
+		7195F2F4284B899800973383 /* GameMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameMO+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7195F2F5284B899800973383 /* GameMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7195F2F6284B899800973383 /* ShopMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShopMO+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7195F2F7284B899800973383 /* ShopMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShopMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7195F2F8284B899800973383 /* DealMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealMO+CoreDataClass.swift"; sourceTree = "<group>"; };
+		7195F2F9284B899800973383 /* DealMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		7195F300284B8C3300973383 /* DbShopDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbShopDS.swift; sourceTree = "<group>"; };
+		7195F302284B8C5100973383 /* DbShopDSImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbShopDSImpl.swift; sourceTree = "<group>"; };
 		71C475932844C58A005EC1F1 /* GameDeals.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameDeals.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71C475962844C58A005EC1F1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71C475982844C58A005EC1F1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +194,7 @@
 		71C4760F284529A0005EC1F1 /* ListOfDealsParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfDealsParameters.swift; sourceTree = "<group>"; };
 		71C4761128452AC8005EC1F1 /* NetworkGameDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkGameDS.swift; sourceTree = "<group>"; };
 		795F5452284B844C00A13845 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		794B2BE52847C22000AB89C4 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		799CD7E22847C553004ED6DF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		799CD7E42847C729004ED6DF /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		799CD7E82847CD08004ED6DF /* RecommendedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedCell.swift; sourceTree = "<group>"; };
@@ -212,6 +242,24 @@
 				715245252847D366004E7246 /* GameDeal.swift */,
 			);
 			path = Games;
+			sourceTree = "<group>";
+		};
+		7195F2D2284B7CE800973383 /* Shops */ = {
+			isa = PBXGroup;
+			children = (
+				7195F2D3284B7D1500973383 /* ShopNO.swift */,
+				7195F2D5284B7D6600973383 /* ShopImageNO.swift */,
+			);
+			path = Shops;
+			sourceTree = "<group>";
+		};
+		7195F2D7284B7E3000973383 /* Shops */ = {
+			isa = PBXGroup;
+			children = (
+				7195F2D8284B7E3D00973383 /* Shop.swift */,
+				7195F2DA284B7E4E00973383 /* ShopImage.swift */,
+			);
+			path = Shops;
 			sourceTree = "<group>";
 		};
 		71C4758A2844C58A005EC1F1 = {
@@ -305,6 +353,8 @@
 				52B35E642846B1EA00104431 /* DealCell.swift */,
 				52B35E652846B1EA00104431 /* DealCellToolbarView.swift */,
 				52B35E662846B1EA00104431 /* DealsView.swift */,
+				71C475BA2844CDC1005EC1F1 /* DemoView.swift */,
+				794B2BE52847C22000AB89C4 /* SearchBarView.swift */,
 				799CD7F22847F230004ED6DF /* SearchBoxDelegate.swift */,
 				799CD7E42847C729004ED6DF /* SearchBarView.swift */,
 				799CD7EA2847D392004ED6DF /* RecommendedView.swift */,
@@ -341,6 +391,7 @@
 			children = (
 				715245092847C35D004E7246 /* Deals */,
 				7152450A2847C363004E7246 /* Games */,
+				7195F2D7284B7E3000973383 /* Shops */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -390,6 +441,7 @@
 			children = (
 				712D9C2D2846AB0E0012649B /* DealsRepository.swift */,
 				715245192847CE7B004E7246 /* GamesRepository.swift */,
+				7195F2E2284B829800973383 /* ShopsRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -423,6 +475,8 @@
 				715245462847EFF3004E7246 /* DbDealDSImpl.swift */,
 				715245442847EEBB004E7246 /* DbGameDS.swift */,
 				715245482847F156004E7246 /* DbGameDSImpl.swift */,
+				7195F300284B8C3300973383 /* DbShopDS.swift */,
+				7195F302284B8C5100973383 /* DbShopDSImpl.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -447,6 +501,8 @@
 				712D9C252846A4F20012649B /* NetworkDealDSImpl.swift */,
 				71C4761128452AC8005EC1F1 /* NetworkGameDS.swift */,
 				7152451F2847D07C004E7246 /* NetworkGameDSImpl.swift */,
+				7195F2DE284B814F00973383 /* NetworkShopDS.swift */,
+				7195F2E0284B817700973383 /* NetworkShopDSImpl.swift */,
 			);
 			path = DataSources;
 			sourceTree = "<group>";
@@ -456,6 +512,7 @@
 			children = (
 				712D9C2F2846AB3C0012649B /* DealsRepositoryImpl.swift */,
 				715245212847D222004E7246 /* GamesRepositoryImpl.swift */,
+				7195F2E4284B82A800973383 /* ShopsRepositoryImpl.swift */,
 			);
 			path = RepositoryImpl;
 			sourceTree = "<group>";
@@ -475,6 +532,7 @@
 			children = (
 				71C476002845257B005EC1F1 /* Deals */,
 				71C4760128452586005EC1F1 /* Games */,
+				7195F2D2284B7CE800973383 /* Shops */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -486,6 +544,7 @@
 				715245172847C90C004E7246 /* DetailedDealNOMapper.swift */,
 				7152451D2847CF5A004E7246 /* GameNOMapper.swift */,
 				715245292847D4E7004E7246 /* DetailedGameNOMapper.swift */,
+				7195F2DC284B7E8700973383 /* ShopNOMapper.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -493,10 +552,12 @@
 		71C475DE2844D308005EC1F1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7152453A2847E3F6004E7246 /* DealMO+CoreDataClass.swift */,
-				7152453B2847E3F6004E7246 /* DealMO+CoreDataProperties.swift */,
-				7152453C2847E3F6004E7246 /* GameMO+CoreDataClass.swift */,
-				7152453D2847E3F6004E7246 /* GameMO+CoreDataProperties.swift */,
+				7195F2F4284B899800973383 /* GameMO+CoreDataClass.swift */,
+				7195F2F5284B899800973383 /* GameMO+CoreDataProperties.swift */,
+				7195F2F6284B899800973383 /* ShopMO+CoreDataClass.swift */,
+				7195F2F7284B899800973383 /* ShopMO+CoreDataProperties.swift */,
+				7195F2F8284B899800973383 /* DealMO+CoreDataClass.swift */,
+				7195F2F9284B899800973383 /* DealMO+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -506,6 +567,7 @@
 			children = (
 				715245362847DF4B004E7246 /* DealMOMapper.swift */,
 				715245382847DF53004E7246 /* GameMOMapper.swift */,
+				7195F2F2284B893100973383 /* ShopMOMapper.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -650,11 +712,19 @@
 				71C475D22844D1BA005EC1F1 /* CoreDataStack.swift in Sources */,
 				795F5453284B844C00A13845 /* SearchCell.swift in Sources */,
 				52B35E712848F21400104431 /* FilterSliderView.swift in Sources */,
+				7195F2E3284B829800973383 /* ShopsRepository.swift in Sources */,
 				715245182847C90C004E7246 /* DetailedDealNOMapper.swift in Sources */,
+				7195F2DF284B814F00973383 /* NetworkShopDS.swift in Sources */,
 				52B35E7328493DA600104431 /* ActionButtonsForFiltersView.swift in Sources */,
 				715245492847F156004E7246 /* DbGameDSImpl.swift in Sources */,
+				7195F2FA284B899800973383 /* GameMO+CoreDataClass.swift in Sources */,
+				7195F2DD284B7E8700973383 /* ShopNOMapper.swift in Sources */,
 				71C475F52844E0CF005EC1F1 /* FindViewControllerExtension.swift in Sources */,
 				71C475F9284514CD005EC1F1 /* DetailedDealNO.swift in Sources */,
+				71C4759B2844C58A005EC1F1 /* ViewController.swift in Sources */,
+				794B2BE62847C22000AB89C4 /* SearchBarView.swift in Sources */,
+				7195F2E1284B817700973383 /* NetworkShopDSImpl.swift in Sources */,
+				7195F2E5284B82A800973383 /* ShopsRepositoryImpl.swift in Sources */,
 				71C475D72844D206005EC1F1 /* NetworkServiceImpl.swift in Sources */,
 				52B35E78284A45EC00104431 /* FilterWrapperView.swift in Sources */,
 				71C476092845263D005EC1F1 /* GameDealNO.swift in Sources */,
@@ -663,6 +733,7 @@
 				71C475F7284512B3005EC1F1 /* DealNO.swift in Sources */,
 				715245372847DF4B004E7246 /* DealMOMapper.swift in Sources */,
 				7152451C2847CE99004E7246 /* Game.swift in Sources */,
+				7195F2FB284B899800973383 /* GameMO+CoreDataProperties.swift in Sources */,
 				71C47605284525D6005EC1F1 /* DetailedGameNO.swift in Sources */,
 				799CD7E32847C553004ED6DF /* SearchViewController.swift in Sources */,
 				799CD7FB2847F3A0004ED6DF /* UIColorExtension.swift in Sources */,
@@ -670,7 +741,7 @@
 				52B35E692846B1EA00104431 /* DealsView.swift in Sources */,
 				799CD7F12847EF4B004ED6DF /* SearchView.swift in Sources */,
 				799CD7F82847F346004ED6DF /* UIButtonExtension.swift in Sources */,
-				7152453E2847E3F6004E7246 /* DealMO+CoreDataClass.swift in Sources */,
+				7195F2FE284B899800973383 /* DealMO+CoreDataClass.swift in Sources */,
 				7152451E2847CF5A004E7246 /* GameNOMapper.swift in Sources */,
 				71C475FB284523A3005EC1F1 /* DealGameNO.swift in Sources */,
 				52B35E692846B1EA00104431 /* DealsView.swift in Sources */,
@@ -685,16 +756,18 @@
 				52B35E682846B1EA00104431 /* DealCellToolbarView.swift in Sources */,
 				71C475E12844D485005EC1F1 /* Mapper.swift in Sources */,
 				71C475DA2844D288005EC1F1 /* NetworkService.swift in Sources */,
+				7195F2F3284B893100973383 /* ShopMOMapper.swift in Sources */,
 				52B35E672846B1EA00104431 /* DealCell.swift in Sources */,
 				71C4760B28452729005EC1F1 /* NetworkDealDS.swift in Sources */,
 				71C475B72844CAB6005EC1F1 /* Services.swift in Sources */,
+				7195F2FF284B899800973383 /* DealMO+CoreDataProperties.swift in Sources */,
 				715245262847D366004E7246 /* GameDeal.swift in Sources */,
 				71C4760328452590005EC1F1 /* GameNO.swift in Sources */,
 				71C475B92844CBB5005EC1F1 /* DummyDependency.swift in Sources */,
 				799CD7EB2847D392004ED6DF /* RecommendedView.swift in Sources */,
-				715245412847E3F6004E7246 /* GameMO+CoreDataProperties.swift in Sources */,
 				71C475972844C58A005EC1F1 /* AppDelegate.swift in Sources */,
 				715245122847C3B6004E7246 /* DealCheapestPrice.swift in Sources */,
+				7195F303284B8C5100973383 /* DbShopDSImpl.swift in Sources */,
 				712D9C2A2846A7820012649B /* Deal.swift in Sources */,
 				715245432847EE8C004E7246 /* DbDealDS.swift in Sources */,
 				715245102847C3A3004E7246 /* DealCheaperStore.swift in Sources */,
@@ -705,27 +778,32 @@
 				715245162847C554004E7246 /* DateTimeServiceImpl.swift in Sources */,
 				715245242847D359004E7246 /* GameInfo.swift in Sources */,
 				715245222847D222004E7246 /* GamesRepositoryImpl.swift in Sources */,
-				7152453F2847E3F6004E7246 /* DealMO+CoreDataProperties.swift in Sources */,
 				712D9C2C2846A7CF0012649B /* DealNOMapper.swift in Sources */,
 				7152452D2847DBCB004E7246 /* GameDealsModel.xcdatamodeld in Sources */,
 				7152451A2847CE7B004E7246 /* GamesRepository.swift in Sources */,
 				52B35E7E284AEABF00104431 /* FilterActionButtonsDelegate.swift in Sources */,
+				7195F2D6284B7D6600973383 /* ShopImageNO.swift in Sources */,
+				7195F2D4284B7D1500973383 /* ShopNO.swift in Sources */,
 				7152452A2847D4E7004E7246 /* DetailedGameNOMapper.swift in Sources */,
 				712D9C302846AB3C0012649B /* DealsRepositoryImpl.swift in Sources */,
+				7195F2FD284B899800973383 /* ShopMO+CoreDataProperties.swift in Sources */,
 				71C4760728452602005EC1F1 /* GameInfoNO.swift in Sources */,
+				7195F2D9284B7E3D00973383 /* Shop.swift in Sources */,
 				799CD7FD2847F4DB004ED6DF /* UIViewExtension.swift in Sources */,
 				715245142847C50D004E7246 /* DateTimeService.swift in Sources */,
 				71C475992844C58A005EC1F1 /* SceneDelegate.swift in Sources */,
 				712D9C282846A6820012649B /* Typealias.swift in Sources */,
 				52B35E632846B1DA00104431 /* DealsViewController.swift in Sources */,
 				799CD7E52847C729004ED6DF /* SearchBarView.swift in Sources */,
+				7195F2FC284B899800973383 /* ShopMO+CoreDataClass.swift in Sources */,
 				799CD7F32847F230004ED6DF /* SearchBoxDelegate.swift in Sources */,
 				71C47610284529A0005EC1F1 /* ListOfDealsParameters.swift in Sources */,
 				715245472847EFF3004E7246 /* DbDealDSImpl.swift in Sources */,
+				7195F2DB284B7E4E00973383 /* ShopImage.swift in Sources */,
 				7152450E2847C38D004E7246 /* DealGame.swift in Sources */,
+				7195F301284B8C3300973383 /* DbShopDS.swift in Sources */,
 				712D9C262846A4F20012649B /* NetworkDealDSImpl.swift in Sources */,
 				71C4760D28452813005EC1F1 /* GameSortingEnum.swift in Sources */,
-				715245402847E3F6004E7246 /* GameMO+CoreDataClass.swift in Sources */,
 				715245452847EEBB004E7246 /* DbGameDS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
