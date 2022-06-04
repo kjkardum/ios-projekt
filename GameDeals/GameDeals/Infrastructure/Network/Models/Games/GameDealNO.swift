@@ -8,9 +8,9 @@
 import Foundation
 
 struct GameDealNO: Codable {
-    public var storeID: String
-    public var dealID: String
-    public var price: String
-    public var retailPrice: String
-    public var savings: String
+    public var storeID: String = ""
+    public var dealID: String = ""
+    public var price: String = ""
+    public var retailPrice: String = ""
+    public var savings: String = ""
 }

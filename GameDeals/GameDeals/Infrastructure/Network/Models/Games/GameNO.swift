@@ -8,10 +8,10 @@
 import Foundation
 
 struct GameNO: Codable {
-    public var gameID: String
-    public var steamAppID: String
-    public var cheapest: String
-    public var cheapestDealID: String
-    public var external: String
-    public var thumb: String
+    public var gameID: String = ""
+    public var steamAppID: String = ""
+    public var cheapest: String = ""
+    public var cheapestDealID: String = ""
+    public var external: String = ""
+    public var thumb: String = ""
 }

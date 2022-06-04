@@ -12,7 +12,8 @@ import SnapKit
 
 class DealsViewController: UIViewController {
     private let dealsView = DealsView()
-    private let filterView = UIView() // Privremeno dok ne dođemo do filtera
+    private let filterView = UIView()
+    private let button = UIButton()
     private var dealsRepository: DealsRepository
 
     init(dealsRepository: DealsRepository) {
@@ -32,6 +33,10 @@ class DealsViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(dealsView)
         view.addSubview(filterView)
+        
+        filterView.addSubview(button)
+        button.addTarget(self, action: #selector(click), for: .touchUpInside)
+        
         filterView.backgroundColor = .gray
     }
     
@@ -50,6 +55,10 @@ class DealsViewController: UIViewController {
             make.bottom.equalToSuperview()
         }
         
+        button.snp.makeConstraints {make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
+        
         
     }
     
@@ -65,7 +74,11 @@ class DealsViewController: UIViewController {
             }
         }
     }
+    
+    @objc private func click() {
+        let modal = FilterViewController(dealsRepository: dealsRepository)
+        modal.modalPresentationStyle = .formSheet
+        present(modal, animated: true, completion: nil)
+    }
 
 }
-
-

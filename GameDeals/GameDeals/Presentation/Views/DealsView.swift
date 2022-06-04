@@ -15,8 +15,6 @@ class DealsView: UIView {
     private let collectionView : UICollectionView = {
         let flowlayout = UICollectionViewFlowLayout()
         flowlayout.scrollDirection = .horizontal
-//        flowlayout.minimumInteritemSpacing = 7
-//        flowlayout.minimumLineSpacing = 30
         return UICollectionView(frame: CGRect.zero, collectionViewLayout: flowlayout)
     }()
     var dealsData : [Deal] = []
@@ -41,9 +39,10 @@ class DealsView: UIView {
         collectionView.register(DealCell.self, forCellWithReuseIdentifier: cellIdentifier)
         collectionView.dataSource = self
         collectionView.delegate = self
-//        collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         collectionView.automaticallyAdjustsScrollIndicatorInsets = false
         collectionView.isPagingEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
+        
     }
     
     
@@ -77,6 +76,7 @@ extension DealsView: UICollectionViewDataSource {
                 for: indexPath) as! DealCell
         
         cell.setup(dealData: dealsData[indexPath.row])
+        cell.scrollViewDelegate = self
             
         return cell
     }
@@ -89,5 +89,12 @@ extension DealsView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+}
+
+
+extension DealsView: ScrollableCollectionViewDelegate {
+    func setScrollViewEnabled(_ enabled: Bool) {
+        collectionView.isScrollEnabled = enabled
     }
 }
