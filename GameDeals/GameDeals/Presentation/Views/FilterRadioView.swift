@@ -1,8 +1,8 @@
 //
-//  FilterSelectionView.swift
+//  FilterRadioView.swift
 //  GameDeals
 //
-//  Created by Five on 02.06.2022..
+//  Created by Five on 03.06.2022..
 //
 
 import Foundation
@@ -10,7 +10,8 @@ import UIKit
 import SnapKit
 
 
-class FilterSelectionView: UIView {
+
+class FilterRadioView: UIView {
     private let cellIdentifier = "cellId"
     private let collectionView : UICollectionView = {
         let flowlayout = UICollectionViewFlowLayout()
@@ -18,13 +19,14 @@ class FilterSelectionView: UIView {
         flowlayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         return UICollectionView(frame: CGRect.zero, collectionViewLayout: flowlayout)
     }()
-    private var data : [String] = []
+    private var data : [String] = ["haha", "hehe", "hihi", "hoho", "huhu", "1bnh", "2", "3", "4", "sfdkjhsdfjhsjhf"]
     
     private var selectedData: [Int: Bool] = [:]
     
     private var lastSelected : Int?
     
-    private var isMultiselect = true
+    private var isMultiselect = false
+    
     
     
     override init(frame: CGRect) {
@@ -46,43 +48,22 @@ class FilterSelectionView: UIView {
         addSubview(collectionView)
         backgroundColor = .clear
         collectionView.backgroundColor = .clear
-        collectionView.register(FilterSelectionCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        collectionView.register(FilterRadioCell.self, forCellWithReuseIdentifier: cellIdentifier)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.showsHorizontalScrollIndicator = false
         
     }
     
+    
     private func setLayout() {
         collectionView.snp.makeConstraints {make in
             make.top.leading.bottom.trailing.equalToSuperview()
         }
     }
-    
-    
-    func resetData() {
-        if isMultiselect {
-            selectedData = [:]
-            lastSelected = nil
-        } else {
-            selectedData = [0: true]
-            lastSelected = 0
-        }
-        
-        collectionView.reloadData()
-    }
-    
-    func loadData(data: [String]) {
-        self.data = data
-        resetData()
-    }
-    
-    func getData() -> [Int: Bool] {
-        return selectedData
-    }
 }
 
-extension FilterSelectionView: UICollectionViewDataSource {
+extension FilterRadioView: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -94,9 +75,9 @@ extension FilterSelectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: cellIdentifier,
-                for: indexPath) as! FilterSelectionCell
-        
+                for: indexPath) as! FilterRadioCell
 
+        
         
         cell.setup(name: data[indexPath.row], isSelected: selectedData[indexPath.row] ?? false)
             
@@ -106,11 +87,9 @@ extension FilterSelectionView: UICollectionViewDataSource {
 
 
 
-extension FilterSelectionView: UICollectionViewDelegate {
+extension FilterRadioView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        if let cell = collectionView.cellForItem(at: indexPath) as? FilterSelectionCell {
-
+        if let cell = collectionView.cellForItem(at: indexPath) as? FilterRadioCell {
             var currentlySelected = lastSelected
             if cell.clicked() {
                 selectedData[indexPath.row] = true
@@ -118,26 +97,25 @@ extension FilterSelectionView: UICollectionViewDelegate {
             } else {
                 selectedData[indexPath.row] = false
             }
-
-
-            if !isMultiselect {
-                guard let lastSelectedCellIndex = lastSelected else {
-                    lastSelected = currentlySelected
-                    return
-                }
-
-                if lastSelectedCellIndex == indexPath.row {
-                    lastSelected = nil
-                    return
-                }
-
+            
+            
+            guard let lastSelectedCellIndex = lastSelected else {
+                lastSelected = currentlySelected
+                return
+            }
+            
+            if lastSelectedCellIndex == indexPath.row {
+                lastSelected = nil
+                return
+            }
+            
+            
+            if let lastSelectedCell = collectionView.cellForItem(at: IndexPath(row: lastSelectedCellIndex, section: 0)) as? FilterRadioCell {
+                lastSelectedCell.clicked()
                 selectedData[lastSelectedCellIndex] = false
                 lastSelected = indexPath.row
-                if let lastSelectedCell = collectionView.cellForItem(at: IndexPath(row: lastSelectedCellIndex, section: 0)) as? FilterSelectionCell {
-                    lastSelectedCell.clicked()
-                    
-                }
             }
+            
         }
     }
 }

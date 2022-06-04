@@ -10,24 +10,11 @@ import UIKit
 import SnapKit
 
 
-enum SelectionCellStyle {
-    case standard
-    case radio
-}
-
 
 class FilterSelectionCell: UICollectionViewCell {
-    let testView = UIView()
-    let buttonBorder : UIView = {
-        let border = UIView()
-        border.backgroundColor = .black
-        return border
-    }()
-    
     let button = UILabel()
     var clickStatus = false
-    
-    var cellStyle: SelectionCellStyle = .standard
+
     
     required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
@@ -36,103 +23,74 @@ class FilterSelectionCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         buildViews()
-        
+        setLayout()
     }
 
     
-    
     private func buildViews() {
         clipsToBounds = true
-        layer.cornerRadius = 5
+        layer.cornerRadius = 10
         backgroundColor = .clear
         
         addSubview(button)
-        button.font = UIFont.systemFont(ofSize: 22)
+        button.font = UIFont.systemFont(ofSize: 15)
         button.textColor = .black
         button.textAlignment = .center
         button.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
     }
     
-    private func setStandardLayout() {
-        button.snp.makeConstraints {make in
-            make.top.bottom.equalToSuperview().inset(15)
-            make.leading.trailing.equalToSuperview()
-        }
-    }
-    
-    private func setRadioLayout() {
+    private func setLayout() {
         button.snp.makeConstraints {make in
             make.top.bottom.equalToSuperview().inset(10)
             make.leading.trailing.equalToSuperview().inset(10)
         }
     }
     
+    
     private func addBorder() {
-        switch (cellStyle) {
-        case .standard:
-            button.addSubview(buttonBorder)
-            button.font = UIFont.boldSystemFont(ofSize: 21)
-            buttonBorder.snp.makeConstraints{ (make) in
-                make.leading.trailing.equalToSuperview()
-                make.top.equalTo(button.snp.bottom).offset(3)
-                make.height.equalTo(3)
-            }
-            button.invalidateIntrinsicContentSize()
-            clickStatus = true
-            return
-            
-        case .radio:
-            button.textColor = .purple
-            self.layer.borderColor = UIColor.purple.cgColor
-            clickStatus = true
-            return
-        }
+        backgroundColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 1.00)
+        button.invalidateIntrinsicContentSize()
         
     }
     
     private func removeBorder() {
-        switch (cellStyle) {
-        case .standard:
-            buttonBorder.removeFromSuperview()
-            button.font = UIFont.systemFont(ofSize: 22)
-            clickStatus = false
-            return
-            
-        case .radio:
-            button.textColor = .black
-            self.layer.borderColor = UIColor.lightGray.cgColor
-            clickStatus = false
-            return
-        }
+        backgroundColor = .clear
+        button.font = UIFont.systemFont(ofSize: 15)
         
+    
     }
     
-    func setup(name: String, cellStyle: SelectionCellStyle) {
-        self.cellStyle = cellStyle
-        button.text = name+" " // Jako cringe ali funkcionira i nemam vise vremena radit na tome
-        
-        switch(cellStyle) {
-        case .standard:
-            setStandardLayout()
+    private func handleClick(isSelected: Bool) {
+        switch(isSelected) {
+        case true:
+            clickStatus = true
+            UIView.animate(withDuration: 0.2) {
+                self.addBorder()
+            }
             return
-        case .radio:
-            self.layer.borderWidth = 2.0
-            self.layer.borderColor = UIColor.lightGray.cgColor
-            setRadioLayout()
+        case false:
+            clickStatus = false
+            UIView.animate(withDuration: 0.2) {
+                self.removeBorder()
+            }
             return
         }
+    }
+    
+    
+    func setup(name: String, isSelected: Bool) {
+        button.text = name
+        handleClick(isSelected: isSelected)
     }
     
     func clicked() -> Bool {
         switch(clickStatus) {
         case false:
-            addBorder()
-
+            handleClick(isSelected: !clickStatus)
             return true
         case true:
-            removeBorder()
-
+            handleClick(isSelected: !clickStatus)
             return false
         }
     }
