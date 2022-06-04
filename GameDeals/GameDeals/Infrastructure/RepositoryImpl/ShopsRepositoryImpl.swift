@@ -24,13 +24,22 @@ class ShopsRepositoryImpl: ShopsRepository {
     }
     
     func getListOfShops(completionHandler: @escaping resultHandler<[Shop]>) {
-        networkDataSource.getListOfShops(completionHandler: { result in
-            switch (result) {
-            case .success(let data):
-                completionHandler(.success(data.map{ self.networkShopMapper.map($0) }))
-            case .failure(let error):
-                completionHandler(.failure(error))
+        dbDataSource.getListOfShops(completionHandler: { result in
+            if case let .success(value) = result {
+                completionHandler(.success(value.map { self.dbShopMapper.map($0) }))
             }
+            self.networkDataSource.getListOfShops(completionHandler: { result in
+                switch (result) {
+                case .success(_):
+                    self.dbDataSource.getListOfShops(completionHandler: { result in
+                        if case let .success(value) = result {
+                            completionHandler(.success(value.map { self.dbShopMapper.map($0) }))
+                        }
+                    })
+                case .failure(let error):
+                    completionHandler(.failure(error))
+                }
+            })
         })
     }
     
