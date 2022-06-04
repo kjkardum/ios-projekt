@@ -9,4 +9,5 @@ import Foundation
 
 protocol DbShopDS {
     func getListOfShops(completionHandler: @escaping resultHandler<[ShopMO]>)
+    func updateListOfShops(incomingShops: [Shop], completionHandler: @escaping resultHandler<Bool>)
 }
