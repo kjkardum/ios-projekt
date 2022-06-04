@@ -18,8 +18,6 @@
 		52B35E7328493DA600104431 /* ActionButtonsForFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E7228493DA600104431 /* ActionButtonsForFiltersView.swift */; };
 		52B35E762849615800104431 /* FilterSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E752849615800104431 /* FilterSelectionCell.swift */; };
 		52B35E78284A45EC00104431 /* FilterWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E77284A45EC00104431 /* FilterWrapperView.swift */; };
-		52B35E7A284AA7E900104431 /* FilterRadioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E79284AA7E900104431 /* FilterRadioView.swift */; };
-		52B35E7C284AA88F00104431 /* FilterRadioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E7B284AA88F00104431 /* FilterRadioCell.swift */; };
 		52B35E7E284AEABF00104431 /* FilterActionButtonsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E7D284AEABF00104431 /* FilterActionButtonsDelegate.swift */; };
 		712D9C262846A4F20012649B /* NetworkDealDSImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C252846A4F20012649B /* NetworkDealDSImpl.swift */; };
 		712D9C282846A6820012649B /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C272846A6820012649B /* Typealias.swift */; };
@@ -105,8 +103,6 @@
 		52B35E7228493DA600104431 /* ActionButtonsForFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonsForFiltersView.swift; sourceTree = "<group>"; };
 		52B35E752849615800104431 /* FilterSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSelectionCell.swift; sourceTree = "<group>"; };
 		52B35E77284A45EC00104431 /* FilterWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterWrapperView.swift; sourceTree = "<group>"; };
-		52B35E79284AA7E900104431 /* FilterRadioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRadioView.swift; sourceTree = "<group>"; };
-		52B35E7B284AA88F00104431 /* FilterRadioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRadioCell.swift; sourceTree = "<group>"; };
 		52B35E7D284AEABF00104431 /* FilterActionButtonsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterActionButtonsDelegate.swift; sourceTree = "<group>"; };
 		712D9C252846A4F20012649B /* NetworkDealDSImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDealDSImpl.swift; sourceTree = "<group>"; };
 		712D9C272846A6820012649B /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
@@ -318,8 +314,6 @@
 				52B35E702848F21400104431 /* FilterSliderView.swift */,
 				52B35E7228493DA600104431 /* ActionButtonsForFiltersView.swift */,
 				52B35E77284A45EC00104431 /* FilterWrapperView.swift */,
-				52B35E79284AA7E900104431 /* FilterRadioView.swift */,
-				52B35E7B284AA88F00104431 /* FilterRadioCell.swift */,
 				52B35E7D284AEABF00104431 /* FilterActionButtonsDelegate.swift */,
 			);
 			path = Views;
@@ -655,7 +649,6 @@
 				715245182847C90C004E7246 /* DetailedDealNOMapper.swift in Sources */,
 				52B35E7328493DA600104431 /* ActionButtonsForFiltersView.swift in Sources */,
 				715245492847F156004E7246 /* DbGameDSImpl.swift in Sources */,
-				52B35E7C284AA88F00104431 /* FilterRadioCell.swift in Sources */,
 				71C475F52844E0CF005EC1F1 /* FindViewControllerExtension.swift in Sources */,
 				71C475F9284514CD005EC1F1 /* DetailedDealNO.swift in Sources */,
 				71C475D72844D206005EC1F1 /* NetworkServiceImpl.swift in Sources */,
@@ -681,7 +674,6 @@
 				712D9C2E2846AB0E0012649B /* DealsRepository.swift in Sources */,
 				52B35E6B2847DFDB00104431 /* ScrollableCollectionViewDelegate.swift in Sources */,
 				7152450C2847C371004E7246 /* DetailedDeal.swift in Sources */,
-				52B35E7A284AA7E900104431 /* FilterRadioView.swift in Sources */,
 				52B35E762849615800104431 /* FilterSelectionCell.swift in Sources */,
 				715245202847D07C004E7246 /* NetworkGameDSImpl.swift in Sources */,
 				71C475FD284523FE005EC1F1 /* DealCheaperStoreNO.swift in Sources */,
