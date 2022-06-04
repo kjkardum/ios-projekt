@@ -43,20 +43,22 @@ class Services {
     
     private func registerDataSources() {
         container.autoregister(NetworkDealDS.self, initializer: NetworkDealDSImpl.init)
-        container.autoregister(NetworkGameDS.self, initializer: NetworkGameDSImpl.init)
         container.autoregister(DbDealDS.self, initializer: DbDealDSImpl.init)
+        container.autoregister(NetworkGameDS.self, initializer: NetworkGameDSImpl.init)
         container.autoregister(DbGameDS.self, initializer: DbGameDSImpl.init)
         container.autoregister(NetworkShopDS.self, initializer: NetworkShopDSImpl.init)
+        container.autoregister(DbShopDS.self, initializer: DbShopDSImpl.init)
     }
     
     private func registerMappingProfiles() {
         container.autoregister(Mapper<DealNO, Deal>.self, initializer: DealNOMapper.init)
-        container.autoregister(Mapper<DetailedDealNO, DetailedDeal>.self, initializer: DetailedDealNOMapper.init)
-        container.register(Mapper<GameNO, Game>.self) { _ in GameNOMapper() }
-        container.autoregister(Mapper<DetailedGameNO, DetailedGame>.self, initializer: DetailedGameNOMapper.init)
         container.autoregister(Mapper<DealMO, Deal>.self, initializer: DealMOMapper.init)
-        container.register(Mapper<GameMO, Game>.self, factory: { _ in GameMOMapper() })
+        container.autoregister(Mapper<DetailedDealNO, DetailedDeal>.self, initializer: DetailedDealNOMapper.init)
+        container.autoregister(Mapper<DetailedGameNO, DetailedGame>.self, initializer: DetailedGameNOMapper.init)
+        container.register(Mapper<GameNO, Game>.self) { _ in GameNOMapper() }
+        container.autoregister(Mapper<GameMO, Game>.self, initializer: GameMOMapper.init)
         container.register(Mapper<ShopNO, Shop>.self, factory: { _ in ShopNOMapper() })
+        container.autoregister(Mapper<ShopMO, Shop>.self, initializer: ShopMOMapper.init)
     }
     
     func getInitialController() -> UIViewController {

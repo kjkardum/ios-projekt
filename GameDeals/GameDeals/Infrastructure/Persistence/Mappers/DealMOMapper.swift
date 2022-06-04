@@ -6,11 +6,14 @@
 //
 
 import Foundation
+import CoreData
 
 class DealMOMapper: Mapper<DealMO, Deal> {
     let dateService: DateTimeService
-    init(dateService: DateTimeService) {
+    let context: NSManagedObjectContext
+    init(dateService: DateTimeService, coreDataStack: CoreDataStack) {
         self.dateService = dateService
+        self.context = coreDataStack.persistentContainer.viewContext
     }
     
     override func mapTo(source: DealMO, destination: inout Deal) -> Deal {
@@ -65,7 +68,7 @@ class DealMOMapper: Mapper<DealMO, Deal> {
     }
     
     override func map(_ from: Deal) -> DealMO {
-        var dealMO = DealMO()
+        var dealMO = DealMO(context: context)
         return mapTo(source: from, destination: &dealMO)
     }
 }
