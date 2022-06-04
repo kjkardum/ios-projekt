@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 
-class FilterSelectionView: UIView {
+class FilterSelectionView<TKey>: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
     private let cellIdentifier = "cellId"
     private let collectionView : UICollectionView = {
         let flowlayout = UICollectionViewFlowLayout()
@@ -18,7 +18,7 @@ class FilterSelectionView: UIView {
         flowlayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         return UICollectionView(frame: CGRect.zero, collectionViewLayout: flowlayout)
     }()
-    private var data : [String] = []
+    private var data : [StringWithKey<TKey>] = []
     
     private var selectedData: [Int: Bool] = [:]
     
@@ -72,17 +72,6 @@ class FilterSelectionView: UIView {
         collectionView.reloadData()
     }
     
-    func loadData(data: [String]) {
-        self.data = data
-        resetData()
-    }
-    
-    func getData() -> [Int: Bool] {
-        return selectedData
-    }
-}
-
-extension FilterSelectionView: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -98,15 +87,11 @@ extension FilterSelectionView: UICollectionViewDataSource {
         
 
         
-        cell.setup(name: data[indexPath.row], isSelected: selectedData[indexPath.row] ?? false)
+        cell.setup(name: data[indexPath.row].name, isSelected: selectedData[indexPath.row] ?? false)
             
         return cell
     }
-}
-
-
-
-extension FilterSelectionView: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if let cell = collectionView.cellForItem(at: indexPath) as? FilterSelectionCell {
@@ -126,10 +111,10 @@ extension FilterSelectionView: UICollectionViewDelegate {
                     return
                 }
 
-                if lastSelectedCellIndex == indexPath.row {
-                    lastSelected = nil
-                    return
-                }
+//                if lastSelectedCellIndex == indexPath.row {
+//                    lastSelected = nil
+//                    return
+//                }
 
                 selectedData[lastSelectedCellIndex] = false
                 lastSelected = indexPath.row
@@ -139,5 +124,22 @@ extension FilterSelectionView: UICollectionViewDelegate {
                 }
             }
         }
+    }
+    
+    func loadData(data: [StringWithKey<TKey>]) {
+        self.data = data
+        resetData()
+    }
+    
+    func getData() -> [StringWithKey<TKey>] {
+        var results : [StringWithKey<TKey>] = []
+        
+        for (key, value) in selectedData {
+            if value {
+                results.append(data[key])
+            }
+        }
+        
+        return results
     }
 }

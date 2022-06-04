@@ -58,6 +58,7 @@ class ActionButtonsForFiltersView: UIView {
         applyFiltersButton.layer.shadowOpacity = 0.15
         applyFiltersButton.layer.shadowRadius = 5
         applyFiltersButton.layer.shadowOffset = CGSize(width: 0, height: 5)
+        applyFiltersButton.addTarget(self, action: #selector(applyPressed), for: .touchUpInside)
         
         
         borderView.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.00)
@@ -86,5 +87,9 @@ class ActionButtonsForFiltersView: UIView {
     
     @objc private func clearPressed() {
         actionButtonsDelegate?.clearButtonPressed()
+    }
+    
+    @objc private func applyPressed() {
+        actionButtonsDelegate?.applyButtonPressed()
     }
 }

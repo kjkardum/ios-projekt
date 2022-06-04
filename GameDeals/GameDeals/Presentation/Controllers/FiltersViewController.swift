@@ -14,15 +14,17 @@ class FilterViewController: UIViewController {
     private let actionButtons = ActionButtonsForFiltersView()
     private let filtersLabel = UILabel()
     private let scrollView = UIScrollView()
-    private let storeFilter = FilterWrapperView(title: "Shops",
+    private let stackView = UIStackView()
+    private let storeFilter = FilterWrapperView<Int>(title: "Shops",
                                                 selectionView: FilterSelectionView(isMultiselect: true))
-    private let sortByFilter = FilterWrapperView(title: "Sort By",
+    private let sortByFilter = FilterWrapperView<GameSortingEnum>(title: "Sort By",
                                                 selectionView: FilterSelectionView(isMultiselect: false),
-                                                additionalSelectionView: UISegmentedControl(items: ["Ascending", "Descending"]))
-    private let priceFilter = FilterWrapperView(title: "Price", sliderView: FilterSliderView())
-    private let metacriticFilter = FilterWrapperView(title: "Metacritic Rating", sliderView: FilterSliderView(fullyContinuous: true, upperLimit: 10))
-    private let steamFilter = FilterWrapperView(title: "Steam Rating", sliderView: FilterSliderView(fullyContinuous: true, upperLimit: 10))
+                                                additionalSelectionView: UISegmentedControl(items: ["Descending", "Ascending"]))
+    private let priceFilter = FilterWrapperView<Int>(title: "Price", sliderView: FilterSliderView()) // Treba enum
+    private let metacriticFilter = FilterWrapperView<Int>(title: "Metacritic Rating", sliderView: FilterSliderView(fullyContinuous: true, upperLimit: 100))
+    private let steamFilter = FilterWrapperView<Int>(title: "Steam Rating", sliderView: FilterSliderView(fullyContinuous: true, upperLimit: 100))
     
+    weak var filterDelegate: FilterDelegate?
     
     init(dealsRepository: DealsRepository) {
         self.dealsRepository = dealsRepository
@@ -42,22 +44,27 @@ class FilterViewController: UIViewController {
         filtersLabel.text = "Filters"
         filtersLabel.font = UIFont.boldSystemFont(ofSize: 19)
         
-        view.addSubview(scrollView)
-        
-        scrollView.addSubview(filtersLabel)
-        
         view.addSubview(actionButtons)
         actionButtons.actionButtonsDelegate = self
         
-        scrollView.addSubview(storeFilter)
+        view.addSubview(scrollView)
+        scrollView.showsVerticalScrollIndicator = false
         
-        scrollView.addSubview(sortByFilter)
+        scrollView.addSubview(filtersLabel)
         
-        scrollView.addSubview(priceFilter)
+        scrollView.addSubview(stackView)
+        stackView.axis = .vertical
+        stackView.spacing = 20
         
-        scrollView.addSubview(metacriticFilter)
+        stackView.addArrangedSubview(storeFilter)
         
-        scrollView.addSubview(steamFilter)
+        stackView.addArrangedSubview(sortByFilter)
+        
+        stackView.addArrangedSubview(priceFilter)
+        
+        stackView.addArrangedSubview(metacriticFilter)
+        
+        stackView.addArrangedSubview(steamFilter)
         
         view.backgroundColor = .white
     }
@@ -70,8 +77,10 @@ class FilterViewController: UIViewController {
         }
         
         scrollView.snp.makeConstraints {make in
-            make.top.leading.width.equalToSuperview()
+            make.top.equalToSuperview()
             make.bottom.equalTo(actionButtons.snp.top)
+            make.leading.trailing.equalToSuperview()
+            
         }
         
         filtersLabel.snp.makeConstraints {make in
@@ -80,45 +89,48 @@ class FilterViewController: UIViewController {
             make.height.equalTo(20)
         }
         
-        storeFilter.snp.makeConstraints {make in
+        stackView.snp.makeConstraints { make in
             make.top.equalTo(filtersLabel.snp.bottom).offset(20)
-            make.leading.width.equalToSuperview().inset(30)
-        }
-        
-        sortByFilter.snp.makeConstraints {make in
-            make.top.equalTo(storeFilter.snp.bottom).offset(20)
-            make.leading.width.equalToSuperview().inset(30)
-        }
-        
-        priceFilter.snp.makeConstraints {make in
-            make.top.equalTo(sortByFilter.snp.bottom).offset(20)
-            make.leading.width.equalToSuperview().inset(30)
-        }
-        
-        metacriticFilter.snp.makeConstraints {make in
-            make.top.equalTo(priceFilter.snp.bottom).offset(20)
-            make.leading.width.equalToSuperview().inset(30)
-        }
-        
-        steamFilter.snp.makeConstraints {make in
-            make.top.equalTo(metacriticFilter.snp.bottom).offset(20)
             make.leading.width.equalToSuperview().inset(30)
             make.bottom.equalToSuperview().inset(10)
         }
     }
     
     private func loadData() {
-        sortByFilter.loadSelectionViewWithData(data: [GameSortingEnum.dealRating.rawValue,
-                                                      GameSortingEnum.title.rawValue,
-                                                      GameSortingEnum.savings.rawValue,
-                                                      GameSortingEnum.price.rawValue,
-                                                      GameSortingEnum.metacritic.rawValue])
-        priceFilter.loadSliderViewWithData(data: ["Under 5", "Under 10", "Under 20", "Under 30", "Under 40", "Under 50", "Over 50"])
+        sortByFilter.loadSelectionViewWithData(data: GameSortingEnum.asList().map {game in
+            return StringWithKey<GameSortingEnum>(id: game, name: GameSortingEnum.title(game))
+        })
+        priceFilter.loadSliderViewWithData(data: PriceRangeEnum.asList().map {price in
+            return StringWithKey<Int>(id: price.rawValue, name: PriceRangeEnum.title(price))
+        })
+    
     }
     
-    
     private func getData() {
+        var listOfParameters = ListOfDealsParameters()
         
+        let sortByFilterValues = sortByFilter.getSelectionViewData()
+        if sortByFilterValues.count > 0 {
+            listOfParameters.sortBy = sortByFilterValues[0].id
+        }
+        
+        if let sortByCheckboxValue = sortByFilter.getAdditionalSelectionViewValue() {
+            listOfParameters.desc = sortByCheckboxValue
+        }
+        
+        if let priceData = priceFilter.getSliderViewData() {
+            listOfParameters.upperPrice = priceData.id
+        }
+        
+        if let metacriticRating = metacriticFilter.getSliderViewValue() {
+            listOfParameters.metacritic = metacriticRating
+        }
+        
+        if let steamRating = steamFilter.getSliderViewValue() {
+            listOfParameters.steamRating = steamRating
+        }
+        
+        filterDelegate?.acceptFilters(listOfParameters)
     }
 }
 
@@ -129,9 +141,11 @@ extension FilterViewController: FilterActionButtonsDelegate {
         priceFilter.resetData()
         metacriticFilter.resetData()
         steamFilter.resetData()
+        dismiss(animated: true, completion: nil)
     }
     
     func applyButtonPressed() {
-        print("Apply pressed")
+        getData()
+        dismiss(animated: true, completion: nil)
     }
 }

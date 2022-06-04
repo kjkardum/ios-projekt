@@ -10,9 +10,9 @@ import UIKit
 
 
 
-class FilterWrapperView: UIView {
-    private var selectionView: FilterSelectionView?
-    private var sliderView: FilterSliderView?
+class FilterWrapperView<TKey>: UIView {
+    private var selectionView: FilterSelectionView<TKey>?
+    private var sliderView: FilterSliderView<TKey>?
     private var additionalSelectionView: UISegmentedControl?
     private let horizonalLineView : UIView = {
         let view = UIView()
@@ -30,21 +30,21 @@ class FilterWrapperView: UIView {
         super.init(frame: .zero)
     }
     
-    convenience init(title: String, sliderView: FilterSliderView?) {
+    convenience init(title: String, sliderView: FilterSliderView<TKey>?) {
         self.init(frame: .zero)
         self.sliderView = sliderView
         titleLabel.text = title
         runFunctionsForBuildingSliderView()
     }
     
-    convenience init(title: String, selectionView: FilterSelectionView?) {
+    convenience init(title: String, selectionView: FilterSelectionView<TKey>?) {
         self.init(frame: .zero)
         self.selectionView = selectionView
         titleLabel.text = title
         runFunctionsForBuildingSelectionView()
     }
 
-    convenience init(title: String, selectionView: FilterSelectionView?, additionalSelectionView: UISegmentedControl?) {
+    convenience init(title: String, selectionView: FilterSelectionView<TKey>?, additionalSelectionView: UISegmentedControl?) {
         self.init(frame: .zero)
         self.additionalSelectionView = additionalSelectionView
         self.selectionView = selectionView
@@ -52,7 +52,7 @@ class FilterWrapperView: UIView {
         runFunctionsForBuildingSelectionView()
     }
     
-    convenience init(title: String, sliderView: FilterSliderView?, additionalSelectionView: UISegmentedControl?) {
+    convenience init(title: String, sliderView: FilterSliderView<TKey>?, additionalSelectionView: UISegmentedControl?) {
         self.init(frame: .zero)
         self.additionalSelectionView = additionalSelectionView
         self.sliderView = sliderView
@@ -85,8 +85,11 @@ class FilterWrapperView: UIView {
         
         addSubview(titleLabel)
         titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        titleLabel.textColor = .black
         
         additionalSelectionView?.selectedSegmentIndex = 0
+        additionalSelectionView?.selectedSegmentTintColor = .white
+        additionalSelectionView?.tintColor = UIColor(red: 0.89, green: 0.88, blue: 0.89, alpha: 1.00)
         
         addSubview(horizonalLineView)
     }
@@ -208,16 +211,55 @@ class FilterWrapperView: UIView {
         }
     }
     
-    func loadSelectionViewWithData(data: [String]) {
+    func loadSelectionViewWithData(data: [StringWithKey<TKey>]) {
         if let selectionView = self.selectionView {
             selectionView.loadData(data: data)
         }
     }
     
-    func loadSliderViewWithData(data: [String]) {
+    func loadSliderViewWithData(data: [StringWithKey<TKey>]) {
         if let sliderView = self.sliderView {
             sliderView.loadData(data: data)
         }
+    }
+    
+    func getSelectionViewData() -> [StringWithKey<TKey>] {
+        if let selectionView = self.selectionView {
+            return selectionView.getData()
+        }
+        
+        return []
+    }
+    
+    func getSliderViewData() -> StringWithKey<TKey>? {
+        if let sliderView = self.sliderView {
+            return sliderView.getData()
+        }
+        
+        return nil
+    }
+    
+    func getSliderViewValue() -> Int? {
+        if let sliderView = self.sliderView {
+            return sliderView.getSliderValue()
+        }
+        
+        return nil
+    }
+    
+    func getAdditionalSelectionViewValue() -> Bool? {
+        if let additionalSelectionView = self.additionalSelectionView {
+            switch(additionalSelectionView.selectedSegmentIndex) {
+            case 0:
+                return false
+            case 1:
+                return true
+            default:
+                return false
+            }
+        }
+        
+        return nil
     }
     
     func resetData() {

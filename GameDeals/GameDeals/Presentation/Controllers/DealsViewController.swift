@@ -15,6 +15,8 @@ class DealsViewController: UIViewController {
     private let filterView = UIView()
     private let button = UIButton()
     private var dealsRepository: DealsRepository
+    
+    private var listOfParameters = ListOfDealsParameters(upperPrice: 15)
 
     init(dealsRepository: DealsRepository) {
         self.dealsRepository = dealsRepository
@@ -63,7 +65,7 @@ class DealsViewController: UIViewController {
     }
     
     private func loadData() {
-        dealsRepository.getListOfDeals(parameters: ListOfDealsParameters(upperPrice: 15)) {response in
+        dealsRepository.getListOfDeals(parameters: listOfParameters) {response in
             switch (response) {
             case .success(let data):
                 DispatchQueue.main.sync {
@@ -76,9 +78,18 @@ class DealsViewController: UIViewController {
     }
     
     @objc private func click() {
-        let modal = FilterViewController(dealsRepository: dealsRepository)
-        modal.modalPresentationStyle = .formSheet
-        present(modal, animated: true, completion: nil)
+        let filterModal = FilterViewController(dealsRepository: dealsRepository)
+        filterModal.filterDelegate = self
+        filterModal.modalPresentationStyle = .formSheet
+        present(filterModal, animated: true, completion: nil)
     }
 
+}
+
+extension DealsViewController: FilterDelegate {
+    func acceptFilters(_ listOfDealsParameters: ListOfDealsParameters) {
+        print(listOfDealsParameters)
+        self.listOfParameters = listOfDealsParameters
+        loadData()
+    }
 }

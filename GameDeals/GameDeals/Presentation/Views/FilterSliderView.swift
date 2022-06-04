@@ -10,11 +10,12 @@ import UIKit
 import SnapKit
 
 
-class FilterSliderView: UIView {
+class FilterSliderView<TKey>: UIView {
     let sliderView = UISlider()
     let valueLabel = UILabel()
-    var items : [String] = ["", ""]
-    var selectedElement : String?
+    var items : [StringWithKey<TKey>] = []
+    var selectedElement : StringWithKey<TKey>?
+    var selectedValue : Int?
     
     var fullyContinuous = false
     var upperLimit = 1000
@@ -51,10 +52,11 @@ class FilterSliderView: UIView {
         addSubview(sliderView)
         
         valueLabel.textColor = UIColor(red: 0.57, green: 0.56, blue: 0.57, alpha: 1.00)
-        valueLabel.text = items[0]
+        valueLabel.text = "Any rating"
         
         sliderView.minimumValue = 0
         sliderView.maximumValue = Float(upperLimit)
+        sliderView.value = 0
         sliderView.isContinuous = true
         sliderView.tintColor = .purple
         sliderView.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
@@ -77,35 +79,49 @@ class FilterSliderView: UIView {
     
     @objc func sliderValueDidChange(_ sender: UISlider!) {
         if !fullyContinuous {
-            valueLabel.text = items[Int(sender.value)]
+            valueLabel.text = items[Int(sender.value)].name
             
             selectedElement = items[Int(sender.value)]
             
             
         } else {
-            valueLabel.text = String(sender.value)
-            selectedElement = String(sender.value)
+            let roundedValue = (sender.value * 100).rounded() / 100
+            valueLabel.text = "Rating greater than " + String(Int(roundedValue))
+            selectedValue = Int(roundedValue)
         }
-        
     }
     
     
     func resetData() {
-        selectedElement = items[0]
+        if fullyContinuous {
+            valueLabel.text = "Any rating"
+            selectedValue = nil
+        } else {
+            selectedElement = items[0]
+            valueLabel.text = items[0].name
+        }
+        
         UIView.animate(withDuration: 0.2) {
             self.sliderView.setValue(0, animated: true)
         }
-        
-        valueLabel.text = items[0]
+
     }
     
     
-    func loadData(data: [String]) {
+    func loadData(data: [StringWithKey<TKey>]) {
         self.items = data
         sliderView.maximumValue = Float(data.count - 1)
         resetData()
     }
     
+    
+    func getData() -> StringWithKey<TKey>? {
+        return selectedElement
+    }
+    
+    func getSliderValue() -> Int? {
+        return selectedValue
+    }
     
 }
 

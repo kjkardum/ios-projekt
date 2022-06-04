@@ -18,3 +18,32 @@ enum GameSortingEnum: String {
     case store = "Store"
     case recent = "recent"
 }
+
+extension GameSortingEnum {
+    static func asList() -> [GameSortingEnum] {
+        return [.dealRating, .title, .savings, .price, .metacritic, .reviews, .release, .store, .recent]
+    }
+    
+    static func title(_ gameSortingEnum: GameSortingEnum) -> String {
+        switch(gameSortingEnum) {
+        case .dealRating:
+            return "Deal Rating"
+        case .title:
+            return "Title"
+        case .savings:
+            return "Savings"
+        case .price:
+            return "Price"
+        case .metacritic:
+            return "Metacritic Rating"
+        case .reviews:
+            return "Reviews"
+        case .release:
+            return "Release Date"
+        case .store:
+            return "Store"
+        case .recent:
+            return "Recent"
+        }
+    }
+}
