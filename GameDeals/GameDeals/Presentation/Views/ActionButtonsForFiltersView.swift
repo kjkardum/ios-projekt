@@ -12,7 +12,6 @@ import SnapKit
 class ActionButtonsForFiltersView: UIView {
     private let clearFiltersButton = UIButton()
     private let applyFiltersButton = UIButton()
-    private let borderView = UIView()
     
     weak var actionButtonsDelegate : FilterActionButtonsDelegate?
     
@@ -31,8 +30,6 @@ class ActionButtonsForFiltersView: UIView {
     }
     
     private func buildViews() {
-//        addSubview(borderView)
-        
         
         addSubview(clearFiltersButton)
         clearFiltersButton.setTitle("Clear All", for: .normal)
@@ -51,7 +48,7 @@ class ActionButtonsForFiltersView: UIView {
         addSubview(applyFiltersButton)
         applyFiltersButton.setTitle("Apply Filters", for: .normal)
         applyFiltersButton.setTitleColor(.white, for: .normal)
-        applyFiltersButton.backgroundColor = UIColor.backgroundColorCell
+        applyFiltersButton.backgroundColor = UIColor(red: 0.24, green: 0.30, blue: 0.72, alpha: 1.00)
         applyFiltersButton.clipsToBounds = false
         applyFiltersButton.layer.cornerRadius = 25
         applyFiltersButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
@@ -61,16 +58,9 @@ class ActionButtonsForFiltersView: UIView {
         applyFiltersButton.layer.shadowOffset = CGSize(width: 0, height: 5)
         applyFiltersButton.addTarget(self, action: #selector(applyPressed), for: .touchUpInside)
         
-        
-        borderView.backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.00)
     }
     
     private func setLayout() {
-//        borderView.snp.makeConstraints {make in
-//            make.top.leading.trailing.equalToSuperview()
-//            make.height.equalTo(1)
-//        }
-        
         clearFiltersButton.snp.makeConstraints {make in
             make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(30)

@@ -160,12 +160,9 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         
         self.toolbarView.loadToolbarData(currentPrice: dealData.salePrice, priceBeforeSale: dealData.normalPrice, steamRating: dealData.steamRatingPercent, metaCriticRating: dealData.metacriticScore, dealRating: dealData.dealRating)
     
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want
-        dateFormatter.locale = NSLocale.current
-        dateFormatter.dateFormat = "dd-MM-YYYY" //Specify your format that you want
-        let strDate = dateFormatter.string(from: dealData.releaseDate)
-        releaseDateLabel.text = "Release date: " + strDate
+        let dateFormatter = DateTimeServiceImpl()
+        releaseDateLabel.text = "Release date: " + dateFormatter.stringify(dealData.releaseDate)
+        
         
         if likeState {
             self.heartIconView.image = UIImage(systemSymbol: .heartFill)

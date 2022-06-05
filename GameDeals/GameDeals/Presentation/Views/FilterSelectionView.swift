@@ -111,11 +111,6 @@ class FilterSelectionView<TKey>: UIView, UICollectionViewDataSource, UICollectio
                     return
                 }
 
-//                if lastSelectedCellIndex == indexPath.row {
-//                    lastSelected = nil
-//                    return
-//                }
-
                 selectedData[lastSelectedCellIndex] = false
                 lastSelected = indexPath.row
                 if let lastSelectedCell = collectionView.cellForItem(at: IndexPath(row: lastSelectedCellIndex, section: 0)) as? FilterSelectionCell {

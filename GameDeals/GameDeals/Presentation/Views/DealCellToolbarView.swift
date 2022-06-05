@@ -86,14 +86,14 @@ class DealCellToolbarView: UIView {
     }
     
     
-    func loadToolbarData(currentPrice: String, priceBeforeSale: String, steamRating: String?, metaCriticRating: String, dealRating: String?) {
+    func loadToolbarData(currentPrice: String, priceBeforeSale: String, steamRating: Int?, metaCriticRating: Int?, dealRating: String?) {
         currentPriceLabel.text = "$"+currentPrice
         if let steamRating = steamRating {
-            ratingPercentageLabel.text = steamRating
+            ratingPercentageLabel.text = String(steamRating)
         } else {
-            if !metaCriticRating.elementsEqual("0") {
+            if let metaCriticRating = metaCriticRating {
                 ratingLabel.text = "Metacritic Rating"
-                ratingPercentageLabel.text = metaCriticRating
+                ratingPercentageLabel.text = String(metaCriticRating)
             } else {
                 ratingLabel.text = "Deal Rating"
                 ratingPercentageLabel.text = dealRating

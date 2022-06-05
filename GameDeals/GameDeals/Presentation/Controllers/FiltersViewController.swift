@@ -78,7 +78,7 @@ class FilterViewController: UIViewController {
         actionButtons.snp.makeConstraints {make in
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             make.leading.trailing.equalToSuperview()
-            make.height.equalTo(75)
+            make.height.equalTo(70)
         }
         
         scrollView.snp.makeConstraints {make in
@@ -107,7 +107,7 @@ class FilterViewController: UIViewController {
             case .success(let data):
                 DispatchQueue.main.async {
                     self.storeFilter.loadSelectionViewWithData(data: data.map {shop in
-                        return StringWithKey<Int>(id: Int(shop.storeID) ?? 1, name: shop.storeName)
+                        return StringWithKey<Int>(id: Int(shop.storeID), name: shop.storeName)
                     })
                 }
 

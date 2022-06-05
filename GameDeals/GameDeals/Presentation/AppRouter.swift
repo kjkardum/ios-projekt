@@ -20,7 +20,6 @@ class AppRouter {
     
     func setScreen(window: UIWindow?) {
         navigationController.pushViewController(tabBarViewControler, animated: true)
-    
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
