@@ -110,7 +110,7 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
     
 
     private func loadData() {
-        dealsRepository.getListOfDeals(parameters: ListOfDealsParameters(upperPrice: 15)) {response in
+        dealsRepository.getListOfDeals(parameters: ListOfDealsParameters(upperPrice: 45)) {response in
             switch (response) {
             case .success(let data):
                 DispatchQueue.main.sync {

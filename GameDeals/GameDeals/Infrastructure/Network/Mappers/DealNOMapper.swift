@@ -33,7 +33,7 @@ class DealNOMapper: Mapper<DealNO, Deal> {
         destination.lastChange = dateService.parse(source.lastChange)
         destination.dealRating = source.dealRating
         
-        let betterSource = source.thumb.replacingOccurrences(of: "capsule_sm_120", with: "header")
+        let betterSource = source.thumb.replacingOccurrences(of: "capsule_sm_120", with: "capsule_616x353")
         let imageUrl = URL(string: betterSource)
         let imageData = imageUrl != nil ? try? Data(contentsOf: imageUrl!) : nil
         DispatchQueue.global(qos: .background).sync {

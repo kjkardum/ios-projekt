@@ -9,7 +9,7 @@ import UIKit
 
 class GameNOMapper: Mapper<GameNO, Game> {
     override func mapTo(source: GameNO, destination: inout Game) -> Game {
-        let betterSource = source.thumb.replacingOccurrences(of: "capsule_sm_120", with: "header")
+        let betterSource = source.thumb.replacingOccurrences(of: "capsule_sm_120", with: "capsule_616x353")
         let imageUrl = URL(string: betterSource)
         let imageData = imageUrl != nil ? try? Data(contentsOf: imageUrl!) : nil
         var thumb: Data? = nil

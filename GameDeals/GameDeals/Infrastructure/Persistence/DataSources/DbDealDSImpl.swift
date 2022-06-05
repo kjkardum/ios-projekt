@@ -27,7 +27,7 @@ class DbDealDSImpl: DbDealDS {
             predicates.append(NSPredicate(format: "salePrice >= %i", lowerPrice))
         }
         if parameters.upperPrice != 50 {
-            let upperPrice = parameters.lowerPrice < 50 ? parameters.lowerPrice : 999
+            let upperPrice = parameters.upperPrice < 50 ? parameters.upperPrice : 999
             predicates.append(NSPredicate(format: "salePrice <= %i", upperPrice))
         }
         if let metacritic = parameters.metacritic {
@@ -59,8 +59,10 @@ class DbDealDSImpl: DbDealDS {
         if parameters.onSale {
             predicates.append(NSPredicate(format: "normalPrice != salePrice"))
         }
+        let filters = NSCompoundPredicate(type: .and, subpredicates: predicates)
+        request.predicate = filters
         request.fetchOffset = parameters.pageNumber * parameters.pageSize
-        request.fetchLimit = parameters.pageNumber
+        request.fetchLimit = parameters.pageSize
         let sortBy = parameters.sortBy
         request.sortDescriptors = [NSSortDescriptor(key: sortBy.asNSSortName(), ascending: !parameters.desc)]
         let deals = (try? context.fetch(request)) ?? []
