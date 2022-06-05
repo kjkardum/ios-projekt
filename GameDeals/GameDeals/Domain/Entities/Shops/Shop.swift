@@ -8,7 +8,7 @@
 import Foundation
 
 struct Shop {
-    public var storeID: String = ""
+    public var storeID: Int = 0
     public var storeName: String = ""
     public var isActive: Int = 0
     public var images: ShopImage = ShopImage()

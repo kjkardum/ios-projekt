@@ -2,22 +2,22 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="DealMO" representedClassName="DealMO" syncable="YES">
         <attribute name="dealId" attributeType="String"/>
-        <attribute name="dealRating" attributeType="String"/>
+        <attribute name="dealRating" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="gameId" attributeType="String"/>
         <attribute name="internalName" attributeType="String"/>
         <attribute name="isOnSale" attributeType="String"/>
         <attribute name="lastChange" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="metacriticLink" optional="YES" attributeType="String"/>
-        <attribute name="metacriticScore" attributeType="String"/>
-        <attribute name="normalPrice" attributeType="String"/>
+        <attribute name="metacriticScore" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="normalPrice" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="releaseDate" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="salePrice" attributeType="String"/>
+        <attribute name="salePrice" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="savings" attributeType="String"/>
-        <attribute name="steamAppId" optional="YES" attributeType="String"/>
+        <attribute name="steamAppId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="steamRatingCount" optional="YES" attributeType="String"/>
-        <attribute name="steamRatingPercent" optional="YES" attributeType="String"/>
+        <attribute name="steamRatingPercent" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="steamRatingText" optional="YES" attributeType="String"/>
-        <attribute name="storeId" attributeType="String"/>
+        <attribute name="storeId" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="thumb" optional="YES" attributeType="Binary"/>
         <attribute name="title" attributeType="String"/>
     </entity>
@@ -35,7 +35,7 @@
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="isActive" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="logo" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
-        <attribute name="storeId" attributeType="String"/>
+        <attribute name="storeId" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="storeName" attributeType="String"/>
     </entity>
     <elements>

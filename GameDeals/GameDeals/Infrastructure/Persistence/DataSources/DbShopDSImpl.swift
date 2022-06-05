@@ -44,6 +44,7 @@ class DbShopDSImpl: DbShopDS {
             addedShopsMO.append(mapper.map(shop))
         }
         try? context.save()
+        completionHandler(.success(true))
     }
     
 }

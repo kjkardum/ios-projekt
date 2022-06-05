@@ -15,7 +15,7 @@ class ShopMOMapper: Mapper<ShopMO, Shop> {
     }
     
     override func mapTo(source: ShopMO, destination: inout Shop) -> Shop {
-        destination.storeID = source.storeId ?? ""
+        destination.storeID = Int(truncatingIfNeeded: source.storeId)
         destination.storeName = source.storeName ?? ""
         destination.isActive = Int(truncatingIfNeeded: source.isActive)
         destination.images = ShopImage(banner: source.banner, logo: source.logo, icon: source.image)
@@ -23,7 +23,7 @@ class ShopMOMapper: Mapper<ShopMO, Shop> {
     }
     
     override func mapTo(source: Shop, destination: inout ShopMO) -> ShopMO {
-        destination.storeId = source.storeID
+        destination.storeId = Int64(source.storeID)
         destination.storeName = source.storeName
         destination.isActive = Int64(source.isActive)
         destination.banner = source.images.banner

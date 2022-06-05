@@ -62,6 +62,6 @@ class Services {
     }
     
     func getInitialController() -> UIViewController {
-        return container.resolve(DealsViewController.self)!
+        return container.resolve(SearchViewController.self)!
     }
 }

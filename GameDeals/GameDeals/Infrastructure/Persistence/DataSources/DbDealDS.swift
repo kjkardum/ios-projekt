@@ -9,5 +9,5 @@ import Foundation
 
 protocol DbDealDS {
     func getListOfDeals(parameters: ListOfDealsParameters, completionHandler: @escaping resultHandler<[DealMO]>)
-    func updateListOfDeals(parameters: ListOfDealsParameters, completionHandler: @escaping resultHandler<Bool>)
+    func updateListOfDeals(parameters: ListOfDealsParameters, incomingDeals: [Deal], completionHandler: @escaping resultHandler<Bool>)
 }

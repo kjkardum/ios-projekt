@@ -46,4 +46,27 @@ extension GameSortingEnum {
             return "Recent"
         }
     }
+    
+    func asNSSortName() -> String {
+        switch(self) {
+        case .dealRating:
+            return "dealRating"
+        case .title:
+            return "title"
+        case .savings:
+            return "dealRating"
+        case .price:
+            return "salePrice"
+        case .metacritic:
+            return "metacriticScore"
+        case .reviews:
+            return "dealRating"
+        case .release:
+            return "releaseDate"
+        case .store:
+            return "storeId"
+        case .recent:
+            return "lastChange"
+        }
+    }
 }
