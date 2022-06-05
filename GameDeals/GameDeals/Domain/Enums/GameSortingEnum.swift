@@ -21,7 +21,7 @@ enum GameSortingEnum: String {
 
 extension GameSortingEnum {
     static func asList() -> [GameSortingEnum] {
-        return [.recent, .dealRating, .title, .savings, .price, .metacritic, .reviews, .release, .store]
+        return [.recent, .dealRating, .title, .price, .metacritic, .release, .store]
     }
     
     static func title(_ gameSortingEnum: GameSortingEnum) -> String {
