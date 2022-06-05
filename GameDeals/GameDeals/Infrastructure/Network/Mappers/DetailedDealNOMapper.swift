@@ -14,7 +14,7 @@ class DetailedDealNOMapper: Mapper<DetailedDealNO, DetailedDeal> {
     }
     
     override func mapTo(source: DetailedDealNO, destination: inout DetailedDeal) -> DetailedDeal {
-        let betterSource = source.gameInfo.thumb.replacingOccurrences(of: "capsule_sm_120", with: "header")
+        let betterSource = source.gameInfo.thumb.replacingOccurrences(of: "capsule_sm_120", with: "capsule_616x353")
         let imageUrl = URL(string: betterSource)
         let imageData = imageUrl != nil ? try? Data(contentsOf: imageUrl!) : nil
         var thumb: Data? = nil
