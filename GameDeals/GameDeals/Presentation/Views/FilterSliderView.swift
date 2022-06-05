@@ -58,7 +58,7 @@ class FilterSliderView<TKey>: UIView {
         sliderView.maximumValue = Float(upperLimit)
         sliderView.value = 0
         sliderView.isContinuous = true
-        sliderView.tintColor = .purple
+        sliderView.tintColor = UIColor(red: 0.24, green: 0.30, blue: 0.72, alpha: 1.00)
         sliderView.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
         
         backgroundColor = .clear
@@ -86,7 +86,12 @@ class FilterSliderView<TKey>: UIView {
             
         } else {
             let roundedValue = (sender.value * 100).rounded() / 100
-            valueLabel.text = "Rating greater than " + String(Int(roundedValue))
+            if roundedValue == 0 {
+                valueLabel.text = "Any rating"
+            } else {
+                valueLabel.text = "Rating greater than " + String(Int(roundedValue))
+            }
+            
             selectedValue = Int(roundedValue)
         }
     }
@@ -104,7 +109,6 @@ class FilterSliderView<TKey>: UIView {
         UIView.animate(withDuration: 0.2) {
             self.sliderView.setValue(0, animated: true)
         }
-
     }
     
     
@@ -120,6 +124,9 @@ class FilterSliderView<TKey>: UIView {
     }
     
     func getSliderValue() -> Int? {
+        if selectedValue == 0 {
+            return nil
+        }
         return selectedValue
     }
     

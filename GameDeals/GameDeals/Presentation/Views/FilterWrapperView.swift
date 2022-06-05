@@ -16,12 +16,12 @@ class FilterWrapperView<TKey>: UIView {
     private var additionalSelectionView: UISegmentedControl?
     private let horizonalLineView : UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 0.85, green: 0.85, blue: 0.86, alpha: 1.00)
+        view.backgroundColor = UIColor(red: 0.32, green: 0.33, blue: 0.50, alpha: 1.00)
         return view
     }()
     private let additionalHorizontalLineView : UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 0.85, green: 0.85, blue: 0.86, alpha: 1.00)
+        view.backgroundColor = UIColor(red: 0.32, green: 0.33, blue: 0.50, alpha: 1.00)
         return view
     }()
     private let titleLabel = UILabel()
@@ -81,15 +81,18 @@ class FilterWrapperView<TKey>: UIView {
     private func buildMainView() {
         clipsToBounds = true
         layer.cornerRadius = 10
-        backgroundColor = UIColor(red: 0.95, green: 0.94, blue: 0.95, alpha: 1.00)
+        layer.borderWidth = 2
+        layer.borderColor = UIColor(red: 0.32, green: 0.33, blue: 0.50, alpha: 1.00).cgColor
+        backgroundColor = .clear
         
         addSubview(titleLabel)
         titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
-        titleLabel.textColor = .black
+        titleLabel.textColor = .white
         
         additionalSelectionView?.selectedSegmentIndex = 0
-        additionalSelectionView?.selectedSegmentTintColor = .white
-        additionalSelectionView?.tintColor = UIColor(red: 0.89, green: 0.88, blue: 0.89, alpha: 1.00)
+        additionalSelectionView?.selectedSegmentTintColor = UIColor(red: 0.24, green: 0.30, blue: 0.72, alpha: 1.00)
+        additionalSelectionView?.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
+        additionalSelectionView?.tintColor = .white
         
         addSubview(horizonalLineView)
     }

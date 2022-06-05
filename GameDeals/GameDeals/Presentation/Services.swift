@@ -24,8 +24,10 @@ class Services {
     }
             
     private func registerControllers() {
+        container.autoregister(TabBarViewController.self, initializer: TabBarViewController.init)
         container.autoregister(DealsViewController.self, initializer: DealsViewController.init)
         container.autoregister(SearchViewController.self, initializer: SearchViewController.init)
+        container.autoregister(FilterViewController.self, initializer: FilterViewController.init)
     
     }
     
@@ -33,6 +35,7 @@ class Services {
         container.register(NetworkService.self) { _ in NetworkServiceImpl() }
         container.register(DateTimeService.self) { _ in DateTimeServiceImpl() }
         container.register(CoreDataStack.self) { _ in CoreDataStack() }
+        container.autoregister(AppRouter.self, initializer: AppRouter.init)
     }
     
     private func registerRepositories() {
@@ -61,7 +64,19 @@ class Services {
         container.autoregister(Mapper<ShopMO, Shop>.self, initializer: ShopMOMapper.init)
     }
     
-    func getInitialController() -> UIViewController {
+    func getAppRouter() -> AppRouter {
+        return container.resolve(AppRouter.self)!
+    }
+    
+    func getDealsViewController() -> DealsViewController {
         return container.resolve(DealsViewController.self)!
+    }
+    
+    func getFilterViewController() -> FilterViewController {
+        return container.resolve(FilterViewController.self)!
+    }
+    
+    func getSearchViewController() -> SearchViewController {
+        return container.resolve(SearchViewController.self)!
     }
 }

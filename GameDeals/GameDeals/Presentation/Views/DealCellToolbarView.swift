@@ -36,7 +36,7 @@ class DealCellToolbarView: UIView {
     }
     
     private func buildViews() {
-        backgroundColor = .gray
+        backgroundColor = UIColor.backgroundColorAccent
         
         addSubview(toolbarStackView)
         toolbarStackView.addArrangedSubview(priceStackView)
@@ -49,10 +49,12 @@ class DealCellToolbarView: UIView {
         priceStackView.axis = .vertical
         priceStackView.distribution = .fillEqually
         priceStackView.alignment = .center
+        priceStackView.spacing = 5
         
         ratingStackView.axis = .vertical
         ratingStackView.distribution = .fillEqually
         ratingStackView.alignment = .center
+        ratingStackView.spacing = 5
         
         priceStackView.addArrangedSubview(priceLabel)
         priceStackView.addArrangedSubview(currentPriceLabel)
@@ -60,27 +62,43 @@ class DealCellToolbarView: UIView {
         ratingStackView.addArrangedSubview(ratingLabel)
         ratingStackView.addArrangedSubview(ratingPercentageLabel)
         
-        priceLabel.text = "Price:"
-        priceLabel.textColor = .white
+        priceLabel.text = "Price"
+        priceLabel.textColor = UIColor.subtextColor
+        priceLabel.font = UIFont.boldSystemFont(ofSize: 16)
         
-        ratingLabel.text = "Deal Rating:"
-        ratingLabel.textColor = .white
+        ratingLabel.text = "Steam Rating"
+        ratingLabel.textColor = UIColor.subtextColor
+        ratingLabel.font = UIFont.boldSystemFont(ofSize: 16)
         
         currentPriceLabel.textColor = .white
+        currentPriceLabel.font = UIFont.boldSystemFont(ofSize: 20)
         
         ratingPercentageLabel.textColor = .white
+        ratingPercentageLabel.font = UIFont.boldSystemFont(ofSize: 20)
     }
     
     
     private func setLayout() {
         toolbarStackView.snp.makeConstraints {make in
-            make.top.leading.trailing.bottom.equalToSuperview()
+            make.top.bottom.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
         }
     }
     
     
-    func loadToolbarData(currentPrice: String, priceBeforeSale: String, rating: String) {
+    func loadToolbarData(currentPrice: String, priceBeforeSale: String, steamRating: String?, metaCriticRating: String, dealRating: String?) {
         currentPriceLabel.text = "$"+currentPrice
-        ratingPercentageLabel.text = rating
+        if let steamRating = steamRating {
+            ratingPercentageLabel.text = steamRating
+        } else {
+            if !metaCriticRating.elementsEqual("0") {
+                ratingLabel.text = "Metacritic Rating"
+                ratingPercentageLabel.text = metaCriticRating
+            } else {
+                ratingLabel.text = "Deal Rating"
+                ratingPercentageLabel.text = dealRating
+            }
+        }
+        
     }
 }

@@ -11,6 +11,7 @@ import SnapKit
 
 class FilterViewController: UIViewController {
     private var dealsRepository: DealsRepository
+    private var shopsRepository: ShopsRepository
     private let actionButtons = ActionButtonsForFiltersView()
     private let filtersLabel = UILabel()
     private let scrollView = UIScrollView()
@@ -26,8 +27,9 @@ class FilterViewController: UIViewController {
     
     weak var filterDelegate: FilterDelegate?
     
-    init(dealsRepository: DealsRepository) {
+    init(dealsRepository: DealsRepository, shopsRepository: ShopsRepository) {
         self.dealsRepository = dealsRepository
+        self.shopsRepository = shopsRepository
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -41,20 +43,25 @@ class FilterViewController: UIViewController {
     }
     
     private func buildViews() {
+        view.backgroundColor = UIColor(red: 0.17, green: 0.18, blue: 0.26, alpha: 1.00)
+        
         filtersLabel.text = "Filters"
         filtersLabel.font = UIFont.boldSystemFont(ofSize: 19)
+        filtersLabel.textColor = .white
         
         view.addSubview(actionButtons)
         actionButtons.actionButtonsDelegate = self
         
         view.addSubview(scrollView)
         scrollView.showsVerticalScrollIndicator = false
+        scrollView.backgroundColor = .clear
         
         scrollView.addSubview(filtersLabel)
         
         scrollView.addSubview(stackView)
         stackView.axis = .vertical
         stackView.spacing = 20
+        stackView.backgroundColor = .clear
         
         stackView.addArrangedSubview(storeFilter)
         
@@ -65,8 +72,6 @@ class FilterViewController: UIViewController {
         stackView.addArrangedSubview(metacriticFilter)
         
         stackView.addArrangedSubview(steamFilter)
-        
-        view.backgroundColor = .white
     }
     
     private func setLayout() {
@@ -97,6 +102,20 @@ class FilterViewController: UIViewController {
     }
     
     private func loadData() {
+        shopsRepository.getListOfShops() {response in
+            switch (response) {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    self.storeFilter.loadSelectionViewWithData(data: data.map {shop in
+                        return StringWithKey<Int>(id: Int(shop.storeID) ?? 1, name: shop.storeName)
+                    })
+                }
+
+            default:
+                return
+            }
+        }
+        
         sortByFilter.loadSelectionViewWithData(data: GameSortingEnum.asList().map {game in
             return StringWithKey<GameSortingEnum>(id: game, name: GameSortingEnum.title(game))
         })
@@ -107,7 +126,14 @@ class FilterViewController: UIViewController {
     }
     
     private func getData() {
-        var listOfParameters = ListOfDealsParameters()
+        var listOfParameters = ListOfDealsParameters(sortBy: .recent)
+        
+        let storeFilterdata = storeFilter.getSelectionViewData()
+        if storeFilterdata.count > 0 {
+            listOfParameters.storeIds = storeFilterdata.map() {data in
+                return data.id
+            }
+        }
         
         let sortByFilterValues = sortByFilter.getSelectionViewData()
         if sortByFilterValues.count > 0 {

@@ -35,7 +35,8 @@ class DealsView: UIView {
     
     private func buildViews() {
         addSubview(collectionView)
-        backgroundColor = .white
+        backgroundColor = .clear
+        collectionView.backgroundColor = .clear
         collectionView.register(DealCell.self, forCellWithReuseIdentifier: cellIdentifier)
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -48,8 +49,7 @@ class DealsView: UIView {
     
     private func setLayout() {
         collectionView.snp.makeConstraints {make in
-            make.leading.equalToSuperview()
-            make.bottom.equalToSuperview().inset(200)
+            make.centerX.centerY.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(400) // MARK: NE
         }
@@ -57,6 +57,9 @@ class DealsView: UIView {
     
     func loadData(dealsData: [Deal]) {
         self.dealsData = dealsData
+        if self.dealsData.count > 0 {
+            collectionView.setContentOffset(.zero, animated: true)
+        }
         collectionView.reloadData()
     }
 }

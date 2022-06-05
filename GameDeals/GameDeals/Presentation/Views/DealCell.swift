@@ -55,21 +55,22 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         thumbnailImageView.contentMode = .scaleAspectFill;
         thumbnailImageView.clipsToBounds = true;
         
-        titleLabel.font = UIFont.boldSystemFont(ofSize: 24)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 21)
         titleLabel.textColor = .white
         titleLabel.lineBreakMode = .byWordWrapping
         titleLabel.numberOfLines = 0
         
-        releaseDateLabel.textColor = .white
+        releaseDateLabel.textColor = UIColor.subtextColor
+        releaseDateLabel.font = UIFont.boldSystemFont(ofSize: 16)
         
         dealCellView.clipsToBounds = true
         dealCellView.layer.cornerRadius = 20
-        dealCellView.backgroundColor = .lightGray
+        dealCellView.backgroundColor = UIColor.backgroundColorCell
         
         likeView.clipsToBounds = true
         likeView.layer.cornerRadius = dealCellView.layer.cornerRadius
         
-        backgroundColor = .white
+        backgroundColor = .clear
     }
     
     private func setLayout() {
@@ -95,13 +96,13 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(thumbnailImageView.snp.bottom).offset(20)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().inset(20)
+            make.leading.equalToSuperview().offset(30)
+            make.trailing.equalToSuperview().inset(30)
         }
         
         releaseDateLabel.snp.makeConstraints {make in
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(20)
+            make.leading.equalToSuperview().offset(30)
             
         }
         
@@ -149,38 +150,15 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     }
     
     
-    private func setImageConstraint() {
-        if thumbnailImageView.image == nil {
-            return
-        }
-        
-        let myImageWidth = thumbnailImageView.image!.size.width
-        let myImageHeight = thumbnailImageView.image!.size.height
-        let myViewWidth = dealCellView.frame.size.width
-
-        let ratio = myViewWidth/myImageWidth
-        var scaledHeight = myImageHeight * ratio
-        
-        if scaledHeight > 168 {
-            scaledHeight = 168
-        }
-        
-        thumbnailImageView.snp.updateConstraints { (make) in
-            make.height.equalTo(scaledHeight)
-        }
-    }
-    
-    
     func setup(dealData: Deal) {
         
         if let thumb = dealData.thumb {
             self.thumbnailImageView.image = UIImage(data: thumb)
-//            self.setImageConstraint()
         }
         
-        self.titleLabel.text = dealData.title
+        self.titleLabel.text = dealData.title.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        self.toolbarView.loadToolbarData(currentPrice: dealData.salePrice, priceBeforeSale: dealData.normalPrice, rating: dealData.dealRating)
+        self.toolbarView.loadToolbarData(currentPrice: dealData.salePrice, priceBeforeSale: dealData.normalPrice, steamRating: dealData.steamRatingPercent, metaCriticRating: dealData.metacriticScore, dealRating: dealData.dealRating)
     
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT") //Set timezone that you want

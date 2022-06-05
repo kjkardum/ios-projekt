@@ -11,28 +11,33 @@ import SnapKit
 
 
 class DealsViewController: UIViewController {
+    private let filterModal: FilterViewController
     private let dealsView = DealsView()
     private let filterView = UIView()
     private let button = UIButton()
     private var dealsRepository: DealsRepository
+    private var shopsRepository: ShopsRepository
     
-    private var listOfParameters = ListOfDealsParameters(upperPrice: 15)
+    private var listOfParameters = ListOfDealsParameters(sortBy: .recent)
 
-    init(dealsRepository: DealsRepository) {
+    init(dealsRepository: DealsRepository, shopsRepository: ShopsRepository, filterModal: FilterViewController) {
         self.dealsRepository = dealsRepository
+        self.shopsRepository = shopsRepository
+        self.filterModal = filterModal
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        filterModal.filterDelegate = self
         buildViews()
         setLayout()
         loadData()
     }
     
     private func buildViews() {
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.backgroundColor
         view.addSubview(dealsView)
         view.addSubview(filterView)
         
@@ -40,6 +45,15 @@ class DealsViewController: UIViewController {
         button.addTarget(self, action: #selector(click), for: .touchUpInside)
         
         filterView.backgroundColor = .gray
+        
+//        self.navigationController?.isNavigationBarHidden = true
+        
+        // MARK: PROBLEM NAVIGATION VIEW CONTROLLERA
+        
+        let test = UIView()
+        test.backgroundColor = .white
+        test.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        navigationController?.navigationBar.topItem?.titleView = test
     }
     
     private func setLayout() {
@@ -78,8 +92,6 @@ class DealsViewController: UIViewController {
     }
     
     @objc private func click() {
-        let filterModal = FilterViewController(dealsRepository: dealsRepository)
-        filterModal.filterDelegate = self
         filterModal.modalPresentationStyle = .formSheet
         present(filterModal, animated: true, completion: nil)
     }

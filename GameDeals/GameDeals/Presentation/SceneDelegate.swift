@@ -16,8 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let servicesContainer = Services()
         
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = servicesContainer.getInitialController()
-        window?.makeKeyAndVisible()
+        servicesContainer.getAppRouter().setScreen(window: window)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) { }

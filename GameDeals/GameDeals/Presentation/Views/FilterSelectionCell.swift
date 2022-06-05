@@ -34,7 +34,7 @@ class FilterSelectionCell: UICollectionViewCell {
         
         addSubview(button)
         button.font = UIFont.systemFont(ofSize: 15)
-        button.textColor = .black
+        button.textColor = .white
         button.textAlignment = .center
         button.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
@@ -49,7 +49,7 @@ class FilterSelectionCell: UICollectionViewCell {
     
     
     private func addBorder() {
-        backgroundColor = UIColor(red: 0.83, green: 0.83, blue: 0.83, alpha: 1.00)
+        backgroundColor = UIColor(red: 0.24, green: 0.30, blue: 0.72, alpha: 1.00)
         button.invalidateIntrinsicContentSize()
         
     }
@@ -61,17 +61,26 @@ class FilterSelectionCell: UICollectionViewCell {
     
     }
     
-    private func handleClick(isSelected: Bool) {
+    private func handleClick(isSelected: Bool, animated: Bool) {
         switch(isSelected) {
         case true:
             clickStatus = true
-            UIView.animate(withDuration: 0.2) {
+            if animated {
+                UIView.animate(withDuration: 0.2) {
+                    self.addBorder()
+                }
+            } else {
                 self.addBorder()
             }
+            
             return
         case false:
             clickStatus = false
-            UIView.animate(withDuration: 0.2) {
+            if animated {
+                UIView.animate(withDuration: 0.2) {
+                    self.removeBorder()
+                }
+            } else {
                 self.removeBorder()
             }
             return
@@ -81,16 +90,16 @@ class FilterSelectionCell: UICollectionViewCell {
     
     func setup(name: String, isSelected: Bool) {
         button.text = name
-        handleClick(isSelected: isSelected)
+        handleClick(isSelected: isSelected, animated: false)
     }
     
     func clicked() -> Bool {
         switch(clickStatus) {
         case false:
-            handleClick(isSelected: !clickStatus)
+            handleClick(isSelected: !clickStatus, animated: true)
             return true
         case true:
-            handleClick(isSelected: !clickStatus)
+            handleClick(isSelected: !clickStatus, animated: true)
             return false
         }
     }

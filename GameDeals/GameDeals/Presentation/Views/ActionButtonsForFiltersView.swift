@@ -31,7 +31,8 @@ class ActionButtonsForFiltersView: UIView {
     }
     
     private func buildViews() {
-        addSubview(borderView)
+//        addSubview(borderView)
+        
         
         addSubview(clearFiltersButton)
         clearFiltersButton.setTitle("Clear All", for: .normal)
@@ -50,7 +51,7 @@ class ActionButtonsForFiltersView: UIView {
         addSubview(applyFiltersButton)
         applyFiltersButton.setTitle("Apply Filters", for: .normal)
         applyFiltersButton.setTitleColor(.white, for: .normal)
-        applyFiltersButton.backgroundColor = UIColor(red: 0.83, green: 0.77, blue: 0.98, alpha: 1.00)
+        applyFiltersButton.backgroundColor = UIColor.backgroundColorCell
         applyFiltersButton.clipsToBounds = false
         applyFiltersButton.layer.cornerRadius = 25
         applyFiltersButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
@@ -65,20 +66,20 @@ class ActionButtonsForFiltersView: UIView {
     }
     
     private func setLayout() {
-        borderView.snp.makeConstraints {make in
-            make.top.leading.trailing.equalToSuperview()
-            make.height.equalTo(1)
-        }
+//        borderView.snp.makeConstraints {make in
+//            make.top.leading.trailing.equalToSuperview()
+//            make.height.equalTo(1)
+//        }
         
         clearFiltersButton.snp.makeConstraints {make in
-            make.top.equalTo(borderView.snp.bottom).offset(20)
+            make.top.equalToSuperview().offset(20)
             make.leading.equalToSuperview().offset(30)
             make.width.equalToSuperview().multipliedBy(0.35)
             make.bottom.equalToSuperview()
         }
         
         applyFiltersButton.snp.makeConstraints {make in
-            make.top.equalTo(borderView.snp.bottom).offset(20)
+            make.top.equalToSuperview().offset(20)
             make.width.equalToSuperview().multipliedBy(0.35)
             make.trailing.equalToSuperview().inset(30)
             make.bottom.equalToSuperview()
