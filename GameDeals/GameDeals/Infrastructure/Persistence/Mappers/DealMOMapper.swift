@@ -17,24 +17,27 @@ class DealMOMapper: Mapper<DealMO, Deal> {
     }
     
     override func mapTo(source: DealMO, destination: inout Deal) -> Deal {
+        let formatter = NumberFormatter()
+        formatter.minimumFractionDigits = 2
+        
         destination.internalName = source.internalName ?? ""
         destination.title = source.title ?? ""
         destination.metacriticLink = source.metacriticLink
         destination.dealID = source.dealId ?? ""
-        destination.storeID = source.storeId ?? ""
+        destination.storeID = Int(truncatingIfNeeded: source.storeId)
         destination.gameID = source.gameId ?? ""
-        destination.salePrice = source.salePrice ?? ""
-        destination.normalPrice = source.normalPrice ?? ""
+        destination.salePrice = formatter.string(from: source.salePrice ?? 0) ?? "0.00"
+        destination.normalPrice = formatter.string(from: source.normalPrice ?? 0) ?? "0.00"
         destination.isOnSale = source.isOnSale ?? ""
         destination.savings = source.savings ?? ""
-        destination.metacriticScore = source.metacriticScore ?? ""
+        destination.metacriticScore = Int(truncatingIfNeeded: source.metacriticScore)
         destination.steamRatingText = source.steamRatingText
-        destination.steamRatingPercent = source.steamRatingPercent
+        destination.steamRatingPercent = Int(truncatingIfNeeded: source.steamRatingPercent)
         destination.steamRatingCount = source.steamRatingCount
-        destination.steamAppID = source.steamAppId ?? ""
+        destination.steamAppID = Int(truncatingIfNeeded: source.steamAppId)
         destination.releaseDate = dateService.parse(Int(truncatingIfNeeded: source.releaseDate))
         destination.lastChange = dateService.parse(Int(truncatingIfNeeded: source.lastChange))
-        destination.dealRating = source.dealRating ?? ""
+        destination.dealRating = String(source.dealRating)
         destination.thumb = source.thumb
         return destination
     }
@@ -44,20 +47,20 @@ class DealMOMapper: Mapper<DealMO, Deal> {
         destination.title = source.title
         destination.metacriticLink = source.metacriticLink
         destination.dealId = source.dealID
-        destination.storeId = source.storeID
+        destination.storeId = Int64(source.storeID)
         destination.gameId = source.gameID
-        destination.salePrice = source.salePrice
-        destination.normalPrice = source.normalPrice
+        destination.salePrice = NSDecimalNumber(string: source.salePrice)
+        destination.normalPrice = NSDecimalNumber(string: source.normalPrice)
         destination.isOnSale = source.isOnSale
         destination.savings = source.savings
-        destination.metacriticScore = source.metacriticScore
+        destination.metacriticScore = Int64(source.metacriticScore)
         destination.steamRatingText = source.steamRatingText
-        destination.steamRatingPercent = source.steamRatingPercent
+        destination.steamRatingPercent = Int64(source.steamRatingPercent ?? 0)
         destination.steamRatingCount = source.steamRatingCount
-        destination.steamAppId = source.steamAppID
+        destination.steamAppId = Int64(source.steamAppID ?? 0)
         destination.releaseDate = Int64(dateService.toEpoch(source.releaseDate))
         destination.lastChange = Int64(dateService.toEpoch(source.lastChange))
-        destination.dealRating = source.dealRating
+        destination.dealRating = Double(source.dealRating) ?? 0
         destination.thumb = source.thumb
         return destination
     }

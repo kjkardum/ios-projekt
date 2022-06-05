@@ -9,7 +9,7 @@ import UIKit
 
 class ShopNOMapper: Mapper<ShopNO, Shop> {
     override func mapTo(source: ShopNO, destination: inout Shop) -> Shop {
-        destination.storeID = source.storeID
+        destination.storeID = Int(source.storeID) ?? 0
         destination.storeName = source.storeName
         destination.isActive = source.isActive
         destination.images = ShopImage(banner: convertUrlToData(source.images.banner),
@@ -19,7 +19,7 @@ class ShopNOMapper: Mapper<ShopNO, Shop> {
     }
     
     override func mapTo(source: Shop, destination: inout ShopNO) -> ShopNO {
-        destination.storeID = source.storeID
+        destination.storeID = String(source.storeID)
         destination.storeName = source.storeName
         destination.isActive = source.isActive
         destination.images = ShopImageNO(banner: "", logo: "", icon: "")
