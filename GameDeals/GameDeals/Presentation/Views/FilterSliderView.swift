@@ -51,14 +51,14 @@ class FilterSliderView<TKey>: UIView {
         addSubview(valueLabel)
         addSubview(sliderView)
         
-        valueLabel.textColor = UIColor(red: 0.57, green: 0.56, blue: 0.57, alpha: 1.00)
+        valueLabel.textColor = .white
         valueLabel.text = "Any rating"
         
         sliderView.minimumValue = 0
         sliderView.maximumValue = Float(upperLimit)
         sliderView.value = 0
         sliderView.isContinuous = true
-        sliderView.tintColor = UIColor(red: 0.24, green: 0.30, blue: 0.72, alpha: 1.00)
+        sliderView.tintColor = UIColor.filterViewAccent
         sliderView.addTarget(self, action: #selector(sliderValueDidChange(_:)), for: .valueChanged)
         
         backgroundColor = .clear

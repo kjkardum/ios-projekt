@@ -49,7 +49,7 @@ class FilterSelectionCell: UICollectionViewCell {
     
     
     private func addBorder() {
-        backgroundColor = UIColor(red: 0.24, green: 0.30, blue: 0.72, alpha: 1.00)
+        backgroundColor = UIColor.filterViewAccent
         button.invalidateIntrinsicContentSize()
         
     }

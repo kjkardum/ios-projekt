@@ -43,7 +43,7 @@ class FilterViewController: UIViewController {
     }
     
     private func buildViews() {
-        view.backgroundColor = UIColor(red: 0.17, green: 0.18, blue: 0.26, alpha: 1.00)
+        view.backgroundColor = UIColor.filterViewBackground
         
         filtersLabel.text = "Filters"
         filtersLabel.font = UIFont.boldSystemFont(ofSize: 19)

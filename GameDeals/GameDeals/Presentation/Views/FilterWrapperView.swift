@@ -82,7 +82,7 @@ class FilterWrapperView<TKey>: UIView {
         clipsToBounds = true
         layer.cornerRadius = 10
         layer.borderWidth = 2
-        layer.borderColor = UIColor(red: 0.32, green: 0.33, blue: 0.50, alpha: 1.00).cgColor
+        layer.borderColor = UIColor.filterViewBorder.cgColor
         backgroundColor = .clear
         
         addSubview(titleLabel)
@@ -90,7 +90,7 @@ class FilterWrapperView<TKey>: UIView {
         titleLabel.textColor = .white
         
         additionalSelectionView?.selectedSegmentIndex = 0
-        additionalSelectionView?.selectedSegmentTintColor = UIColor(red: 0.24, green: 0.30, blue: 0.72, alpha: 1.00)
+        additionalSelectionView?.selectedSegmentTintColor = UIColor.filterViewAccent
         additionalSelectionView?.setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
         additionalSelectionView?.tintColor = .white
         

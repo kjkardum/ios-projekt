@@ -12,12 +12,13 @@ import SnapKit
 
 class DealsView: UIView {
     private let cellIdentifier = "cellId"
-    private let collectionView : UICollectionView = {
+    private let collectionView: UICollectionView = {
         let flowlayout = UICollectionViewFlowLayout()
         flowlayout.scrollDirection = .horizontal
         return UICollectionView(frame: CGRect.zero, collectionViewLayout: flowlayout)
     }()
-    var dealsData : [Deal] = []
+    var dealsData: [Deal] = []
+    var shops: [Int: Shop] = [:]
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -55,11 +56,12 @@ class DealsView: UIView {
         }
     }
     
-    func loadData(dealsData: [Deal]) {
+    func loadData(dealsData: [Deal], shops: [Shop]) {
         self.dealsData = dealsData
-        if self.dealsData.count > 0 {
-            collectionView.setContentOffset(.zero, animated: true)
+        shops.forEach { shop in
+            self.shops[shop.storeID] = shop
         }
+
         collectionView.reloadData()
     }
 }
@@ -78,7 +80,7 @@ extension DealsView: UICollectionViewDataSource {
                 withReuseIdentifier: cellIdentifier,
                 for: indexPath) as! DealCell
         
-        cell.setup(dealData: dealsData[indexPath.row])
+        cell.setup(dealData: dealsData[indexPath.row], shopData: shops[dealsData[indexPath.row].storeID])
         cell.scrollViewDelegate = self
             
         return cell

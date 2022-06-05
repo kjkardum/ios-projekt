@@ -34,7 +34,7 @@ class ActionButtonsForFiltersView: UIView {
         addSubview(clearFiltersButton)
         clearFiltersButton.setTitle("Clear All", for: .normal)
         clearFiltersButton.setTitleColor(.black, for: .normal)
-        clearFiltersButton.backgroundColor = UIColor(red: 0.95, green: 0.94, blue: 0.95, alpha: 1.00)
+        clearFiltersButton.backgroundColor = UIColor.clearFiltersButtonColor
         clearFiltersButton.clipsToBounds = false
         clearFiltersButton.layer.cornerRadius = 25
         clearFiltersButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
@@ -48,7 +48,7 @@ class ActionButtonsForFiltersView: UIView {
         addSubview(applyFiltersButton)
         applyFiltersButton.setTitle("Apply Filters", for: .normal)
         applyFiltersButton.setTitleColor(.white, for: .normal)
-        applyFiltersButton.backgroundColor = UIColor(red: 0.24, green: 0.30, blue: 0.72, alpha: 1.00)
+        applyFiltersButton.backgroundColor = UIColor.filterViewAccent
         applyFiltersButton.clipsToBounds = false
         applyFiltersButton.layer.cornerRadius = 25
         applyFiltersButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)

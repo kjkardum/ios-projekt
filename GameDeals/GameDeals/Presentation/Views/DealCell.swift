@@ -120,6 +120,15 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         }
         
         let translation = gesture.translation(in: dealCellView)
+    
+        
+        
+        if gesture.state == .ended || gesture.state == .cancelled || gesture.state == .possible {
+            UIView.animate(withDuration: 0.3) {
+                self.dealCellView.frame.origin = self.pointOrigin!
+                self.scrollViewDelegate?.setScrollViewEnabled(true)
+            }
+        }
         
         guard translation.y >= 0 else { return }
         
@@ -141,16 +150,11 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         }
         
 
-        if gesture.state == .ended || gesture.state == .cancelled {
-            UIView.animate(withDuration: 0.3) {
-                self.dealCellView.frame.origin = self.pointOrigin!
-                self.scrollViewDelegate?.setScrollViewEnabled(true)
-            }
-        }
+        
     }
     
     
-    func setup(dealData: Deal) {
+    func setup(dealData: Deal, shopData: Shop?) {
         
         if let thumb = dealData.thumb {
             self.thumbnailImageView.image = UIImage(data: thumb)
@@ -196,6 +200,8 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if abs(gesture.velocity(in: dealCellView).y) > abs(gesture.velocity(in: dealCellView).x) {
             scrollViewDelegate?.setScrollViewEnabled(false)
+        } else {
+            scrollViewDelegate?.setScrollViewEnabled(true)
         }
         return abs(gesture.velocity(in: dealCellView).y) > abs(gesture.velocity(in: dealCellView).x)
     }

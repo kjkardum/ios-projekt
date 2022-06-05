@@ -17,6 +17,7 @@ class DealsViewController: UIViewController {
     private let button = UIButton()
     private var dealsRepository: DealsRepository
     private var shopsRepository: ShopsRepository
+    private var shops: [Shop] = []
     
     private var listOfParameters = ListOfDealsParameters(sortBy: .recent)
 
@@ -33,7 +34,7 @@ class DealsViewController: UIViewController {
         filterModal.filterDelegate = self
         buildViews()
         setLayout()
-        loadData()
+        getShopsAndDealData()
     }
     
     private func buildViews() {
@@ -74,8 +75,19 @@ class DealsViewController: UIViewController {
         button.snp.makeConstraints {make in
             make.top.leading.trailing.bottom.equalToSuperview()
         }
-        
-        
+    }
+    
+    
+    private func getShopsAndDealData() {
+        shopsRepository.getListOfShops { response in
+            switch(response) {
+            case.success(let data):
+                self.shops = data
+                self.loadData()
+            default:
+                return
+            }
+        }
     }
     
     private func loadData() {
@@ -83,7 +95,7 @@ class DealsViewController: UIViewController {
             switch (response) {
             case .success(let data):
                 DispatchQueue.main.sync {
-                    self.dealsView.loadData(dealsData: data)
+                    self.dealsView.loadData(dealsData: data, shops: self.shops)
                 }
             default:
                 return
