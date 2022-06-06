@@ -24,38 +24,48 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
+        setTabs()
+    }
+    
+    func setTabs() {
+            tabBar.backgroundColor = .clear
+            tabBar.tintColor = UIColor.toolbarIconColor
+            
+            dealsViewController.tabBarItem = UITabBarItem(title: nil,
+                                                          image: UIImage(systemSymbol: .house)
+                                                                .withTintColor(UIColor.toolbarIconColor,renderingMode: .alwaysOriginal),
+                                                          selectedImage: UIImage(systemSymbol: .houseFill)
+                                                                .withTintColor(UIColor.toolbarIconColor, renderingMode: .alwaysOriginal))
+            
+            
+            searchViewController.tabBarItem = UITabBarItem(title: nil,
+                                                           image: UIImage(systemSymbol: .magnifyingglassCircle)
+                                                                .withTintColor(UIColor.toolbarIconColor, renderingMode: .alwaysOriginal),
+                                                           selectedImage: UIImage(systemSymbol: .magnifyingglassCircleFill)
+                                                                .withTintColor(UIColor.toolbarIconColor, renderingMode: .alwaysOriginal))
+            
+            self.viewControllers = [dealsViewController, searchViewController]
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tabBar.backgroundColor = .clear
-        tabBar.tintColor = UIColor.toolbarIconColor
-        
-        let homeNavigationViewController = UINavigationController(rootViewController: dealsViewController)
-                
-        let tabOne = UITabBarItem(
-            title: nil, image: UIImage(systemSymbol: .house)
-                .withTintColor(UIColor.toolbarIconColor, renderingMode: .alwaysOriginal),
-            
-            selectedImage: UIImage(systemSymbol: .houseFill)
-                .withTintColor(UIColor.toolbarIconColor, renderingMode: .alwaysOriginal))
-        
-        
-        
-        homeNavigationViewController.tabBarItem = tabOne
-        
-        let searchNavigationViewController = UINavigationController(rootViewController: searchViewController)
-        let tabTwo = UITabBarItem(
-            title: nil, image: UIImage(systemSymbol: .magnifyingglass)
-                .withTintColor(UIColor.toolbarIconColor, renderingMode: .alwaysOriginal),
-            
-            selectedImage: UIImage(systemSymbol: .sparkleMagnifyingglass)
-                .withTintColor(UIColor.toolbarIconColor, renderingMode: .alwaysOriginal))
-        
-        
-        searchNavigationViewController.tabBarItem = tabTwo
-        
-        self.viewControllers = [homeNavigationViewController, searchNavigationViewController]
+        let titleImage =  UIImageView(image: UIImage(named: "NavbarIcon"))
+        titleImage.contentMode = .scaleAspectFit
+        navigationItem.titleView = titleImage
+        if let selectedViewController = selectedViewController {
+            changeNav(selectedViewController)
+        }
+    }
+    
+    func changeNav(_ selectedController: UIViewController) {
+        if let dealsController = selectedController as? DealsViewController {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemSymbol: .ellipsisCircle).withTintColor(.white),
+                                                                style: .plain,
+                                                                target: dealsController,
+                                                                action: #selector(dealsController.click))
+        } else {
+            navigationItem.rightBarButtonItem = nil
+        }
     }
 }
 
@@ -68,5 +78,9 @@ extension TabBarViewController: UITabBarControllerDelegate {
         }
         
         return true
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        changeNav(viewController)
     }
 }

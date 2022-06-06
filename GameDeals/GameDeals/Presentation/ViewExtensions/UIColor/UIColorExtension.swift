@@ -2,15 +2,15 @@ import Foundation
 import UIKit
 
 extension UIColor {
-    static let themeLightGray = UIColor.init(.gray) ?? .red
-    static let themeBlue = UIColor.init(.gray) ?? .red
-    static let themeBlueTransparrent = UIColor.init(.gray) ?? .red
     
     convenience init?(hex: String) {
         let r, g, b, a: CGFloat
         if hex.hasPrefix("#") {
             let start = hex.index(hex.startIndex, offsetBy: 1)
-            let hexColor = String(hex[start...])
+            var hexColor = String(hex[start...])
+            if hexColor.count == 6 {
+                hexColor = hexColor + "ff"
+            }
             if hexColor.count == 8 {
                 let scanner = Scanner(string: hexColor)
                 var hexNumber: UInt64 = 0

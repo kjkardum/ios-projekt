@@ -26,5 +26,9 @@ extension UIColor {
     static let filterViewAccent = UIColor(red: 0.24, green: 0.30, blue: 0.72, alpha: 1.00)
     static let clearFiltersButtonColor = UIColor(red: 0.95, green: 0.94, blue: 0.95, alpha: 1.00)
     
+<<<<<<< HEAD:GameDeals/GameDeals/Extensions/UIColor/ThemeExtension.swift
     static let recommendedBackgroundColor = UIColor(red: 0.43, green: 0.47, blue: 0.96, alpha: 0.3)
+=======
+    static let navbarBackgroundColor = UIColor(hex: "#171c2b")
+>>>>>>> master:GameDeals/GameDeals/Presentation/ViewExtensions/UIColor/ThemeExtension.swift
 }

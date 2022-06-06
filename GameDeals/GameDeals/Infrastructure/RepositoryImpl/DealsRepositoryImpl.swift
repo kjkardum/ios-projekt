@@ -61,4 +61,20 @@ class DealsRepositoryImpl: DealsRepository {
             }
         })
     }
+    
+    func likeDeal(dealId: String, like: Bool, completionHandler: @escaping resultHandler<Bool>) {
+        dbDataSource.likeDeal(dealId: dealId, like: like, completionHandler: completionHandler)
+    }
+    
+    func getLikedDeals(completionHandler: @escaping resultHandler<[Deal]>) {
+        dbDataSource.getLikedDeals(completionHandler: { result in
+            switch(result) {
+            case .success(let data):
+                completionHandler(.success(data.map{ self.dbDealMapper.map($0) }))
+            case .failure(let error):
+                completionHandler(.failure(error))
+            }
+        })
+    }
+    
 }

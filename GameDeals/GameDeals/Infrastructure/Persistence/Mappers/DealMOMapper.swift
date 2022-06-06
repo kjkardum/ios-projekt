@@ -39,6 +39,7 @@ class DealMOMapper: Mapper<DealMO, Deal> {
         destination.lastChange = dateService.parse(Int(truncatingIfNeeded: source.lastChange))
         destination.dealRating = String(source.dealRating)
         destination.thumb = source.thumb
+        destination.liked = source.liked
         return destination
     }
     
@@ -62,6 +63,7 @@ class DealMOMapper: Mapper<DealMO, Deal> {
         destination.lastChange = Int64(dateService.toEpoch(source.lastChange))
         destination.dealRating = Double(source.dealRating) ?? 0
         destination.thumb = source.thumb
+        destination.liked = source.liked
         return destination
     }
     

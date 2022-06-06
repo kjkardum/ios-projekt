@@ -86,7 +86,9 @@ class DbDealDSImpl: DbDealDS {
                 }
                 
                 deletedDeals.forEach{ deal in
-                    self.context.delete(deal)
+                    if !deal.liked {
+                        self.context.delete(deal)
+                    }
                 }
                 
                 addedDeals.forEach{ deal in
@@ -100,5 +102,24 @@ class DbDealDSImpl: DbDealDS {
         })
     }
     
+    func likeDeal(dealId: String, like: Bool, completionHandler: @escaping resultHandler<Bool>) {
+        let request = DealMO.fetchRequest()
+        request.predicate = NSPredicate(format: "dealId == %@", dealId)
+        let deals = (try? context.fetch(request)) ?? []
+        if let first = deals.first {
+            first.liked = like
+            try? context.save()
+            completionHandler(.success(like))
+        } else {
+            completionHandler(.failure(.clientError))
+        }
+    }
+    
+    func getLikedDeals(completionHandler: @escaping resultHandler<[DealMO]>) {
+        let request = DealMO.fetchRequest()
+        request.predicate = NSPredicate(format: "liked == YES")
+        let deals = (try? context.fetch(request)) ?? []
+        completionHandler(.success(deals))
+    }
     
 }

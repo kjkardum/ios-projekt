@@ -14,7 +14,8 @@ class DealsViewController: UIViewController {
     private let filterModal: FilterViewController
     private let dealsView = DealsView()
     private let filterView = UIView()
-    private let filterShowButton = UIButton()
+    private let statusBarColorView = UIView()
+    //private let filterShowButton = UIButton()
     private var dealsRepository: DealsRepository
     private var shopsRepository: ShopsRepository
     private var shops: [Shop] = []
@@ -42,29 +43,25 @@ class DealsViewController: UIViewController {
         view.addSubview(dealsView)
         view.addSubview(filterView)
         
-        view.addSubview(filterShowButton)
-        filterShowButton.addTarget(self, action: #selector(click), for: .touchUpInside)
+        //view.addSubview(filterShowButton)
+        view.addSubview(statusBarColorView)
+        /*filterShowButton.addTarget(self, action: #selector(click), for: .touchUpInside)
         filterShowButton.clipsToBounds = true
         filterShowButton.layer.cornerRadius = 10
         filterShowButton.backgroundColor = .backgroundColorAccent
         filterShowButton.setImage(.line3Horizontal, for: .normal)
-        filterShowButton.tintColor = .white
+        filterShowButton.tintColor = .white*/
         
-        
+        statusBarColorView.backgroundColor = .navbarBackgroundColor
         
         filterView.backgroundColor = .clear
-        
-//        self.navigationController?.isNavigationBarHidden = true
-        
-        // MARK: PROBLEM NAVIGATION VIEW CONTROLLERA
-        
-        let test = UIView()
-        test.backgroundColor = .white
-        test.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        navigationController?.navigationBar.topItem?.titleView = test
     }
     
     private func setLayout() {
+        statusBarColorView.snp.makeConstraints{ make in
+            make.top.left.right.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
+        }
         filterView.snp.makeConstraints {make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
@@ -79,11 +76,11 @@ class DealsViewController: UIViewController {
             make.bottom.equalToSuperview()
         }
         
-        filterShowButton.snp.makeConstraints {make in
+        /*filterShowButton.snp.makeConstraints {make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             make.centerX.equalToSuperview()
             make.width.height.equalTo(60)
-        }
+        }*/
     }
     
     
@@ -116,7 +113,7 @@ class DealsViewController: UIViewController {
         dealsView.resetCollectionViewPosition()
     }
     
-    @objc private func click() {
+    @objc func click() {
         filterModal.modalPresentationStyle = .formSheet
         present(filterModal, animated: true, completion: nil)
     }
