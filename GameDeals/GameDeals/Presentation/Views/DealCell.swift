@@ -35,7 +35,10 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     var likeState = false
     var gestureIsEnabled = false
     
+    var dealId: String?
+    
     weak var scrollViewDelegate: ScrollableCollectionViewDelegate?
+    weak var likeDealDelegate: LikeDealDeleage?
     
     
     override init(frame: CGRect) {
@@ -206,6 +209,7 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     
     
     func setup(dealData: Deal, shopData: Shop?) {
+        self.dealId = dealData.dealID
         
         if let thumb = dealData.thumb {
             self.thumbnailImageView.image = UIImage(data: thumb)
@@ -230,6 +234,8 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
             }
         }
         
+        likeState = dealData.liked
+        
         if likeState {
             self.heartIconView.image = UIImage(systemSymbol: .heartFill)
         } else {
@@ -245,9 +251,16 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
             if self.likeState {
                 self.likeState = false
                 self.heartIconView.image = UIImage(systemSymbol: .heart)
+                if let dealId = dealId {
+                    likeDealDelegate?.likeDeal(dealId: dealId, like: false)
+                }
+                
             } else {
                 self.likeState = true
                 self.heartIconView.image = UIImage(systemSymbol: .heartFill)
+                if let dealId = dealId {
+                    likeDealDelegate?.likeDeal(dealId: dealId, like: true)
+                }
             }
             
             

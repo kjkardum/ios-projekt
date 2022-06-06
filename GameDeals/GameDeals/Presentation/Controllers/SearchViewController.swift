@@ -59,6 +59,9 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
         super.viewDidLoad()
         buildViews()
         setLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         loadData()
     }
     
@@ -116,10 +119,10 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
     
 
     private func loadData() {
-        dealsRepository.getListOfDeals(parameters: ListOfDealsParameters(upperPrice: 45)) {response in
+        dealsRepository.getLikedDeals() {response in
             switch (response) {
             case .success(let data):
-                DispatchQueue.main.sync {
+                DispatchQueue.main.async {
                     self.recommended.loadData(dealsData: data)
                     self.searchV.loadData(dealsData: data)
                 }

@@ -33,6 +33,7 @@ class DealsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         filterModal.filterDelegate = self
+        dealsView.likeDealDeleage = self
         buildViews()
         setLayout()
         getShopsAndDealData()
@@ -112,6 +113,7 @@ class DealsViewController: UIViewController {
     func tabBarClickedHome() {
         dealsView.resetCollectionViewPosition()
     }
+
     
     @objc func click() {
         filterModal.modalPresentationStyle = .formSheet
@@ -125,5 +127,12 @@ extension DealsViewController: FilterDelegate {
         print(listOfDealsParameters)
         self.listOfParameters = listOfDealsParameters
         loadData()
+    }
+}
+
+extension DealsViewController: LikeDealDeleage {
+    func likeDeal(dealId: String, like: Bool) {
+        dealsRepository.likeDeal(dealId: dealId, like: like) { result in
+        }
     }
 }

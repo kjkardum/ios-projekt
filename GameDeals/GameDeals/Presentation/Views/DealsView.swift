@@ -19,6 +19,7 @@ class DealsView: UIView {
     }()
     var dealsData: [Deal] = []
     var shops: [Int: Shop] = [:]
+    weak var likeDealDeleage: LikeDealDeleage?
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -84,6 +85,7 @@ extension DealsView: UICollectionViewDataSource {
         
         cell.setup(dealData: dealsData[indexPath.row], shopData: shops[dealsData[indexPath.row].storeID])
         cell.scrollViewDelegate = self
+        cell.likeDealDelegate = self
             
         return cell
     }
@@ -103,5 +105,12 @@ extension DealsView: UICollectionViewDelegateFlowLayout {
 extension DealsView: ScrollableCollectionViewDelegate {
     func setScrollViewEnabled(_ enabled: Bool) {
         collectionView.isScrollEnabled = enabled
+    }
+}
+
+
+extension DealsView: LikeDealDeleage {
+    func likeDeal(dealId: String, like: Bool) {
+        likeDealDeleage?.likeDeal(dealId: dealId, like: like)
     }
 }

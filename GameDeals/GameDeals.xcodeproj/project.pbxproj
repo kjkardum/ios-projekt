@@ -13,6 +13,7 @@
 		528F62AA284C1E0500D41EA2 /* ThemeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F62A9284C1E0500D41EA2 /* ThemeExtension.swift */; };
 		528F62AC284D4DEA00D41EA2 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F62AB284D4DEA00D41EA2 /* AppRouter.swift */; };
 		528F62B1284D508700D41EA2 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F62B0284D508700D41EA2 /* UINavigationControllerExtension.swift */; };
+		528F62B3284EC19200D41EA2 /* LikeDealDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F62B2284EC19200D41EA2 /* LikeDealDelegate.swift */; };
 		52B35E632846B1DA00104431 /* DealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E622846B1DA00104431 /* DealsViewController.swift */; };
 		52B35E672846B1EA00104431 /* DealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E642846B1EA00104431 /* DealCell.swift */; };
 		52B35E682846B1EA00104431 /* DealCellToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E652846B1EA00104431 /* DealCellToolbarView.swift */; };
@@ -121,6 +122,7 @@
 		528F62A9284C1E0500D41EA2 /* ThemeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeExtension.swift; sourceTree = "<group>"; };
 		528F62AB284D4DEA00D41EA2 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		528F62B0284D508700D41EA2 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
+		528F62B2284EC19200D41EA2 /* LikeDealDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeDealDelegate.swift; sourceTree = "<group>"; };
 		52B35E622846B1DA00104431 /* DealsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsViewController.swift; sourceTree = "<group>"; };
 		52B35E642846B1EA00104431 /* DealCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealCell.swift; sourceTree = "<group>"; };
 		52B35E652846B1EA00104431 /* DealCellToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealCellToolbarView.swift; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 				52B35E77284A45EC00104431 /* FilterWrapperView.swift */,
 				52B35E7D284AEABF00104431 /* FilterActionButtonsDelegate.swift */,
 				528F62A3284BACE300D41EA2 /* FilterDelegate.swift */,
+				528F62B2284EC19200D41EA2 /* LikeDealDelegate.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -829,6 +832,7 @@
 				715245242847D359004E7246 /* GameInfo.swift in Sources */,
 				715245222847D222004E7246 /* GamesRepositoryImpl.swift in Sources */,
 				712D9C2C2846A7CF0012649B /* DealNOMapper.swift in Sources */,
+				528F62B3284EC19200D41EA2 /* LikeDealDelegate.swift in Sources */,
 				7152452D2847DBCB004E7246 /* GameDealsModel.xcdatamodeld in Sources */,
 				7152451A2847CE7B004E7246 /* GamesRepository.swift in Sources */,
 				52B35E7E284AEABF00104431 /* FilterActionButtonsDelegate.swift in Sources */,
