@@ -63,11 +63,11 @@ class DealCellToolbarView: UIView {
         ratingStackView.addArrangedSubview(ratingPercentageLabel)
         
         priceLabel.text = "Price"
-        priceLabel.textColor = UIColor.subtextColor
+        priceLabel.textColor = .subtextColorToolbar
         priceLabel.font = UIFont.boldSystemFont(ofSize: 16)
         
         ratingLabel.text = "Steam Rating"
-        ratingLabel.textColor = UIColor.subtextColor
+        ratingLabel.textColor = .subtextColorToolbar
         ratingLabel.font = UIFont.boldSystemFont(ofSize: 16)
         
         currentPriceLabel.textColor = .white

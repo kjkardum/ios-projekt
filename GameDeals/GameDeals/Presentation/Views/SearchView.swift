@@ -43,11 +43,12 @@ class SearchView: UIView {
     
     private func buildViews() {
         addSubview(collectionView)
-        backgroundColor = .white
+        backgroundColor = .clear
         collectionView.register(SearchCell.self, forCellWithReuseIdentifier: cellIdentifier2)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.automaticallyAdjustsScrollIndicatorInsets = false
+        collectionView.backgroundColor = .clear
     }
     
     

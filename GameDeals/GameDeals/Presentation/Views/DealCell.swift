@@ -102,11 +102,8 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         shopTitleAndChangeStackView.distribution = .fillEqually
         shopTitleAndChangeStackView.alignment = .leading
         
-        dealLastChanged.textColor = .white
+        dealLastChanged.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.8)
         dealLastChanged.font = UIFont.systemFont(ofSize: 14)
-        
-        shopLabel.textColor = .white
-        shopLabel.text = "Shop: "
         
         shopImageView.clipsToBounds = true
         shopImageView.layer.cornerRadius = 10
@@ -120,6 +117,8 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         
         likeView.clipsToBounds = true
         likeView.layer.cornerRadius = dealCellView.layer.cornerRadius
+        
+        heartIconView.tintColor = .heartColor
         
         backgroundColor = .clear
     }
@@ -164,21 +163,6 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
             make.trailing.equalToSuperview().inset(30)
             make.bottom.equalTo(toolbarView.snp.top).inset(30)
         }
-        
-//        titleLabel.snp.makeConstraints { make in
-//            make.top.equalTo(thumbnailImageView.snp.bottom).offset(20)
-//            make.leading.equalToSuperview().offset(30)
-//            make.trailing.equalToSuperview().inset(30)
-//        }
-//
-//        releaseDateLabel.snp.makeConstraints {make in
-//            make.top.equalTo(titleLabel.snp.bottom).offset(10)
-//            make.leading.equalToSuperview().offset(30)
-//
-//        }
-        
-        
-
     }
     
     @objc func handleGesture(_ gesture: UIPanGestureRecognizer) {

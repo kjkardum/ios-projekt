@@ -54,9 +54,9 @@ class SearchCell: UICollectionViewCell {
         
         searchCellView.clipsToBounds = true
         searchCellView.layer.cornerRadius = 5
-        searchCellView.backgroundColor = .lightGray
+        searchCellView.backgroundColor = .clear
         
-        backgroundColor = .white
+        backgroundColor = .filterViewBackground
     }
     
     private func setLayout() {

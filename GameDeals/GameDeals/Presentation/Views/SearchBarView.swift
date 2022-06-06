@@ -17,21 +17,24 @@ class SearchBarView: UIView, UITextFieldDelegate {
         setViewLayout()
     }
     
+    
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
     
     func buildView() {
         searchBox = UITextField()
         searchBox.attributedPlaceholder = NSAttributedString(
             string: "Search",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
         )
-        searchBox.backgroundColor = .themeLightGray
+        searchBox.backgroundColor = UIColor(red: 0.43, green: 0.47, blue: 0.96, alpha: 0.1)
         searchBox.layer.cornerRadius = 10
         searchBox.delegate = self
-        searchBox.textColor = .darkGray
+        searchBox.textColor = .white
+        searchBox.layer.borderColor = UIColor.recommendedBackgroundColor.cgColor
+        searchBox.layer.borderWidth = 1
         
         searchIcon = UIImageView(image: UIImage(systemSymbol: .magnifyingglass))
-        searchIcon.tintColor = .black
+        searchIcon.tintColor = .white
         let searchIconWrapper = UIView()
         searchIconWrapper.addSubview(searchIcon)
         
@@ -41,7 +44,7 @@ class SearchBarView: UIView, UITextFieldDelegate {
         clearButton = UIButton.createIconButton(
             icon: .xmark,
             backgroundColor: UIColor(white: 1, alpha: 0),
-            color: .black,
+            color: .white,
             iconSize: 10,
             target: self,
             action: #selector(clearSearchBox))
@@ -55,7 +58,7 @@ class SearchBarView: UIView, UITextFieldDelegate {
         
         cancelButton = UIButton()
         cancelButton.addTarget(self, action: #selector(cancelSearchBox), for: .touchUpInside)
-        cancelButton.setTitleColor(.black, for: .normal)
+        cancelButton.setTitleColor(.white, for: .normal)
         cancelButton.setTitle("Cancel", for: .normal)
 //        cancelButton.titleLabel?.font = (fontStyle: .subheadline)
         addSubview(searchBox)
@@ -65,8 +68,7 @@ class SearchBarView: UIView, UITextFieldDelegate {
     
     func setViewLayout() {
         searchBox.snp.makeConstraints{ make in
-            make.left.top.bottom.equalToSuperview()
-            make.right.equalToSuperview().inset(0)
+            make.leading.trailing.top.bottom.equalToSuperview()
             make.height.equalTo(40)
         }
         cancelButton.isHidden = true
@@ -88,7 +90,7 @@ class SearchBarView: UIView, UITextFieldDelegate {
             UIView.animate(withDuration: animationSpeed) { [weak self] in
                 guard let self = self else { return }
                 self.searchBox.snp.updateConstraints{ make in
-                    make.right.equalToSuperview().inset(self.cancelButton.frame.width + 20)
+                    make.trailing.equalToSuperview().inset(self.cancelButton.frame.width + 20)
                 }
                 self.layoutIfNeeded()
             }
@@ -99,7 +101,7 @@ class SearchBarView: UIView, UITextFieldDelegate {
             UIView.animate(withDuration: animationSpeed) { [weak self] in
                 guard let self = self else { return }
                 self.searchBox.snp.updateConstraints{ make in
-                    make.right.equalToSuperview().inset(0)
+                    make.trailing.equalToSuperview()
                 }
                 self.layoutIfNeeded()
             }

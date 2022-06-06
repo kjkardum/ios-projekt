@@ -36,11 +36,13 @@ class RecommendedView: UIView {
     
     private func buildViews() {
         addSubview(collectionView)
-        backgroundColor = .white
+        backgroundColor = .clear
         collectionView.register(RecommendedCell.self, forCellWithReuseIdentifier: cellIdentifier2)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.automaticallyAdjustsScrollIndicatorInsets = false
+        collectionView.backgroundColor = .clear
+        
     }
     
     
@@ -80,11 +82,11 @@ extension RecommendedView: UICollectionViewDataSource {
 
 extension RecommendedView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.size.width, height: 80)
+        return CGSize(width: frame.size.width, height: 100)
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 2
+        return 15
     }
 }

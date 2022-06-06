@@ -15,7 +15,7 @@ class RecommendedCell: UICollectionViewCell {
     let img = UIImageView()
     let titleLabel = UILabel()
     let priceLabel = UILabel()
-    let pom = UIView()
+    let titleStackView = UIStackView()
     let button = UIButton()
     
     override init(frame: CGRect) {
@@ -29,64 +29,68 @@ class RecommendedCell: UICollectionViewCell {
     }
     
     private func buildViews() {
+        backgroundColor = .clear
         addSubview(recommendedCellView)
         
         recommendedCellView.addSubview(img)
-        pom.addSubview(titleLabel)
-        pom.addSubview(priceLabel)
-        recommendedCellView.addSubview(pom)
+
+        recommendedCellView.addSubview(titleStackView)
         
         recommendedCellView.addSubview(button)
         
-        img.contentMode = .scaleAspectFit
+        titleStackView.addArrangedSubview(titleLabel)
+        titleStackView.addArrangedSubview(priceLabel)
+        titleStackView.addArrangedSubview(UIView())
+        titleStackView.axis = .vertical
+        titleStackView.distribution = .fill
+        titleStackView.alignment = .leading
+        titleStackView.spacing = 5
+        
+        img.contentMode = .scaleToFill
+        img.clipsToBounds = true
+        img.layer.cornerRadius = 10
+        img.layer.borderWidth = 1
+        img.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7).cgColor
         
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         titleLabel.textColor = .white
-        titleLabel.lineBreakMode = .byWordWrapping
-        titleLabel.numberOfLines = 0
+        titleLabel.numberOfLines = 2
         
-        priceLabel.font = UIFont.boldSystemFont(ofSize: 18)
-        priceLabel.textColor = .black
+        priceLabel.font = UIFont.systemFont(ofSize: 16)
+        priceLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7)
         priceLabel.lineBreakMode = .byWordWrapping
         priceLabel.numberOfLines = 0
         
-        button.setTitle( "like", for: .normal)
-        
-        button.setTitleColor(.white, for: .normal)
+//        button.setTitle( "like", for: .normal)
+        button.setImage(.heart, for: .normal)
+        button.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7)
 
         
         
         recommendedCellView.clipsToBounds = true
-        recommendedCellView.layer.cornerRadius = 5
-        recommendedCellView.backgroundColor = .lightGray
+        recommendedCellView.layer.cornerRadius = 15
+//        recommendedCellView.layer.borderColor = UIColor.filterViewBorder.cgColor
+        recommendedCellView.backgroundColor = .recommendedBackgroundColor
+//        recommendedCellView.layer.borderWidth = 2
         
-        backgroundColor = .white
+        backgroundColor = .clear
     }
     
     private func setLayout() {
         recommendedCellView.snp.makeConstraints {make in
             make.top.bottom.equalToSuperview()
-            make.trailing.equalToSuperview().offset(-10)
+            make.trailing.equalToSuperview().inset(10)
             make.leading.equalToSuperview().offset(10)
         }
         
         img.snp.makeConstraints {make in
-            make.top.leading.bottom.equalToSuperview()
-            make.trailing.equalTo(super.snp.leading).offset(40)
-            
-        }
-        titleLabel.snp.makeConstraints {make in
-            make.leading.top.trailing.equalToSuperview()
-            make.bottom.equalTo(super.snp.centerY)
-        }
-        priceLabel.snp.makeConstraints {make in
-            make.leading.bottom.trailing.equalToSuperview()
-            make.top.equalTo(super.snp.centerY)
+            make.top.leading.bottom.equalToSuperview().inset(15)
+            make.width.equalTo(87)
         }
         
-        pom.snp.makeConstraints { make in
-            make.leading.equalTo(img.snp.trailing).offset(10)
-            make.bottom.top.equalToSuperview()
+        titleStackView.snp.makeConstraints { make in
+            make.leading.equalTo(img.snp.trailing).offset(15)
+            make.bottom.top.equalToSuperview().inset(15)
             make.trailing.equalTo(button.snp.leading).offset(-10)
             
         }
@@ -125,7 +129,7 @@ class RecommendedCell: UICollectionViewCell {
         
         if let thumb = dealData.thumb {
             self.img.image = UIImage(data: thumb)
-            self.setImageConstraint()
+//            self.setImageConstraint()
         }
         
         self.titleLabel.text = dealData.title

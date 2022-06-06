@@ -30,13 +30,12 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
         recommended.isHidden = false
         label.snp.makeConstraints {make in
             make.top.equalTo(search.snp.bottom).offset(15)
-        make.bottom.equalTo(search.snp.bottom).offset(30)
+            make.bottom.equalTo(search.snp.bottom).offset(30)
+        }
         
-    }
         recommended.snp.makeConstraints {make in
-        make.top.equalTo(label.snp.bottom).offset(15)
-        
-    }
+            make.top.equalTo(label.snp.bottom).offset(15)
+        }
     }
     
 //    func onSearchBoxChange(input: String) {
@@ -64,9 +63,10 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
     
     private func buildViews() {
         
-        view.backgroundColor = .white
+        view.backgroundColor = .filterViewBackground
         view.addSubview(label)
         label.text = "Games"
+        label.textColor = .white
         
         search.delegate = self
         view.addSubview(search)
@@ -79,33 +79,31 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
     
     private func setLayout() {
         search.snp.makeConstraints {make in
-        make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-        make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(10)
-        make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(10)
-        make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top).offset(30)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(10)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(10)
+        }
         
-    }
         label.snp.makeConstraints {make in
             make.top.equalTo(search.snp.bottom).offset(15)
-        make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)
-        make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-        make.bottom.equalTo(search.snp.bottom).offset(30)
-        
-    }
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+            make.bottom.equalTo(search.snp.bottom).offset(30)
+        }
         searchV.snp.makeConstraints {make in
-        make.top.equalTo(search.snp.bottom).offset(15)
-        make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-        make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-        make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-    }
+            make.top.equalTo(search.snp.bottom).offset(15)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
         
         recommended.snp.makeConstraints {make in
-        make.top.equalTo(label.snp.bottom).offset(15)
-        make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-        make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-        make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            make.top.equalTo(label.snp.bottom).offset(15)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
 
-    }
+        }
 }
     
 
