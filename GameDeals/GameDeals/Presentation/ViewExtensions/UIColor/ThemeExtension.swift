@@ -20,4 +20,6 @@ extension UIColor {
     static let filterViewBorder = UIColor(red: 0.32, green: 0.33, blue: 0.50, alpha: 1.00)
     static let filterViewAccent = UIColor(red: 0.24, green: 0.30, blue: 0.72, alpha: 1.00)
     static let clearFiltersButtonColor = UIColor(red: 0.95, green: 0.94, blue: 0.95, alpha: 1.00)
+    
+    static let navbarBackgroundColor = UIColor(hex: "#171c2b")
 }

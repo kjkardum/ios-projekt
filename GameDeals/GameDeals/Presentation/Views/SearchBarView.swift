@@ -25,7 +25,7 @@ class SearchBarView: UIView, UITextFieldDelegate {
             string: "Search",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
         )
-        searchBox.backgroundColor = .themeLightGray
+        searchBox.backgroundColor = .gray
         searchBox.layer.cornerRadius = 10
         searchBox.delegate = self
         searchBox.textColor = .darkGray

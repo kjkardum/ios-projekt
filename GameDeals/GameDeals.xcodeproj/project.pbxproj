@@ -243,22 +243,6 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		528F62A7284C1DD500D41EA2 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				528F62A8284C1DEB00D41EA2 /* UIColor */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		528F62A8284C1DEB00D41EA2 /* UIColor */ = {
-			isa = PBXGroup;
-			children = (
-				528F62A9284C1E0500D41EA2 /* ThemeExtension.swift */,
-			);
-			path = UIColor;
-			sourceTree = "<group>";
-		};
 		528F62AF284D506C00D41EA2 /* UINavigationController */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,7 +319,6 @@
 		71C475952844C58A005EC1F1 /* GameDeals */ = {
 			isa = PBXGroup;
 			children = (
-				528F62A7284C1DD500D41EA2 /* Extensions */,
 				71C475B02844C78D005EC1F1 /* Common */,
 				71C475B12844C794005EC1F1 /* Domain */,
 				71C475B22844C799005EC1F1 /* Business */,
@@ -683,6 +666,7 @@
 		799CD7F92847F36E004ED6DF /* UIColor */ = {
 			isa = PBXGroup;
 			children = (
+				528F62A9284C1E0500D41EA2 /* ThemeExtension.swift */,
 				799CD7FA2847F3A0004ED6DF /* UIColorExtension.swift */,
 			);
 			path = UIColor;
