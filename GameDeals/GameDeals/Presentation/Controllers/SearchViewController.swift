@@ -47,6 +47,7 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
     private let recommended = RecommendedView()
     private let searchV = SearchView()
     private let label = UILabel()
+    private let statusBarColorView = UIView()
   
     init(dealsRepository: DealsRepository) {
         self.dealsRepository = dealsRepository
@@ -62,6 +63,8 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
     }
     
     private func buildViews() {
+        view.addSubview(statusBarColorView)
+        statusBarColorView.backgroundColor = .navbarBackgroundColor
         
         view.backgroundColor = .filterViewBackground
         view.addSubview(label)
@@ -78,8 +81,13 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
     }
     
     private func setLayout() {
+        statusBarColorView.snp.makeConstraints{ make in
+            make.top.left.right.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
+        }
+        
         search.snp.makeConstraints {make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(10)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(10)
         }
