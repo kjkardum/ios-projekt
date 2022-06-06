@@ -7,6 +7,7 @@
         <attribute name="internalName" attributeType="String"/>
         <attribute name="isOnSale" attributeType="String"/>
         <attribute name="lastChange" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="liked" optional="YES" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="metacriticLink" optional="YES" attributeType="String"/>
         <attribute name="metacriticScore" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="normalPrice" attributeType="Decimal" defaultValueString="0.0"/>
@@ -39,7 +40,7 @@
         <attribute name="storeName" attributeType="String"/>
     </entity>
     <elements>
-        <element name="DealMO" positionX="-63" positionY="-18" width="128" height="314"/>
+        <element name="DealMO" positionX="-63" positionY="-18" width="128" height="329"/>
         <element name="GameMO" positionX="-54" positionY="-9" width="128" height="134"/>
         <element name="ShopMO" positionX="-54" positionY="126" width="128" height="119"/>
     </elements>

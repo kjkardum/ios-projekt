@@ -27,4 +27,5 @@ struct Deal {
     public var lastChange: Date = Date()
     public var dealRating: String = ""
     public var thumb: Data? = nil
+    public var liked: Bool = false
 }
