@@ -90,7 +90,12 @@ class DealCellToolbarView: UIView {
         currentPriceLabel.text = "$"+currentPrice
         
         ratingLabel.text = "Deal Rating"
-        ratingPercentageLabel.text = dealRating+"/10"
+        if Double(dealRating) == 0 {
+            ratingPercentageLabel.text = "No Rating"
+        } else {
+            ratingPercentageLabel.text = dealRating+"/10"
+        }
+        
         
         if metaCriticRating != 0 {
             ratingLabel.text = "Metacritic Rating"

@@ -14,7 +14,7 @@ class DealsViewController: UIViewController {
     private let filterModal: FilterViewController
     private let dealsView = DealsView()
     private let filterView = UIView()
-    private let button = UIButton()
+    private let filterShowButton = UIButton()
     private var dealsRepository: DealsRepository
     private var shopsRepository: ShopsRepository
     private var shops: [Shop] = []
@@ -42,10 +42,17 @@ class DealsViewController: UIViewController {
         view.addSubview(dealsView)
         view.addSubview(filterView)
         
-        filterView.addSubview(button)
-        button.addTarget(self, action: #selector(click), for: .touchUpInside)
+        view.addSubview(filterShowButton)
+        filterShowButton.addTarget(self, action: #selector(click), for: .touchUpInside)
+        filterShowButton.clipsToBounds = true
+        filterShowButton.layer.cornerRadius = 10
+        filterShowButton.backgroundColor = .backgroundColorAccent
+        filterShowButton.setImage(.line3Horizontal, for: .normal)
+        filterShowButton.tintColor = .white
         
-        filterView.backgroundColor = .gray
+        
+        
+        filterView.backgroundColor = .clear
         
 //        self.navigationController?.isNavigationBarHidden = true
         
@@ -62,7 +69,7 @@ class DealsViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-            make.height.equalTo(100)
+            make.height.equalTo(50)
         }
         
         dealsView.snp.makeConstraints {make in
@@ -72,8 +79,10 @@ class DealsViewController: UIViewController {
             make.bottom.equalToSuperview()
         }
         
-        button.snp.makeConstraints {make in
-            make.top.leading.trailing.bottom.equalToSuperview()
+        filterShowButton.snp.makeConstraints {make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
+            make.centerX.equalToSuperview()
+            make.width.height.equalTo(60)
         }
     }
     
@@ -101,6 +110,10 @@ class DealsViewController: UIViewController {
                 return
             }
         }
+    }
+    
+    func tabBarClickedHome() {
+        dealsView.resetCollectionViewPosition()
     }
     
     @objc private func click() {

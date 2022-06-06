@@ -20,7 +20,7 @@ class FilterViewController: UIViewController {
                                                 selectionView: FilterSelectionView(isMultiselect: true))
     private let sortByFilter = FilterWrapperView<GameSortingEnum>(title: "Sort By",
                                                 selectionView: FilterSelectionView(isMultiselect: false),
-                                                additionalSelectionView: UISegmentedControl(items: ["Descending", "Ascending"]))
+                                                additionalSelectionView: UISegmentedControl(items: ["Ascending", "Descending"]))
     private let priceFilter = FilterWrapperView<Int>(title: "Price", sliderView: FilterSliderView()) // Treba enum
     private let metacriticFilter = FilterWrapperView<Int>(title: "Metacritic Rating", sliderView: FilterSliderView(fullyContinuous: true, upperLimit: 100))
     private let steamFilter = FilterWrapperView<Int>(title: "Steam Rating", sliderView: FilterSliderView(fullyContinuous: true, upperLimit: 100))

@@ -14,7 +14,7 @@ enum PriceRangeEnum: Int {
     case under20 = 20
     case under30 = 30
     case under40 = 40
-    case over40 = 50
+    case noFilter = 50
 }
 
 extension PriceRangeEnum {
@@ -30,12 +30,12 @@ extension PriceRangeEnum {
             return "Under 30$"
         case .under40:
             return "Under 40$"
-        case .over40:
-            return "Over 40$"
+        case .noFilter:
+            return "Any Price"
         }
     }
     
     static func asList() -> [PriceRangeEnum] {
-        return [.under5, .under10, .under20, .under30, .under40, .over40]
+        return [.noFilter, .under5, .under10, .under20, .under30, .under40]
     }
 }

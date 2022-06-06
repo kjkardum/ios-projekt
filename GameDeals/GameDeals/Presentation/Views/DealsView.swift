@@ -50,9 +50,7 @@ class DealsView: UIView {
     
     private func setLayout() {
         collectionView.snp.makeConstraints {make in
-            make.centerX.centerY.equalToSuperview()
-            make.width.equalToSuperview()
-            make.height.equalTo(400) // MARK: NE
+            make.top.leading.trailing.bottom.equalToSuperview()
         }
     }
     
@@ -63,6 +61,10 @@ class DealsView: UIView {
         }
 
         collectionView.reloadData()
+    }
+    
+    func resetCollectionViewPosition() {
+        collectionView.setContentOffset(CGPoint(x: 0,y: 0), animated: true)
     }
 }
 
@@ -89,7 +91,7 @@ extension DealsView: UICollectionViewDataSource {
 
 extension DealsView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.size.width, height: collectionView.frame.size.height)
+        return CGSize(width: frame.size.width, height: 500)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

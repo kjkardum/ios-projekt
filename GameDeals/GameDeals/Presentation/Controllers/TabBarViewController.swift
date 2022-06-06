@@ -23,6 +23,7 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,5 +56,17 @@ class TabBarViewController: UITabBarController {
         searchNavigationViewController.tabBarItem = tabTwo
         
         self.viewControllers = [homeNavigationViewController, searchNavigationViewController]
+    }
+}
+
+
+extension TabBarViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        let tabBarIndex = tabBarController.selectedIndex
+        if tabBarIndex == 0 {
+            dealsViewController.tabBarClickedHome()
+        }
+        
+        return true
     }
 }

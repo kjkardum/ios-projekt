@@ -13,9 +13,21 @@ import SFSafeSymbols
 class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     let dealCellView = UIView()
     let thumbnailImageView = UIImageView()
+    
+    let dealInfoStackView = UIStackView()
     let titleLabel = UILabel()
-    let toolbarView = DealCellToolbarView()
     let releaseDateLabel = UILabel()
+    
+    let shopInfoStackView = UIStackView()
+    let shopLabel = UILabel()
+    let shopImageView = UIImageView()
+    
+    let shopTitleAndChangeStackView = UIStackView()
+    let shopTitleLabel = UILabel()
+    let dealLastChanged = UILabel()
+    
+    let toolbarView = DealCellToolbarView()
+    
     var gesture = UIPanGestureRecognizer()
     var pointOrigin: CGPoint?
     let likeView = UIView()
@@ -44,13 +56,23 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         
         addSubview(likeView)
         addSubview(dealCellView)
+        addSubview(shopInfoStackView)
         
         likeView.addSubview(heartIconView)
         
         dealCellView.addSubview(thumbnailImageView)
-        dealCellView.addSubview(titleLabel)
+        dealCellView.addSubview(dealInfoStackView)
+        
+        dealInfoStackView.axis = .vertical
+        dealInfoStackView.distribution = .fill
+        dealInfoStackView.alignment = .top
+        dealInfoStackView.spacing = 5
+        dealInfoStackView.addArrangedSubview(titleLabel)
+        dealInfoStackView.addArrangedSubview(releaseDateLabel)
+        
+        dealInfoStackView.addArrangedSubview(UIView())
+        
         dealCellView.addSubview(toolbarView)
-        dealCellView.addSubview(releaseDateLabel)
 
         thumbnailImageView.contentMode = .scaleAspectFill;
         thumbnailImageView.clipsToBounds = true;
@@ -58,10 +80,39 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         titleLabel.font = UIFont.boldSystemFont(ofSize: 21)
         titleLabel.textColor = .white
         titleLabel.lineBreakMode = .byWordWrapping
-        titleLabel.numberOfLines = 0
+        titleLabel.numberOfLines = 3
         
         releaseDateLabel.textColor = UIColor.subtextColor
         releaseDateLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        
+        shopInfoStackView.axis = .horizontal
+        shopInfoStackView.distribution = .fill
+        shopInfoStackView.alignment = .center
+        shopInfoStackView.spacing = 10
+
+        shopInfoStackView.addArrangedSubview(shopImageView)
+        shopInfoStackView.addArrangedSubview(shopTitleAndChangeStackView)
+        shopInfoStackView.addArrangedSubview(UIView())
+        
+        
+        shopTitleAndChangeStackView.addArrangedSubview(shopTitleLabel)
+        shopTitleAndChangeStackView.addArrangedSubview(dealLastChanged)
+        
+        shopTitleAndChangeStackView.axis = .vertical
+        shopTitleAndChangeStackView.distribution = .fillEqually
+        shopTitleAndChangeStackView.alignment = .leading
+        
+        dealLastChanged.textColor = .white
+        dealLastChanged.font = UIFont.systemFont(ofSize: 14)
+        
+        shopLabel.textColor = .white
+        shopLabel.text = "Shop: "
+        
+        shopImageView.clipsToBounds = true
+        shopImageView.layer.cornerRadius = 10
+        
+        shopTitleLabel.textColor = .white
+        shopTitleLabel.font = UIFont.boldSystemFont(ofSize: 16)
         
         dealCellView.clipsToBounds = true
         dealCellView.layer.cornerRadius = 20
@@ -74,8 +125,15 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     }
     
     private func setLayout() {
+        shopInfoStackView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(30)
+            make.top.equalToSuperview()
+            make.height.equalTo(50)
+        }
+        
         likeView.snp.makeConstraints {make in
-            make.top.leading.equalToSuperview().offset(15)
+            make.top.equalTo(shopInfoStackView.snp.bottom).offset(10)
+            make.leading.equalToSuperview().offset(15)
             make.trailing.bottom.equalToSuperview().inset(15)
         }
         
@@ -85,31 +143,41 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         }
         
         dealCellView.snp.makeConstraints {make in
-            make.top.leading.equalToSuperview().offset(15)
+            make.top.equalTo(shopInfoStackView.snp.bottom).offset(10)
+            make.leading.equalToSuperview().offset(15)
             make.trailing.bottom.equalToSuperview().inset(15)
-        }
-        
-        thumbnailImageView.snp.makeConstraints {make in
-            make.top.trailing.leading.equalToSuperview()
-            make.height.equalTo(168)
-        }
-        
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(thumbnailImageView.snp.bottom).offset(20)
-            make.leading.equalToSuperview().offset(30)
-            make.trailing.equalToSuperview().inset(30)
-        }
-        
-        releaseDateLabel.snp.makeConstraints {make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
-            make.leading.equalToSuperview().offset(30)
-            
         }
         
         toolbarView.snp.makeConstraints {make in
             make.leading.trailing.bottom.equalToSuperview()
             make.height.equalTo(75)
         }
+        
+        thumbnailImageView.snp.makeConstraints {make in
+            make.top.trailing.leading.equalToSuperview()
+            make.height.equalTo(204)
+        }
+        
+        dealInfoStackView.snp.makeConstraints { make in
+            make.top.equalTo(thumbnailImageView.snp.bottom).offset(20)
+            make.leading.equalToSuperview().offset(30)
+            make.trailing.equalToSuperview().inset(30)
+            make.bottom.equalTo(toolbarView.snp.top).inset(30)
+        }
+        
+//        titleLabel.snp.makeConstraints { make in
+//            make.top.equalTo(thumbnailImageView.snp.bottom).offset(20)
+//            make.leading.equalToSuperview().offset(30)
+//            make.trailing.equalToSuperview().inset(30)
+//        }
+//
+//        releaseDateLabel.snp.makeConstraints {make in
+//            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+//            make.leading.equalToSuperview().offset(30)
+//
+//        }
+        
+        
 
     }
     
@@ -122,7 +190,6 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         let translation = gesture.translation(in: dealCellView)
     
         
-        
         if gesture.state == .ended || gesture.state == .cancelled || gesture.state == .possible {
             UIView.animate(withDuration: 0.3) {
                 self.dealCellView.frame.origin = self.pointOrigin!
@@ -132,7 +199,9 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         
         guard translation.y >= 0 else { return }
         
-        if dealCellView.frame.origin.y > 100 {
+        
+        
+        if dealCellView.frame.origin.y > 120 {
             self.userSwiped()
             gestureIsEnabled = false
             UIView.animate(withDuration: 0.3) {
@@ -142,15 +211,13 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
                 self.scrollViewDelegate?.setScrollViewEnabled(true)
                 return
             }
-
         }
+        
+        // CGRectContainsPoint(self.pannableView.frame, pan.locationInView(self.pannableView)) -> moguce za buducnost
 
         if gesture.state == .changed {
             dealCellView.frame.origin = CGPoint(x: dealCellView.frame.origin.x, y: self.pointOrigin!.y + translation.y)
         }
-        
-
-        
     }
     
     
@@ -167,6 +234,17 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         let dateFormatter = DateTimeServiceImpl()
         releaseDateLabel.text = "Release date: " + dateFormatter.stringify(dealData.releaseDate)
         
+        if let shopData = shopData {
+            shopTitleLabel.text = shopData.storeName
+            let dateFormatter = DateTimeServiceImpl()
+            dealLastChanged.text = dateFormatter.stringify(dealData.lastChange)
+            if let shopImage = shopData.images.logo {
+                shopImageView.image = UIImage(data: shopImage)
+                shopImageView.snp.makeConstraints { make in
+                    make.width.height.equalTo(40)
+                }
+            }
+        }
         
         if likeState {
             self.heartIconView.image = UIImage(systemSymbol: .heartFill)
