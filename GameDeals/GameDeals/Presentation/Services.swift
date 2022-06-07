@@ -28,6 +28,7 @@ class Services {
         container.autoregister(DealsViewController.self, initializer: DealsViewController.init)
         container.autoregister(SearchViewController.self, initializer: SearchViewController.init)
         container.autoregister(FilterViewController.self, initializer: FilterViewController.init)
+        container.autoregister(DetailsViewController.self, initializer: DetailsViewController.init)
     
     }
     

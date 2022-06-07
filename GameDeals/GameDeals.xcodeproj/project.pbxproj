@@ -102,6 +102,10 @@
 		71C4760D28452813005EC1F1 /* GameSortingEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4760C28452813005EC1F1 /* GameSortingEnum.swift */; };
 		71C47610284529A0005EC1F1 /* ListOfDealsParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4760F284529A0005EC1F1 /* ListOfDealsParameters.swift */; };
 		71C4761228452AC8005EC1F1 /* NetworkGameDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4761128452AC8005EC1F1 /* NetworkGameDS.swift */; };
+		7933E3F1284FCA22003CF93C /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7933E3F0284FCA22003CF93C /* DetailsView.swift */; };
+		7933E3F3284FCA53003CF93C /* DetailsText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7933E3F2284FCA53003CF93C /* DetailsText.swift */; };
+		7933E3F5284FCA87003CF93C /* CustomDetailsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7933E3F4284FCA87003CF93C /* CustomDetailsStackView.swift */; };
+		7933E3F7284FCAA6003CF93C /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7933E3F6284FCAA6003CF93C /* DetailsViewController.swift */; };
 		794B2BE62847C22000AB89C4 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794B2BE52847C22000AB89C4 /* SearchBarView.swift */; };
 		795F5453284B844C00A13845 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F5452284B844C00A13845 /* SearchCell.swift */; };
 		799CD7E32847C553004ED6DF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799CD7E22847C553004ED6DF /* SearchViewController.swift */; };
@@ -209,6 +213,10 @@
 		71C4760C28452813005EC1F1 /* GameSortingEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSortingEnum.swift; sourceTree = "<group>"; };
 		71C4760F284529A0005EC1F1 /* ListOfDealsParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfDealsParameters.swift; sourceTree = "<group>"; };
 		71C4761128452AC8005EC1F1 /* NetworkGameDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkGameDS.swift; sourceTree = "<group>"; };
+		7933E3F0284FCA22003CF93C /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		7933E3F2284FCA53003CF93C /* DetailsText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsText.swift; sourceTree = "<group>"; };
+		7933E3F4284FCA87003CF93C /* CustomDetailsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDetailsStackView.swift; sourceTree = "<group>"; };
+		7933E3F6284FCAA6003CF93C /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		794B2BE52847C22000AB89C4 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		795F5452284B844C00A13845 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		799CD7E22847C553004ED6DF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -387,6 +395,7 @@
 				52B35E6C2848A94600104431 /* FiltersViewController.swift */,
 				799CD7E22847C553004ED6DF /* SearchViewController.swift */,
 				528F62A5284C032000D41EA2 /* TabBarViewController.swift */,
+				7933E3F6284FCAA6003CF93C /* DetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -413,6 +422,9 @@
 				52B35E7D284AEABF00104431 /* FilterActionButtonsDelegate.swift */,
 				528F62A3284BACE300D41EA2 /* FilterDelegate.swift */,
 				528F62B2284EC19200D41EA2 /* LikeDealDelegate.swift */,
+				7933E3F4284FCA87003CF93C /* CustomDetailsStackView.swift */,
+				7933E3F2284FCA53003CF93C /* DetailsText.swift */,
+				7933E3F0284FCA22003CF93C /* DetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -802,6 +814,7 @@
 				52B35E762849615800104431 /* FilterSelectionCell.swift in Sources */,
 				52B35E81284B860700104431 /* StringWithKey.swift in Sources */,
 				715245202847D07C004E7246 /* NetworkGameDSImpl.swift in Sources */,
+				7933E3F1284FCA22003CF93C /* DetailsView.swift in Sources */,
 				71C475FD284523FE005EC1F1 /* DealCheaperStoreNO.swift in Sources */,
 				71C475FF28452431005EC1F1 /* DealCheapestPriceNO.swift in Sources */,
 				528F62BE284FD9D400D41EA2 /* DealMO+CoreDataClass.swift in Sources */,
@@ -815,6 +828,7 @@
 				528F62A4284BACE300D41EA2 /* FilterDelegate.swift in Sources */,
 				71C475B72844CAB6005EC1F1 /* Services.swift in Sources */,
 				715245262847D366004E7246 /* GameDeal.swift in Sources */,
+				7933E3F3284FCA53003CF93C /* DetailsText.swift in Sources */,
 				71C4760328452590005EC1F1 /* GameNO.swift in Sources */,
 				71C475B92844CBB5005EC1F1 /* DummyDependency.swift in Sources */,
 				799CD7EB2847D392004ED6DF /* RecommendedView.swift in Sources */,
@@ -828,6 +842,8 @@
 				52B35E6D2848A94600104431 /* FiltersViewController.swift in Sources */,
 				71C475E42844D51E005EC1F1 /* NetworkError.swift in Sources */,
 				715245282847D4A2004E7246 /* DetailedGame.swift in Sources */,
+				7933E3F5284FCA87003CF93C /* CustomDetailsStackView.swift in Sources */,
+				7933E3F7284FCAA6003CF93C /* DetailsViewController.swift in Sources */,
 				715245162847C554004E7246 /* DateTimeServiceImpl.swift in Sources */,
 				528F62A2284B976800D41EA2 /* PriceRangeEnum.swift in Sources */,
 				715245242847D359004E7246 /* GameInfo.swift in Sources */,
