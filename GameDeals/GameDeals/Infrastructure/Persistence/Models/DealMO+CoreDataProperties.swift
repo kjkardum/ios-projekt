@@ -2,7 +2,7 @@
 //  DealMO+CoreDataProperties.swift
 //  GameDeals
 //
-//  Created by Karlo Josip Kardum on 07.06.2022..
+//  Created by Five on 07.06.2022..
 //
 //
 
@@ -22,6 +22,7 @@ extension DealMO {
     @NSManaged public var internalName: String?
     @NSManaged public var isOnSale: String?
     @NSManaged public var lastChange: Int64
+    @NSManaged public var liked: Bool
     @NSManaged public var metacriticLink: String?
     @NSManaged public var metacriticScore: Int64
     @NSManaged public var normalPrice: NSDecimalNumber?
@@ -35,7 +36,6 @@ extension DealMO {
     @NSManaged public var storeId: Int64
     @NSManaged public var thumb: Data?
     @NSManaged public var title: String?
-    @NSManaged public var liked: Bool
 
 }
 

@@ -2,7 +2,7 @@
 //  GameMO+CoreDataProperties.swift
 //  GameDeals
 //
-//  Created by Karlo Josip Kardum on 07.06.2022..
+//  Created by Five on 07.06.2022..
 //
 //
 

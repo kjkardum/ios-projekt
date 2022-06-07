@@ -64,11 +64,8 @@ class SearchView: UIView, LikeDealDelegate {
     }
     
     func loadData(dealsData: [Deal]) {
-        DispatchQueue.main.sync {
-            self.dealsData = dealsData
-            collectionView.reloadData()
-        }
-        
+        self.dealsData = dealsData
+        collectionView.reloadData()
     }
 }
 
@@ -76,13 +73,13 @@ extension SearchView: UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return dealsData.count
     }
-    func collectionView(_ collectionView: UICollectionView, heightForRowAt indexPath: IndexPath) -> CGFloat
-    {
+    
+    func collectionView(_ collectionView: UICollectionView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 20
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: cellIdentifier2,
@@ -100,8 +97,7 @@ extension SearchView: UICollectionViewDelegateFlowLayout {
         return CGSize(width: frame.size.width, height: 100)
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 2
+        return 15
     }
 }

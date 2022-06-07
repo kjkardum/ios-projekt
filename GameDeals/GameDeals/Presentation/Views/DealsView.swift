@@ -18,6 +18,7 @@ class DealsView: UIView {
         return UICollectionView(frame: CGRect.zero, collectionViewLayout: flowlayout)
     }()
     var dealsData: [Deal] = []
+    var tmpDealsData: [Deal] = []
     var shops: [Int: Shop] = [:]
     weak var likeDealDeleage: LikeDealDelegate?
     
@@ -55,13 +56,25 @@ class DealsView: UIView {
         }
     }
     
-    func loadData(dealsData: [Deal], shops: [Shop]) {
+    func removeAllData() {
+        self.dealsData = []
+        collectionView.reloadData()
+    }
+    
+    func loadData(dealsData: [Deal]) {
         self.dealsData = dealsData
+        
+        collectionView.reloadData()
+        
+    }
+    
+    func loadShopsData(shops: [Shop]) {
         shops.forEach { shop in
             self.shops[shop.storeID] = shop
         }
-
+        
         collectionView.reloadData()
+        
     }
     
     func resetCollectionViewPosition() {

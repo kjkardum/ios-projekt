@@ -46,7 +46,7 @@ class DbDealDSImpl: DbDealDS {
                 if parameters.exact {
                     predicates.append(NSPredicate(format: "title == %@", title))
                 } else {
-                    predicates.append(NSPredicate(format: "title LIKE %@", "*"+title+"*"))
+                    predicates.append(NSPredicate(format: "title LIKE[c] %@", "*"+title+"*"))
                 }
             }
         }

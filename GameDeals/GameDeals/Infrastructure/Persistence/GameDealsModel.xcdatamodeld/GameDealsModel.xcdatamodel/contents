@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21E258" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="DealMO" representedClassName="DealMO" syncable="YES">
         <attribute name="dealId" attributeType="String"/>
         <attribute name="dealRating" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
@@ -19,7 +19,7 @@
         <attribute name="steamRatingPercent" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="steamRatingText" optional="YES" attributeType="String"/>
         <attribute name="storeId" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="thumb" optional="YES" attributeType="Binary"/>
+        <attribute name="thumb" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="title" attributeType="String"/>
     </entity>
     <entity name="GameMO" representedClassName="GameMO" syncable="YES">
@@ -29,7 +29,7 @@
         <attribute name="gameId" attributeType="String"/>
         <attribute name="liked" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="steamAppId" attributeType="String"/>
-        <attribute name="thumb" optional="YES" attributeType="Binary" storedInTruthFile="YES"/>
+        <attribute name="thumb" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" storedInTruthFile="YES"/>
     </entity>
     <entity name="ShopMO" representedClassName="ShopMO" syncable="YES">
         <attribute name="banner" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>

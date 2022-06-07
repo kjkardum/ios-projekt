@@ -14,6 +14,12 @@
 		528F62AC284D4DEA00D41EA2 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F62AB284D4DEA00D41EA2 /* AppRouter.swift */; };
 		528F62B1284D508700D41EA2 /* UINavigationControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F62B0284D508700D41EA2 /* UINavigationControllerExtension.swift */; };
 		528F62B3284EC19200D41EA2 /* LikeDealDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F62B2284EC19200D41EA2 /* LikeDealDelegate.swift */; };
+		528F62BA284FD9D400D41EA2 /* ShopMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F62B4284FD9D400D41EA2 /* ShopMO+CoreDataClass.swift */; };
+		528F62BB284FD9D400D41EA2 /* ShopMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F62B5284FD9D400D41EA2 /* ShopMO+CoreDataProperties.swift */; };
+		528F62BC284FD9D400D41EA2 /* GameMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F62B6284FD9D400D41EA2 /* GameMO+CoreDataClass.swift */; };
+		528F62BD284FD9D400D41EA2 /* GameMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F62B7284FD9D400D41EA2 /* GameMO+CoreDataProperties.swift */; };
+		528F62BE284FD9D400D41EA2 /* DealMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F62B8284FD9D400D41EA2 /* DealMO+CoreDataClass.swift */; };
+		528F62BF284FD9D400D41EA2 /* DealMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528F62B9284FD9D400D41EA2 /* DealMO+CoreDataProperties.swift */; };
 		52B35E632846B1DA00104431 /* DealsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E622846B1DA00104431 /* DealsViewController.swift */; };
 		52B35E672846B1EA00104431 /* DealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E642846B1EA00104431 /* DealCell.swift */; };
 		52B35E682846B1EA00104431 /* DealCellToolbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E652846B1EA00104431 /* DealCellToolbarView.swift */; };
@@ -27,12 +33,6 @@
 		52B35E78284A45EC00104431 /* FilterWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E77284A45EC00104431 /* FilterWrapperView.swift */; };
 		52B35E7E284AEABF00104431 /* FilterActionButtonsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E7D284AEABF00104431 /* FilterActionButtonsDelegate.swift */; };
 		52B35E81284B860700104431 /* StringWithKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B35E80284B860700104431 /* StringWithKey.swift */; };
-		7113C7D8284EB3FF0077269F /* GameMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113C7D2284EB3FF0077269F /* GameMO+CoreDataClass.swift */; };
-		7113C7D9284EB3FF0077269F /* GameMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113C7D3284EB3FF0077269F /* GameMO+CoreDataProperties.swift */; };
-		7113C7DA284EB3FF0077269F /* ShopMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113C7D4284EB3FF0077269F /* ShopMO+CoreDataClass.swift */; };
-		7113C7DB284EB3FF0077269F /* ShopMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113C7D5284EB3FF0077269F /* ShopMO+CoreDataProperties.swift */; };
-		7113C7DC284EB3FF0077269F /* DealMO+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113C7D6284EB3FF0077269F /* DealMO+CoreDataClass.swift */; };
-		7113C7DD284EB3FF0077269F /* DealMO+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113C7D7284EB3FF0077269F /* DealMO+CoreDataProperties.swift */; };
 		712D9C262846A4F20012649B /* NetworkDealDSImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C252846A4F20012649B /* NetworkDealDSImpl.swift */; };
 		712D9C282846A6820012649B /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C272846A6820012649B /* Typealias.swift */; };
 		712D9C2A2846A7820012649B /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 712D9C292846A7820012649B /* Deal.swift */; };
@@ -102,6 +102,10 @@
 		71C4760D28452813005EC1F1 /* GameSortingEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4760C28452813005EC1F1 /* GameSortingEnum.swift */; };
 		71C47610284529A0005EC1F1 /* ListOfDealsParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4760F284529A0005EC1F1 /* ListOfDealsParameters.swift */; };
 		71C4761228452AC8005EC1F1 /* NetworkGameDS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C4761128452AC8005EC1F1 /* NetworkGameDS.swift */; };
+		7933E3F1284FCA22003CF93C /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7933E3F0284FCA22003CF93C /* DetailsView.swift */; };
+		7933E3F3284FCA53003CF93C /* DetailsText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7933E3F2284FCA53003CF93C /* DetailsText.swift */; };
+		7933E3F5284FCA87003CF93C /* CustomDetailsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7933E3F4284FCA87003CF93C /* CustomDetailsStackView.swift */; };
+		7933E3F7284FCAA6003CF93C /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7933E3F6284FCAA6003CF93C /* DetailsViewController.swift */; };
 		794B2BE62847C22000AB89C4 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794B2BE52847C22000AB89C4 /* SearchBarView.swift */; };
 		795F5453284B844C00A13845 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795F5452284B844C00A13845 /* SearchCell.swift */; };
 		799CD7E32847C553004ED6DF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799CD7E22847C553004ED6DF /* SearchViewController.swift */; };
@@ -123,6 +127,12 @@
 		528F62AB284D4DEA00D41EA2 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		528F62B0284D508700D41EA2 /* UINavigationControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationControllerExtension.swift; sourceTree = "<group>"; };
 		528F62B2284EC19200D41EA2 /* LikeDealDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeDealDelegate.swift; sourceTree = "<group>"; };
+		528F62B4284FD9D400D41EA2 /* ShopMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShopMO+CoreDataClass.swift"; sourceTree = "<group>"; };
+		528F62B5284FD9D400D41EA2 /* ShopMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShopMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		528F62B6284FD9D400D41EA2 /* GameMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameMO+CoreDataClass.swift"; sourceTree = "<group>"; };
+		528F62B7284FD9D400D41EA2 /* GameMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		528F62B8284FD9D400D41EA2 /* DealMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealMO+CoreDataClass.swift"; sourceTree = "<group>"; };
+		528F62B9284FD9D400D41EA2 /* DealMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		52B35E622846B1DA00104431 /* DealsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealsViewController.swift; sourceTree = "<group>"; };
 		52B35E642846B1EA00104431 /* DealCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealCell.swift; sourceTree = "<group>"; };
 		52B35E652846B1EA00104431 /* DealCellToolbarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealCellToolbarView.swift; sourceTree = "<group>"; };
@@ -136,12 +146,6 @@
 		52B35E77284A45EC00104431 /* FilterWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterWrapperView.swift; sourceTree = "<group>"; };
 		52B35E7D284AEABF00104431 /* FilterActionButtonsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterActionButtonsDelegate.swift; sourceTree = "<group>"; };
 		52B35E80284B860700104431 /* StringWithKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringWithKey.swift; sourceTree = "<group>"; };
-		7113C7D2284EB3FF0077269F /* GameMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameMO+CoreDataClass.swift"; sourceTree = "<group>"; };
-		7113C7D3284EB3FF0077269F /* GameMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7113C7D4284EB3FF0077269F /* ShopMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShopMO+CoreDataClass.swift"; sourceTree = "<group>"; };
-		7113C7D5284EB3FF0077269F /* ShopMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShopMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		7113C7D6284EB3FF0077269F /* DealMO+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealMO+CoreDataClass.swift"; sourceTree = "<group>"; };
-		7113C7D7284EB3FF0077269F /* DealMO+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DealMO+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		712D9C252846A4F20012649B /* NetworkDealDSImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDealDSImpl.swift; sourceTree = "<group>"; };
 		712D9C272846A6820012649B /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		712D9C292846A7820012649B /* Deal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
@@ -209,6 +213,10 @@
 		71C4760C28452813005EC1F1 /* GameSortingEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSortingEnum.swift; sourceTree = "<group>"; };
 		71C4760F284529A0005EC1F1 /* ListOfDealsParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfDealsParameters.swift; sourceTree = "<group>"; };
 		71C4761128452AC8005EC1F1 /* NetworkGameDS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkGameDS.swift; sourceTree = "<group>"; };
+		7933E3F0284FCA22003CF93C /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
+		7933E3F2284FCA53003CF93C /* DetailsText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsText.swift; sourceTree = "<group>"; };
+		7933E3F4284FCA87003CF93C /* CustomDetailsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDetailsStackView.swift; sourceTree = "<group>"; };
+		7933E3F6284FCAA6003CF93C /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		794B2BE52847C22000AB89C4 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		795F5452284B844C00A13845 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		799CD7E22847C553004ED6DF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -387,6 +395,7 @@
 				52B35E6C2848A94600104431 /* FiltersViewController.swift */,
 				799CD7E22847C553004ED6DF /* SearchViewController.swift */,
 				528F62A5284C032000D41EA2 /* TabBarViewController.swift */,
+				7933E3F6284FCAA6003CF93C /* DetailsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -413,6 +422,9 @@
 				52B35E7D284AEABF00104431 /* FilterActionButtonsDelegate.swift */,
 				528F62A3284BACE300D41EA2 /* FilterDelegate.swift */,
 				528F62B2284EC19200D41EA2 /* LikeDealDelegate.swift */,
+				7933E3F4284FCA87003CF93C /* CustomDetailsStackView.swift */,
+				7933E3F2284FCA53003CF93C /* DetailsText.swift */,
+				7933E3F0284FCA22003CF93C /* DetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -598,12 +610,12 @@
 		71C475DE2844D308005EC1F1 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7113C7D2284EB3FF0077269F /* GameMO+CoreDataClass.swift */,
-				7113C7D3284EB3FF0077269F /* GameMO+CoreDataProperties.swift */,
-				7113C7D4284EB3FF0077269F /* ShopMO+CoreDataClass.swift */,
-				7113C7D5284EB3FF0077269F /* ShopMO+CoreDataProperties.swift */,
-				7113C7D6284EB3FF0077269F /* DealMO+CoreDataClass.swift */,
-				7113C7D7284EB3FF0077269F /* DealMO+CoreDataProperties.swift */,
+				528F62B4284FD9D400D41EA2 /* ShopMO+CoreDataClass.swift */,
+				528F62B5284FD9D400D41EA2 /* ShopMO+CoreDataProperties.swift */,
+				528F62B6284FD9D400D41EA2 /* GameMO+CoreDataClass.swift */,
+				528F62B7284FD9D400D41EA2 /* GameMO+CoreDataProperties.swift */,
+				528F62B8284FD9D400D41EA2 /* DealMO+CoreDataClass.swift */,
+				528F62B9284FD9D400D41EA2 /* DealMO+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -758,8 +770,9 @@
 			files = (
 				71C475D22844D1BA005EC1F1 /* CoreDataStack.swift in Sources */,
 				528F62AC284D4DEA00D41EA2 /* AppRouter.swift in Sources */,
-				7113C7DA284EB3FF0077269F /* ShopMO+CoreDataClass.swift in Sources */,
 				795F5453284B844C00A13845 /* SearchCell.swift in Sources */,
+				528F62BD284FD9D400D41EA2 /* GameMO+CoreDataProperties.swift in Sources */,
+				528F62BC284FD9D400D41EA2 /* GameMO+CoreDataClass.swift in Sources */,
 				52B35E712848F21400104431 /* FilterSliderView.swift in Sources */,
 				7195F2E3284B829800973383 /* ShopsRepository.swift in Sources */,
 				715245182847C90C004E7246 /* DetailedDealNOMapper.swift in Sources */,
@@ -771,12 +784,12 @@
 				71C475F9284514CD005EC1F1 /* DetailedDealNO.swift in Sources */,
 				794B2BE62847C22000AB89C4 /* SearchBarView.swift in Sources */,
 				528F62A6284C032000D41EA2 /* TabBarViewController.swift in Sources */,
-				7113C7DD284EB3FF0077269F /* DealMO+CoreDataProperties.swift in Sources */,
 				7195F2E1284B817700973383 /* NetworkShopDSImpl.swift in Sources */,
 				7195F2E5284B82A800973383 /* ShopsRepositoryImpl.swift in Sources */,
 				71C475D72844D206005EC1F1 /* NetworkServiceImpl.swift in Sources */,
 				52B35E78284A45EC00104431 /* FilterWrapperView.swift in Sources */,
 				71C476092845263D005EC1F1 /* GameDealNO.swift in Sources */,
+				528F62BA284FD9D400D41EA2 /* ShopMO+CoreDataClass.swift in Sources */,
 				71C4761228452AC8005EC1F1 /* NetworkGameDS.swift in Sources */,
 				799CD7E92847CD08004ED6DF /* RecommendedCell.swift in Sources */,
 				71C475F7284512B3005EC1F1 /* DealNO.swift in Sources */,
@@ -791,18 +804,20 @@
 				799CD7F12847EF4B004ED6DF /* SearchView.swift in Sources */,
 				799CD7F82847F346004ED6DF /* UIButtonExtension.swift in Sources */,
 				7152451E2847CF5A004E7246 /* GameNOMapper.swift in Sources */,
+				528F62BF284FD9D400D41EA2 /* DealMO+CoreDataProperties.swift in Sources */,
 				71C475FB284523A3005EC1F1 /* DealGameNO.swift in Sources */,
 				52B35E692846B1EA00104431 /* DealsView.swift in Sources */,
 				52B35E6F2848EE8700104431 /* FilterSelectionView.swift in Sources */,
 				712D9C2E2846AB0E0012649B /* DealsRepository.swift in Sources */,
-				7113C7DC284EB3FF0077269F /* DealMO+CoreDataClass.swift in Sources */,
 				52B35E6B2847DFDB00104431 /* ScrollableCollectionViewDelegate.swift in Sources */,
 				7152450C2847C371004E7246 /* DetailedDeal.swift in Sources */,
 				52B35E762849615800104431 /* FilterSelectionCell.swift in Sources */,
 				52B35E81284B860700104431 /* StringWithKey.swift in Sources */,
 				715245202847D07C004E7246 /* NetworkGameDSImpl.swift in Sources */,
+				7933E3F1284FCA22003CF93C /* DetailsView.swift in Sources */,
 				71C475FD284523FE005EC1F1 /* DealCheaperStoreNO.swift in Sources */,
 				71C475FF28452431005EC1F1 /* DealCheapestPriceNO.swift in Sources */,
+				528F62BE284FD9D400D41EA2 /* DealMO+CoreDataClass.swift in Sources */,
 				52B35E682846B1EA00104431 /* DealCellToolbarView.swift in Sources */,
 				71C475E12844D485005EC1F1 /* Mapper.swift in Sources */,
 				71C475DA2844D288005EC1F1 /* NetworkService.swift in Sources */,
@@ -813,6 +828,7 @@
 				528F62A4284BACE300D41EA2 /* FilterDelegate.swift in Sources */,
 				71C475B72844CAB6005EC1F1 /* Services.swift in Sources */,
 				715245262847D366004E7246 /* GameDeal.swift in Sources */,
+				7933E3F3284FCA53003CF93C /* DetailsText.swift in Sources */,
 				71C4760328452590005EC1F1 /* GameNO.swift in Sources */,
 				71C475B92844CBB5005EC1F1 /* DummyDependency.swift in Sources */,
 				799CD7EB2847D392004ED6DF /* RecommendedView.swift in Sources */,
@@ -824,9 +840,10 @@
 				715245102847C3A3004E7246 /* DealCheaperStore.swift in Sources */,
 				715245392847DF53004E7246 /* GameMOMapper.swift in Sources */,
 				52B35E6D2848A94600104431 /* FiltersViewController.swift in Sources */,
-				7113C7D9284EB3FF0077269F /* GameMO+CoreDataProperties.swift in Sources */,
 				71C475E42844D51E005EC1F1 /* NetworkError.swift in Sources */,
 				715245282847D4A2004E7246 /* DetailedGame.swift in Sources */,
+				7933E3F5284FCA87003CF93C /* CustomDetailsStackView.swift in Sources */,
+				7933E3F7284FCAA6003CF93C /* DetailsViewController.swift in Sources */,
 				715245162847C554004E7246 /* DateTimeServiceImpl.swift in Sources */,
 				528F62A2284B976800D41EA2 /* PriceRangeEnum.swift in Sources */,
 				715245242847D359004E7246 /* GameInfo.swift in Sources */,
@@ -838,12 +855,12 @@
 				52B35E7E284AEABF00104431 /* FilterActionButtonsDelegate.swift in Sources */,
 				7195F2D6284B7D6600973383 /* ShopImageNO.swift in Sources */,
 				7195F2D4284B7D1500973383 /* ShopNO.swift in Sources */,
-				7113C7DB284EB3FF0077269F /* ShopMO+CoreDataProperties.swift in Sources */,
 				7152452A2847D4E7004E7246 /* DetailedGameNOMapper.swift in Sources */,
 				712D9C302846AB3C0012649B /* DealsRepositoryImpl.swift in Sources */,
 				71C4760728452602005EC1F1 /* GameInfoNO.swift in Sources */,
 				7195F2D9284B7E3D00973383 /* Shop.swift in Sources */,
 				799CD7FD2847F4DB004ED6DF /* UIViewExtension.swift in Sources */,
+				528F62BB284FD9D400D41EA2 /* ShopMO+CoreDataProperties.swift in Sources */,
 				715245142847C50D004E7246 /* DateTimeService.swift in Sources */,
 				71C475992844C58A005EC1F1 /* SceneDelegate.swift in Sources */,
 				712D9C282846A6820012649B /* Typealias.swift in Sources */,
@@ -852,7 +869,6 @@
 				799CD7F32847F230004ED6DF /* SearchBoxDelegate.swift in Sources */,
 				71C47610284529A0005EC1F1 /* ListOfDealsParameters.swift in Sources */,
 				715245472847EFF3004E7246 /* DbDealDSImpl.swift in Sources */,
-				7113C7D8284EB3FF0077269F /* GameMO+CoreDataClass.swift in Sources */,
 				7195F2DB284B7E4E00973383 /* ShopImage.swift in Sources */,
 				7152450E2847C38D004E7246 /* DealGame.swift in Sources */,
 				7195F301284B8C3300973383 /* DbShopDS.swift in Sources */,

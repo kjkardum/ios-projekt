@@ -21,6 +21,8 @@ class DealsViewController: UIViewController {
     private var shops: [Shop] = []
     
     private var listOfParameters = ListOfDealsParameters(sortBy: .recent)
+    private var spinner = UIActivityIndicatorView(style: .large)
+    var numberOfAttempts = 0
 
     init(dealsRepository: DealsRepository, shopsRepository: ShopsRepository, filterModal: FilterViewController) {
         self.dealsRepository = dealsRepository
@@ -36,7 +38,8 @@ class DealsViewController: UIViewController {
         dealsView.likeDealDeleage = self
         buildViews()
         setLayout()
-        getShopsAndDealData()
+        getShopsData()
+        loadData()
     }
     
     private func buildViews() {
@@ -56,6 +59,10 @@ class DealsViewController: UIViewController {
         statusBarColorView.backgroundColor = .navbarBackgroundColor
         
         filterView.backgroundColor = .clear
+        
+        spinner.isHidden = true
+        dealsView.addSubview(spinner)
+        spinner.backgroundColor = UIColor(white: 0, alpha: 0.3)
     }
     
     private func setLayout() {
@@ -77,6 +84,13 @@ class DealsViewController: UIViewController {
             make.bottom.equalToSuperview()
         }
         
+        spinner.snp.makeConstraints { make in
+            make.top.equalTo(filterView.snp.bottom)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+            make.bottom.equalToSuperview()
+        }
+        
         /*filterShowButton.snp.makeConstraints {make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             make.centerX.equalToSuperview()
@@ -85,12 +99,13 @@ class DealsViewController: UIViewController {
     }
     
     
-    private func getShopsAndDealData() {
+    private func getShopsData() {
         shopsRepository.getListOfShops { response in
             switch(response) {
             case.success(let data):
-                self.shops = data
-                self.loadData()
+                DispatchQueue.main.sync {
+                    self.dealsView.loadShopsData(shops: data)
+                }
             default:
                 return
             }
@@ -101,10 +116,21 @@ class DealsViewController: UIViewController {
         dealsRepository.getListOfDeals(parameters: listOfParameters) {response in
             switch (response) {
             case .success(let data):
+                self.numberOfAttempts += 1
+                if self.numberOfAttempts > 1 || data.count > 0 {
+                    DispatchQueue.main.sync {
+                        self.spinner.isHidden = true
+                        self.spinner.stopAnimating()
+                        self.numberOfAttempts = 0
+                    }
+                }
                 DispatchQueue.main.sync {
-                    self.dealsView.loadData(dealsData: data, shops: self.shops)
+                    self.dealsView.loadData(dealsData: data)
                 }
             default:
+                self.spinner.isHidden = true
+                self.spinner.stopAnimating()
+                self.numberOfAttempts = 0
                 return
             }
         }
@@ -126,6 +152,7 @@ extension DealsViewController: FilterDelegate {
     func acceptFilters(_ listOfDealsParameters: ListOfDealsParameters) {
         print(listOfDealsParameters)
         self.listOfParameters = listOfDealsParameters
+        dealsView.removeAllData()
         loadData()
     }
 }
