@@ -19,16 +19,16 @@ class SearchViewController: UIViewController, SearchBoxDelegate, LikeDealDelegat
     func onSearchBoxChange(input: String) {
         timer?.invalidate()
         lastQuery = input
-        timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(loadSearchResultsWithData), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(loadSearchResultsWithData), userInfo: nil, repeats: false)
     }
     
     func onSearchBoxFocus() {
         label.isHidden = true
         recommended.isHidden = true
         searchView.isHidden = false
-        recommended.snp.makeConstraints {make in
-            make.top.equalTo(searchBarView.snp.bottom).offset(15)
-        }
+//        recommended.snp.makeConstraints {make in
+//            make.top.equalTo(searchBarView.snp.bottom).offset(15)
+//        }
     }
     
     func onSearchBoxUnfocus() {
@@ -36,14 +36,14 @@ class SearchViewController: UIViewController, SearchBoxDelegate, LikeDealDelegat
         searchView.isHidden = true
         label.isHidden = false
         recommended.isHidden = false
-        label.snp.makeConstraints {make in
-            make.top.equalTo(searchBarView.snp.bottom).offset(15)
-            make.bottom.equalTo(searchBarView.snp.bottom).offset(30)
-        }
-        
-        recommended.snp.makeConstraints {make in
-            make.top.equalTo(label.snp.bottom).offset(15)
-        }
+//        label.snp.makeConstraints {make in
+//            make.top.equalTo(searchBarView.snp.bottom).offset(15)
+//            make.bottom.equalTo(searchBarView.snp.bottom).offset(30)
+//        }
+//        
+//        recommended.snp.makeConstraints {make in
+//            make.top.equalTo(label.snp.bottom).offset(15)
+//        }
     }
     
     private var dealsRepository: DealsRepository
@@ -52,8 +52,11 @@ class SearchViewController: UIViewController, SearchBoxDelegate, LikeDealDelegat
     private let searchView = SearchView()
     private let label = UILabel()
     private let statusBarColorView = UIView()
+    private var searchResultsSpinner = UIActivityIndicatorView(style: .large)
     var timer: Timer?
     var lastQuery: String = ""
+    var numberOfAttempts = 0
+    
   
     init(dealsRepository: DealsRepository) {
         self.dealsRepository = dealsRepository
@@ -68,6 +71,7 @@ class SearchViewController: UIViewController, SearchBoxDelegate, LikeDealDelegat
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         loadData()
     }
     
@@ -90,6 +94,16 @@ class SearchViewController: UIViewController, SearchBoxDelegate, LikeDealDelegat
         searchView.likeDealDelegate = self
         recommended.likeDealDelegate = self
         
+        searchResultsSpinner.isHidden = true
+        searchView.addSubview(searchResultsSpinner)
+        searchResultsSpinner.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        
+//        searchResultsSpinner.isHidden = true
+//        res.addSubview(favoritesSpinner)
+//        favoritesSpinner.backgroundColor = UIColor(white: 0, alpha: 0.7)
+        
+//
+
     }
     
     private func setLayout() {
@@ -124,15 +138,37 @@ class SearchViewController: UIViewController, SearchBoxDelegate, LikeDealDelegat
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
 
         }
+        
+        searchResultsSpinner.snp.makeConstraints { make in
+            make.top.leading.trailing.bottom.equalToSuperview()
+        }
     }
     
     
     @objc private func loadSearchResultsWithData() {
+        searchResultsSpinner.startAnimating()
+        searchResultsSpinner.isHidden = false
+        
+        
         dealsRepository.getListOfDeals(parameters: ListOfDealsParameters(title: lastQuery)) { result in
             switch(result) {
             case .success(let deals):
-                self.searchView.loadData(dealsData: deals)
+                DispatchQueue.main.sync {
+                    self.numberOfAttempts += 1
+                    if self.numberOfAttempts > 1 || deals.count > 0 {
+                        self.searchResultsSpinner.isHidden = true
+                        self.searchResultsSpinner.stopAnimating()
+                        self.numberOfAttempts = 0
+                    }
+                    DispatchQueue.main.sync {
+                        self.searchView.loadData(dealsData: deals)
+                    }
+                    
+                }
             default:
+                self.searchResultsSpinner.isHidden = true
+                self.searchResultsSpinner.stopAnimating()
+                self.numberOfAttempts = 0
                 return
             }
         }

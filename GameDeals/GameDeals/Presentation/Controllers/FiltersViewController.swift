@@ -42,6 +42,23 @@ class FilterViewController: UIViewController {
         loadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        shopsRepository.getListOfShops() {response in
+            switch (response) {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    self.storeFilter.loadSelectionViewWithData(data: data.map {shop in
+                        return StringWithKey<Int>(id: Int(shop.storeID), name: shop.storeName)
+                    })
+                }
+
+            default:
+                return
+            }
+        }
+    }
+    
     private func buildViews() {
         view.backgroundColor = UIColor.filterViewBackground
         
@@ -102,20 +119,6 @@ class FilterViewController: UIViewController {
     }
     
     private func loadData() {
-        shopsRepository.getListOfShops() {response in
-            switch (response) {
-            case .success(let data):
-                DispatchQueue.main.async {
-                    self.storeFilter.loadSelectionViewWithData(data: data.map {shop in
-                        return StringWithKey<Int>(id: Int(shop.storeID), name: shop.storeName)
-                    })
-                }
-
-            default:
-                return
-            }
-        }
-        
         sortByFilter.loadSelectionViewWithData(data: GameSortingEnum.asList().map {game in
             return StringWithKey<GameSortingEnum>(id: game, name: GameSortingEnum.title(game))
         })
