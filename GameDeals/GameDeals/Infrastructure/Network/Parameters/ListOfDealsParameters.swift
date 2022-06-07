@@ -29,7 +29,7 @@ extension ListOfDealsParameters {
     func convertToParamsDictionary() -> [String : String] {
         var params: [String : String] = [:]
         if let storeIds = storeIds {
-            params["storeIds"] = storeIds.map({ String($0) }).joined(separator: ",")
+            params["storeID"] = storeIds.map({ String($0) }).joined(separator: ",")
         }
         params["pageNumber"] = String(pageNumber)
         params["pageSize"] = String(pageSize)

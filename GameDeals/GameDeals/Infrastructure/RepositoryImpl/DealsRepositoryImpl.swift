@@ -35,6 +35,7 @@ class DealsRepositoryImpl: DealsRepository {
                 self.networkDataSource.getListOfDeals(parameters: parameters, completionHandler: { result in
                     switch (result) {
                     case .success(let data):
+                        print("DATA", data)
                         //completionHandler(.success(data.map{ self.networkDealMapper.map($0) }))
                         self.dbDataSource.updateListOfDeals(parameters: parameters, incomingDeals: data.map{ self.networkDealMapper.map($0) }, completionHandler: { result in
                             self.dbDataSource.getListOfDeals(parameters: parameters, completionHandler: { result in

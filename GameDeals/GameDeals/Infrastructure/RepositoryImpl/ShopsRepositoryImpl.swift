@@ -27,7 +27,7 @@ class ShopsRepositoryImpl: ShopsRepository {
         DispatchQueue.global(qos: .background).async {
             self.dbDataSource.getListOfShops(completionHandler: { result in
                 if case let .success(value) = result {
-                    completionHandler(.success(value.map { self.dbShopMapper.map($0) }))
+                    completionHandler(.success(value.map { self.dbShopMapper.map($0) }.filter { $0.isActive != 0 }))
                 }
                 self.networkDataSource.getListOfShops(completionHandler: { result in
                     switch (result) {
@@ -36,7 +36,7 @@ class ShopsRepositoryImpl: ShopsRepository {
                             if case .success(_) = result {
                                 self.dbDataSource.getListOfShops(completionHandler: { result in
                                     if case let .success(value) = result {
-                                        completionHandler(.success(value.map { self.dbShopMapper.map($0) }))
+                                        completionHandler(.success(value.map { self.dbShopMapper.map($0) }.filter { $0.isActive != 0 }))
                                     }
                                 })
                             }
