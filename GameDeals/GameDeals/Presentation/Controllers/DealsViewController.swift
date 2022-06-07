@@ -130,7 +130,7 @@ extension DealsViewController: FilterDelegate {
     }
 }
 
-extension DealsViewController: LikeDealDeleage {
+extension DealsViewController: LikeDealDelegate {
     func likeDeal(dealId: String, like: Bool) {
         dealsRepository.likeDeal(dealId: dealId, like: like) { result in
         }

@@ -19,7 +19,7 @@ class DealsView: UIView {
     }()
     var dealsData: [Deal] = []
     var shops: [Int: Shop] = [:]
-    weak var likeDealDeleage: LikeDealDeleage?
+    weak var likeDealDeleage: LikeDealDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -109,7 +109,7 @@ extension DealsView: ScrollableCollectionViewDelegate {
 }
 
 
-extension DealsView: LikeDealDeleage {
+extension DealsView: LikeDealDelegate {
     func likeDeal(dealId: String, like: Bool) {
         likeDealDeleage?.likeDeal(dealId: dealId, like: like)
     }

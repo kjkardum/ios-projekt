@@ -9,14 +9,17 @@ import Foundation
 import UIKit
 import SnapKit
 
-    
+
 class RecommendedCell: UICollectionViewCell {
     let recommendedCellView = UIView()
     let img = UIImageView()
     let titleLabel = UILabel()
     let priceLabel = UILabel()
     let titleStackView = UIStackView()
-    let button = UIButton()
+    let likeButton = UIButton()
+    var likeState = false
+    weak var likeDealDelegate: LikeDealDelegate?
+    var dealId: String?
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -36,7 +39,7 @@ class RecommendedCell: UICollectionViewCell {
 
         recommendedCellView.addSubview(titleStackView)
         
-        recommendedCellView.addSubview(button)
+        recommendedCellView.addSubview(likeButton)
         
         titleStackView.addArrangedSubview(titleLabel)
         titleStackView.addArrangedSubview(priceLabel)
@@ -61,17 +64,15 @@ class RecommendedCell: UICollectionViewCell {
         priceLabel.lineBreakMode = .byWordWrapping
         priceLabel.numberOfLines = 0
         
-//        button.setTitle( "like", for: .normal)
-        button.setImage(.heart, for: .normal)
-        button.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7)
-
         
+        likeButton.setImage(.heart, for: .normal)
+        likeButton.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7)
+        likeButton.addTarget(self, action: #selector(likeClicked), for: .touchUpInside)
+
         
         recommendedCellView.clipsToBounds = true
         recommendedCellView.layer.cornerRadius = 15
-//        recommendedCellView.layer.borderColor = UIColor.filterViewBorder.cgColor
         recommendedCellView.backgroundColor = .recommendedBackgroundColor
-//        recommendedCellView.layer.borderWidth = 2
         
         backgroundColor = .clear
     }
@@ -91,53 +92,52 @@ class RecommendedCell: UICollectionViewCell {
         titleStackView.snp.makeConstraints { make in
             make.leading.equalTo(img.snp.trailing).offset(15)
             make.bottom.top.equalToSuperview().inset(15)
-            make.trailing.equalTo(button.snp.leading).offset(-10)
+            make.trailing.equalTo(likeButton.snp.leading).offset(-10)
             
         }
-        button.snp.makeConstraints { make in
+        likeButton.snp.makeConstraints { make in
             make.bottom.top.equalToSuperview()
             make.trailing.equalToSuperview()
             make.leading.equalTo(super.snp.trailing).offset(-60)
             
         }
-        
-        
-        
-
     }
     
-    
-    private func setImageConstraint() {
-        if img.image == nil {
-            return
+    @objc func likeClicked() {
+        likeState = !likeState
+        if let dealId = dealId {
+            likeDealDelegate?.likeDeal(dealId: dealId, like: likeState)
         }
-        
-        let myImageWidth = img.image!.size.width
-        let myImageHeight = img.image!.size.height
-        let myViewWidth = recommendedCellView.frame.size.width
-
-        let ratio = myViewWidth/myImageWidth
-        let scaledHeight = myImageHeight * ratio
-        
-//        img.snp.updateConstraints { (make) in
-//            make.height.equalTo(scaledHeight)
-//        }
+        if likeState {
+            likeButton.setImage(.heartFill, for: .normal)
+            likeButton.tintColor = .heartColor
+        } else {
+            likeButton.setImage(.heart, for: .normal)
+            likeButton.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7)
+        }
     }
     
     
     func setup(dealData: Deal) {
+        dealId = dealData.dealID
         
         if let thumb = dealData.thumb {
             self.img.image = UIImage(data: thumb)
-//            self.setImageConstraint()
         }
         
         self.titleLabel.text = dealData.title
         self.priceLabel.text = dealData.salePrice + "$"
         
+        likeState = dealData.liked
+        
+        if likeState {
+            likeButton.setImage(.heartFill, for: .normal)
+            likeButton.tintColor = .heartColor
+        } else {
+            likeButton.setImage(.heart, for: .normal)
+            likeButton.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7)
+        }
+        
     }
     
 }
-
-
-

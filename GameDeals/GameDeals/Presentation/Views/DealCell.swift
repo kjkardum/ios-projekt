@@ -38,7 +38,7 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
     var dealId: String?
     
     weak var scrollViewDelegate: ScrollableCollectionViewDelegate?
-    weak var likeDealDelegate: LikeDealDeleage?
+    weak var likeDealDelegate: LikeDealDelegate?
     
     
     override init(frame: CGRect) {

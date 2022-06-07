@@ -19,6 +19,7 @@ class RecommendedView: UIView {
         return UICollectionView(frame: CGRect.zero, collectionViewLayout: flowlayout)
     }()
     var dealsData : [Deal] = []
+    weak var likeDealDelegate: LikeDealDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -75,6 +76,7 @@ extension RecommendedView: UICollectionViewDataSource {
                 for: indexPath) as! RecommendedCell
         
         cell.setup(dealData: dealsData[indexPath.row])
+        cell.likeDealDelegate = self
             
         return cell
     }
@@ -88,5 +90,11 @@ extension RecommendedView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 15
+    }
+}
+
+extension RecommendedView: LikeDealDelegate {
+    func likeDeal(dealId: String, like: Bool) {
+        likeDealDelegate?.likeDeal(dealId: dealId, like: like)
     }
 }

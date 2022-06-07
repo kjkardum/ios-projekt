@@ -18,7 +18,11 @@ import UIKit
 import SnapKit
 
 
-class SearchView: UIView {
+class SearchView: UIView, LikeDealDelegate {
+    func likeDeal(dealId: String, like: Bool) {
+        likeDealDelegate?.likeDeal(dealId: dealId, like: like)
+    }
+    
     private let cellIdentifier2 = "cellId2"
     private let collectionView : UICollectionView = {
         let flowlayout = UICollectionViewFlowLayout()
@@ -26,6 +30,7 @@ class SearchView: UIView {
         return UICollectionView(frame: CGRect.zero, collectionViewLayout: flowlayout)
     }()
     var dealsData : [Deal] = []
+    weak var likeDealDelegate: LikeDealDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -44,7 +49,7 @@ class SearchView: UIView {
     private func buildViews() {
         addSubview(collectionView)
         backgroundColor = .clear
-        collectionView.register(SearchCell.self, forCellWithReuseIdentifier: cellIdentifier2)
+        collectionView.register(RecommendedCell.self, forCellWithReuseIdentifier: cellIdentifier2)
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.automaticallyAdjustsScrollIndicatorInsets = false
@@ -59,8 +64,11 @@ class SearchView: UIView {
     }
     
     func loadData(dealsData: [Deal]) {
-        self.dealsData = dealsData
-        collectionView.reloadData()
+        DispatchQueue.main.sync {
+            self.dealsData = dealsData
+            collectionView.reloadData()
+        }
+        
     }
 }
 
@@ -78,9 +86,10 @@ extension SearchView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: cellIdentifier2,
-                for: indexPath) as! SearchCell
+                for: indexPath) as! RecommendedCell
         
         cell.setup(dealData: dealsData[indexPath.row])
+        cell.likeDealDelegate = self
             
         return cell
     }
@@ -88,7 +97,7 @@ extension SearchView: UICollectionViewDataSource {
 
 extension SearchView: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: frame.size.width, height: 40)
+        return CGSize(width: frame.size.width, height: 100)
     }
     
     

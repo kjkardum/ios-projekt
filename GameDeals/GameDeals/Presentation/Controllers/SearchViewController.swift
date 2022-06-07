@@ -9,28 +9,36 @@ import Foundation
 import UIKit
 import SnapKit
 
-class SearchViewController: UIViewController, SearchBoxDelegate {
+class SearchViewController: UIViewController, SearchBoxDelegate, LikeDealDelegate {
+    func likeDeal(dealId: String, like: Bool) {
+        dealsRepository.likeDeal(dealId: dealId, like: like) { result in
+            self.loadData()
+        }
+    }
+    
     func onSearchBoxChange(input: String) {
-        print("nis")
+        timer?.invalidate()
+        lastQuery = input
+        timer = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(loadSearchResultsWithData), userInfo: nil, repeats: false)
     }
     
     func onSearchBoxFocus() {
         label.isHidden = true
         recommended.isHidden = true
-        searchV.isHidden = false
+        searchView.isHidden = false
         recommended.snp.makeConstraints {make in
-            make.top.equalTo(search.snp.bottom).offset(15)
+            make.top.equalTo(searchBarView.snp.bottom).offset(15)
         }
     }
     
     func onSearchBoxUnfocus() {
-        
-        searchV.isHidden = true
+        loadData()
+        searchView.isHidden = true
         label.isHidden = false
         recommended.isHidden = false
         label.snp.makeConstraints {make in
-            make.top.equalTo(search.snp.bottom).offset(15)
-            make.bottom.equalTo(search.snp.bottom).offset(30)
+            make.top.equalTo(searchBarView.snp.bottom).offset(15)
+            make.bottom.equalTo(searchBarView.snp.bottom).offset(30)
         }
         
         recommended.snp.makeConstraints {make in
@@ -38,16 +46,14 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
         }
     }
     
-//    func onSearchBoxChange(input: String) {
-//        <#code#>
-//    }
-    
     private var dealsRepository: DealsRepository
-    private let search = SearchBarView()
+    private let searchBarView = SearchBarView()
     private let recommended = RecommendedView()
-    private let searchV = SearchView()
+    private let searchView = SearchView()
     private let label = UILabel()
     private let statusBarColorView = UIView()
+    var timer: Timer?
+    var lastQuery: String = ""
   
     init(dealsRepository: DealsRepository) {
         self.dealsRepository = dealsRepository
@@ -71,15 +77,18 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
         
         view.backgroundColor = .filterViewBackground
         view.addSubview(label)
-        label.text = "Games"
+        label.text = "Favorite Games"
         label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 20)
         
-        search.delegate = self
-        view.addSubview(search)
+        searchBarView.delegate = self
+        view.addSubview(searchBarView)
         view.addSubview(recommended)
-        view.addSubview(searchV)
-        searchV.isHidden = true
+        view.addSubview(searchView)
         
+        searchView.isHidden = true
+        searchView.likeDealDelegate = self
+        recommended.likeDealDelegate = self
         
     }
     
@@ -89,20 +98,20 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
         
-        search.snp.makeConstraints {make in
+        searchBarView.snp.makeConstraints {make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(10)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing).inset(10)
         }
         
         label.snp.makeConstraints {make in
-            make.top.equalTo(search.snp.bottom).offset(15)
+            make.top.equalTo(searchBarView.snp.bottom).offset(15)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(20)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-            make.bottom.equalTo(search.snp.bottom).offset(30)
+            make.bottom.equalTo(searchBarView.snp.bottom).offset(30)
         }
-        searchV.snp.makeConstraints {make in
-            make.top.equalTo(search.snp.bottom).offset(15)
+        searchView.snp.makeConstraints {make in
+            make.top.equalTo(searchBarView.snp.bottom).offset(15)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
@@ -115,8 +124,19 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
 
         }
-}
+    }
     
+    
+    @objc private func loadSearchResultsWithData() {
+        dealsRepository.getListOfDeals(parameters: ListOfDealsParameters(title: lastQuery)) { result in
+            switch(result) {
+            case .success(let deals):
+                self.searchView.loadData(dealsData: deals)
+            default:
+                return
+            }
+        }
+    }
 
     private func loadData() {
         dealsRepository.getLikedDeals() {response in
@@ -124,7 +144,6 @@ class SearchViewController: UIViewController, SearchBoxDelegate {
             case .success(let data):
                 DispatchQueue.main.async {
                     self.recommended.loadData(dealsData: data)
-                    self.searchV.loadData(dealsData: data)
                 }
             default:
                 return

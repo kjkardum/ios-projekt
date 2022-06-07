@@ -60,7 +60,7 @@ class SearchBarView: UIView, UITextFieldDelegate {
         cancelButton.addTarget(self, action: #selector(cancelSearchBox), for: .touchUpInside)
         cancelButton.setTitleColor(.white, for: .normal)
         cancelButton.setTitle("Cancel", for: .normal)
-//        cancelButton.titleLabel?.font = (fontStyle: .subheadline)
+
         addSubview(searchBox)
         addSubview(cancelButton)
         

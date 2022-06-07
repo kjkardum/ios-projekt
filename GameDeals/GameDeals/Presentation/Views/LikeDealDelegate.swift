@@ -8,6 +8,6 @@
 import Foundation
 
 
-protocol LikeDealDeleage: AnyObject {
+protocol LikeDealDelegate: AnyObject {
     func likeDeal(dealId: String, like: Bool)
 }
