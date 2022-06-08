@@ -21,6 +21,7 @@ class NetworkDealDSImpl: NetworkDealDS {
     
     func getDeal(id: String, completionHandler: @escaping resultHandler<DetailedDealNO>) {
         let paramsDict = ["id" : String(id)]
+        print("ID",id)
         networkService.get(BASE_URL + "/deals", queryParams: paramsDict, completionHandler: completionHandler)
     }
     

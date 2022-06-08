@@ -62,6 +62,9 @@ class NetworkServiceImpl: NetworkService {
     }
     
     private func encodeParameter(_ queryParameter: String) -> String {
+        if queryParameter.removingPercentEncoding != queryParameter {
+            return queryParameter
+        }
         return queryParameter.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? queryParameter
     }
     
