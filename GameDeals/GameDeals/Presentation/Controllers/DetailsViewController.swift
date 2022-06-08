@@ -89,12 +89,10 @@ class DetailsViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.detailsView.setup(detailedDeal: data)
                 }
-            default:
-                return
+            case .failure(let error):
+                print(error)
             }
         }
-        
-        detailsView.fakeSetup()
         
 
         

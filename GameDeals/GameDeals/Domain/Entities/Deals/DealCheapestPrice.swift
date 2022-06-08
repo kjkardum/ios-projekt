@@ -8,6 +8,6 @@
 import Foundation
 
 struct DealCheapestPrice {
-    public var price: String = ""
+    public var price: String? = nil
     public var date: Date? = nil
 }

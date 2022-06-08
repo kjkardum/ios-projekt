@@ -170,7 +170,6 @@ class DetailsView: UIView{
     
     
     func setup(detailedDeal: DetailedDeal) {
-        
         titleLabel.text = detailedDeal.gameInfo.name
         
         if let thumb = detailedDeal.gameInfo.thumb {

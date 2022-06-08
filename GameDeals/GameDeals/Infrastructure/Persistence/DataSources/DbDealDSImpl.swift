@@ -74,7 +74,7 @@ class DbDealDSImpl: DbDealDS {
             switch(result){
             case .success(let existingDeals):
                 let updatedDeals = existingDeals.filter { exDeal in incomingDeals.contains(where: { $0.dealID == exDeal.dealId}) }
-                let deletedDeals = existingDeals.filter { exDeal in !incomingDeals.contains(where: { $0.dealID == exDeal.dealId}) }
+                //let deletedDeals = existingDeals.filter { exDeal in !incomingDeals.contains(where: { $0.dealID == exDeal.dealId}) }
                 let addedDeals = incomingDeals.filter { inDeal in !existingDeals.contains(where: { inDeal.dealID == $0.dealId}) }
                 var addedDealsMO: [DealMO] = []
                 
@@ -85,11 +85,11 @@ class DbDealDSImpl: DbDealDS {
                     
                 }
                 
-                deletedDeals.forEach{ deal in
+                /*deletedDeals.forEach{ deal in
                     if !deal.liked {
                         self.context.delete(deal)
                     }
-                }
+                }*/
                 
                 addedDeals.forEach{ deal in
                     addedDealsMO.append(self.mapper.map(deal))
