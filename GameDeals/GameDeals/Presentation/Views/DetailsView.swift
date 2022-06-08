@@ -172,10 +172,18 @@ class DetailsView: UIView{
     func setup(detailedDeal: DetailedDeal) {
         titleLabel.text = detailedDeal.gameInfo.name
         
+        let dateFormatter = DateTimeServiceImpl()
+        releaseDateLabel.text = "Release Date: " + dateFormatter.stringify(detailedDeal.gameInfo.releaseDate)
+        
         if let thumb = detailedDeal.gameInfo.thumb {
             thumbnailImageView.image = UIImage(data: thumb)
+            self.setImageConstraint()
+            self.thumbnailImageView.layer.borderColor = UIColor.filterHorizontalLineColor.cgColor
         }
-    }
     
-
+        
+        text.loadDetailsData(currentPrice: detailedDeal.gameInfo.salePrice, priceBeforeSale: detailedDeal.gameInfo.retailPrice, rating: Int(detailedDeal.gameInfo.steamRatingPercent ?? "0") ?? 0, metacritic: Int(detailedDeal.gameInfo.metacriticScore) ?? 0)
+        
+        cheaperStoresView.loadData(cheaperStores: detailedDeal.cheaperStores)
+    }
 }

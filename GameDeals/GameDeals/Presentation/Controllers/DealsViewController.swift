@@ -48,20 +48,10 @@ class DealsViewController: UIViewController {
     private func buildViews() {
         view.backgroundColor = UIColor.backgroundColor
         view.addSubview(dealsView)
-//        view.addSubview(filterView)
         
-        //view.addSubview(filterShowButton)
         view.addSubview(statusBarColorView)
-        /*filterShowButton.addTarget(self, action: #selector(click), for: .touchUpInside)
-        filterShowButton.clipsToBounds = true
-        filterShowButton.layer.cornerRadius = 10
-        filterShowButton.backgroundColor = .backgroundColorAccent
-        filterShowButton.setImage(.line3Horizontal, for: .normal)
-        filterShowButton.tintColor = .white*/
         
         statusBarColorView.backgroundColor = .navbarBackgroundColor
-        
-//        filterView.backgroundColor = .clear
         
         spinner.isHidden = true
         dealsView.addSubview(spinner)
@@ -74,12 +64,6 @@ class DealsViewController: UIViewController {
             make.top.left.right.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
-//        filterView.snp.makeConstraints {make in
-//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-//            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-//            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-//            make.height.equalTo(50)
-//        }
         
         dealsView.snp.makeConstraints {make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -94,12 +78,6 @@ class DealsViewController: UIViewController {
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
             make.bottom.equalToSuperview()
         }
-        
-        /*filterShowButton.snp.makeConstraints {make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
-            make.centerX.equalToSuperview()
-            make.width.height.equalTo(60)
-        }*/
     }
     
     

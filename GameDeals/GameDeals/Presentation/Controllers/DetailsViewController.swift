@@ -21,6 +21,7 @@ class DetailsViewController: UIViewController {
     private var detailedDeal: DetailedDeal?
     
     private var spinner = UIActivityIndicatorView(style: .large)
+    let alert = UIAlertController(title: "Network error occured!", message: "An error occured while fetching deal data.", preferredStyle: UIAlertController.Style.alert)
 
     init(dealsRepository: DealsRepository, shopsRepository: ShopsRepository) {
         self.dealsRepository = dealsRepository
@@ -39,7 +40,19 @@ class DetailsViewController: UIViewController {
         detailsView.setCollectionViewHeight()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        alert.dismiss(animated: false) {}
+        detailsView.isHidden = true
+        spinner.backgroundColor = .spinnerBackgroundColor
+        spinner.color = .searchAccentColor
+        spinner.startAnimating()
+        spinner.isHidden = false
+    }
+    
     private func buildViews() {
+        alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.cancel) {action in
+            self.navigationController?.popViewController(animated: true)
+        })
         
         view.addSubview(statusBarColorView)
         statusBarColorView.backgroundColor = .navbarBackgroundColor
@@ -48,11 +61,9 @@ class DetailsViewController: UIViewController {
         
         view.addSubview(detailsView)
         
-        
-        detailsView.addSubview(spinner)
-        spinner.backgroundColor = .spinnerBackgroundColor
-        spinner.color = .searchAccentColor
-        
+        view.addSubview(spinner)
+        spinner.isHidden = true
+        detailsView.isHidden = true
         
     }
     
@@ -62,10 +73,6 @@ class DetailsViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
         
-        spinner.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-        }
-        
         detailsView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
@@ -73,27 +80,40 @@ class DetailsViewController: UIViewController {
             make.bottom.equalToSuperview()
         }
         
+        spinner.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+            make.bottom.equalToSuperview()
+        }
         
     }
     
     func loadData(dealId: String) {
-        DispatchQueue.main.async {
-            self.spinner.startAnimating()
-            self.spinner.isHidden = false
-        }
-        
         
         dealsRepository.getDeal(id: dealId) { result in
+            DispatchQueue.main.async {
+                self.spinner.isHidden = true
+                self.spinner.stopAnimating()
+                
+            }
+            
             switch(result) {
             case .success(let data):
                 DispatchQueue.main.async {
                     self.detailsView.setup(detailedDeal: data)
+                    self.detailsView.isHidden = false
                 }
             case .failure(let error):
                 print(error)
+                DispatchQueue.main.async {
+                    self.present(self.alert, animated: true, completion: nil)
+                }
             }
         }
         
+        
+
 
         
         shopsRepository.getListOfShops { result in
@@ -108,10 +128,7 @@ class DetailsViewController: UIViewController {
             }
         }
         
-        DispatchQueue.main.async {
-            self.spinner.isHidden = true
-            self.spinner.stopAnimating()
-        }
+
         
         
     }

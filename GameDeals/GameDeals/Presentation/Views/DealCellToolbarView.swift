@@ -21,6 +21,8 @@ class DealCellToolbarView: UIView {
     let ratingLabel = UILabel()
     let ratingPercentage = RatingStackView(starSize: 10)
     
+    let saleAndRetailPriceStackView = UIStackView()
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
     }
@@ -57,7 +59,13 @@ class DealCellToolbarView: UIView {
         ratingStackView.spacing = 5
         
         priceStackView.addArrangedSubview(priceLabel)
-        priceStackView.addArrangedSubview(currentPriceLabel)
+        priceStackView.addArrangedSubview(saleAndRetailPriceStackView)
+        
+        saleAndRetailPriceStackView.addArrangedSubview(currentPriceLabel)
+        saleAndRetailPriceStackView.addArrangedSubview(priceBeforeSaleLabel)
+        
+        saleAndRetailPriceStackView.axis = .horizontal
+        saleAndRetailPriceStackView.spacing = 2
         
         ratingStackView.addArrangedSubview(ratingLabel)
         ratingStackView.addArrangedSubview(ratingPercentage)
@@ -73,6 +81,12 @@ class DealCellToolbarView: UIView {
         currentPriceLabel.textColor = .white
         currentPriceLabel.font = UIFont.boldSystemFont(ofSize: 20)
         
+        priceBeforeSaleLabel.textColor = .searchAccentColor
+        priceBeforeSaleLabel.font = UIFont.systemFont(ofSize: 14)
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "Your String here")
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+        priceBeforeSaleLabel.attributedText = attributeString
+        
     }
     
     
@@ -86,6 +100,7 @@ class DealCellToolbarView: UIView {
     
     func loadToolbarData(currentPrice: String, priceBeforeSale: String, steamRating: Int?, metaCriticRating: Int, dealRating: String) {
         currentPriceLabel.text = "$"+currentPrice
+        priceBeforeSaleLabel.text = "$"+priceBeforeSale
         
         ratingLabel.text = "Deal Rating"
         if Double(dealRating) == 0 {
