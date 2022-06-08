@@ -17,8 +17,11 @@ class DetailsViewController: UIViewController {
     
     private var dealsRepository: DealsRepository
     private var shopsRepository: ShopsRepository
+    var appRouter: AppRouter?
         
     private var detailedDeal: DetailedDeal?
+    
+    private var isLoading = false
     
     private var spinner = UIActivityIndicatorView(style: .large)
     let alert = UIAlertController(title: "Network error occured!", message: "An error occured while fetching deal data.", preferredStyle: UIAlertController.Style.alert)
@@ -41,17 +44,22 @@ class DetailsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        detailsView.setCollectionViewHeight()
         alert.dismiss(animated: false) {}
-        detailsView.isHidden = true
-        spinner.backgroundColor = .spinnerBackgroundColor
-        spinner.color = .searchAccentColor
-        spinner.startAnimating()
-        spinner.isHidden = false
+        
+        if isLoading {
+            detailsView.isHidden = true
+            spinner.backgroundColor = .spinnerBackgroundColor
+            spinner.color = .searchAccentColor
+            spinner.startAnimating()
+            spinner.isHidden = false
+        }
+        
     }
     
     private func buildViews() {
         alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.cancel) {action in
-            self.navigationController?.popViewController(animated: true)
+            self.appRouter?.popBack()
         })
         
         view.addSubview(statusBarColorView)
@@ -75,9 +83,7 @@ class DetailsViewController: UIViewController {
         
         detailsView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-            make.bottom.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview() 
         }
         
         spinner.snp.makeConstraints { make in
@@ -90,12 +96,13 @@ class DetailsViewController: UIViewController {
     }
     
     func loadData(dealId: String) {
+        isLoading = true
         
         dealsRepository.getDeal(id: dealId) { result in
+            self.isLoading = false
             DispatchQueue.main.async {
                 self.spinner.isHidden = true
                 self.spinner.stopAnimating()
-                
             }
             
             switch(result) {
@@ -112,10 +119,6 @@ class DetailsViewController: UIViewController {
             }
         }
         
-        
-
-
-        
         shopsRepository.getListOfShops { result in
             switch(result) {
             case .success(let data):
@@ -127,9 +130,5 @@ class DetailsViewController: UIViewController {
                 return
             }
         }
-        
-
-        
-        
     }
 }

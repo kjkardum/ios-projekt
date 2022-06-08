@@ -26,9 +26,6 @@ class SearchViewController: UIViewController, SearchBoxDelegate, LikeDealDelegat
         label.isHidden = true
         recommended.isHidden = true
         searchView.isHidden = false
-//        recommended.snp.makeConstraints {make in
-//            make.top.equalTo(searchBarView.snp.bottom).offset(15)
-//        }
     }
     
     func onSearchBoxUnfocus() {
@@ -36,18 +33,11 @@ class SearchViewController: UIViewController, SearchBoxDelegate, LikeDealDelegat
         searchView.isHidden = true
         label.isHidden = false
         recommended.isHidden = false
-//        label.snp.makeConstraints {make in
-//            make.top.equalTo(searchBarView.snp.bottom).offset(15)
-//            make.bottom.equalTo(searchBarView.snp.bottom).offset(30)
-//        }
-//        
-//        recommended.snp.makeConstraints {make in
-//            make.top.equalTo(label.snp.bottom).offset(15)
-//        }
     }
     
     private var detailsViewController: DetailsViewController
     private var dealsRepository: DealsRepository
+    var appRouter: AppRouter?
     private let searchBarView = SearchBarView()
     private let recommended = RecommendedView()
     private let searchView = SearchView()
@@ -181,12 +171,10 @@ class SearchViewController: UIViewController, SearchBoxDelegate, LikeDealDelegat
             }
         }
     }
-    
 }
 
 extension SearchViewController: DealClickDelegate {
     func dealClicked(dealId: String) {
-        detailsViewController.loadData(dealId: dealId)
-        navigationController?.pushViewController(detailsViewController, animated: true)
+        appRouter?.showDeal(dealId)
     }
 }

@@ -12,24 +12,21 @@ import SnapKit
 
 class DealsViewController: UIViewController {
     private let filterModal: FilterViewController
-    private let detailsViewController: DetailsViewController
     private let dealsView = DealsView()
-//    private let filterView = UIView()
     private let statusBarColorView = UIView()
-    //private let filterShowButton = UIButton()
     private var dealsRepository: DealsRepository
     private var shopsRepository: ShopsRepository
+    var appRouter: AppRouter?
     private var shops: [Shop] = []
     
     private var listOfParameters = ListOfDealsParameters(sortBy: .recent)
     private var spinner = UIActivityIndicatorView(style: .large)
     private var numberOfAttempts = 0
 
-    init(dealsRepository: DealsRepository, shopsRepository: ShopsRepository, filterModal: FilterViewController, detailsViewController: DetailsViewController) {
+    init(dealsRepository: DealsRepository, shopsRepository: ShopsRepository, filterModal: FilterViewController) {
         self.dealsRepository = dealsRepository
         self.shopsRepository = shopsRepository
         self.filterModal = filterModal
-        self.detailsViewController = detailsViewController
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -151,7 +148,7 @@ extension DealsViewController: LikeDealDelegate {
 
 extension DealsViewController: DealClickDelegate {
     func dealClicked(dealId: String) {
-        detailsViewController.loadData(dealId: dealId)
-        navigationController?.pushViewController(detailsViewController, animated: true)
+        print(appRouter)
+        appRouter?.showDeal(dealId)
     }
 }

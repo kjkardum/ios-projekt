@@ -36,17 +36,6 @@ class CheaperStoresCell: UICollectionViewCell {
         storeCellView.addSubview(shopTitleLabel)
         storeCellView.addSubview(salePriceLabel)
         storeCellView.addSubview(retailPriceLabel)
-
-//        storeCellView.addSubview(titleStackView)
-//
-//
-//        titleStackView.addArrangedSubview(shopTitleLabel)
-//        titleStackView.addArrangedSubview(retailPriceLabel)
-//        titleStackView.addArrangedSubview(UIView())
-//        titleStackView.axis = .vertical
-//        titleStackView.distribution = .fill
-//        titleStackView.alignment = .leading
-//        titleStackView.spacing = 5
         
         img.contentMode = .scaleToFill
         img.clipsToBounds = true
@@ -102,12 +91,6 @@ class CheaperStoresCell: UICollectionViewCell {
             make.centerY.equalToSuperview()
             make.trailing.equalTo(retailPriceLabel.snp.leading).offset(-3)
         }
-//        titleStackView.snp.makeConstraints { make in
-//            make.leading.equalTo(img.snp.trailing).offset(15)
-//            make.trailing.bottom.top.equalToSuperview().inset(15)
-//
-//        }
-
     }
     
     
@@ -125,6 +108,6 @@ class CheaperStoresCell: UICollectionViewCell {
         self.retailPriceLabel.attributedText = attributeString
         
         self.salePriceLabel.text = cheaperStoreData.salePrice + "$"
-//        self.retailPriceLabel.text = cheaperStoreData.retailPrice + "$"
+
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-class DetailsView: UIView{
+class DetailsView: UIView {
     private let scrollView = UIScrollView()
     private let titleReleaseDateStackView = UIStackView()
     private let detailsText = UIView()
@@ -75,38 +75,36 @@ class DetailsView: UIView{
     
     private func setLayout() {
         scrollView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
-            make.height.equalToSuperview()
+            make.top.leading.trailing.bottom.equalToSuperview()
         }
 
         thumbnailImageView.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().inset(15)
-            make.width.equalToSuperview().inset(15)
+            make.top.equalToSuperview().inset(15)
+            make.leading.trailing.equalTo(self).inset(15)
             make.height.equalTo(200)
         }
         
         titleReleaseDateStackView.snp.makeConstraints { make in
             make.top.equalTo(thumbnailImageView.snp.bottom).offset(30)
-            make.leading.trailing.equalToSuperview().inset(30)
+            make.leading.trailing.equalTo(self).inset(30)
         }
         
         text.snp.makeConstraints { make in
             make.top.equalTo(titleReleaseDateStackView.snp.bottom).offset(20)
-            make.leading.equalToSuperview().offset(-15)
-            make.width.equalToSuperview()
+            make.leading.equalTo(self).offset(-15)
+            make.trailing.equalTo(self).inset(15)
             make.height.equalTo(200)
         }
         
         cheaperStoresLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
+            make.centerX.equalTo(self)
             make.top.equalTo(text.snp.bottom).offset(40)
         }
         
         cheaperStoresView.snp.makeConstraints { make in
             make.top.equalTo(cheaperStoresLabel.snp.bottom).offset(30)
-            make.leading.equalToSuperview().inset(20)
+            make.leading.trailing.equalTo(self).inset(20)
             make.height.equalTo(0)
-            make.width.equalToSuperview().offset(-40)
             make.bottom.equalToSuperview().inset(10)
         }
         
@@ -133,35 +131,7 @@ class DetailsView: UIView{
         cheaperStoresView.snp.updateConstraints { make in
             make.height.equalTo(self.cheaperStoresView.getCollectionViewContentHeight())
         }
-    }
-    
-    
-    func fakeSetup() {        
-        titleLabel.text = "Battlefield 3"
-        releaseDateLabel.text = "Release Date: 1319500800"
-        
-        DispatchQueue.global().async {
-        if let data = try? Data(contentsOf: URL(string: "https://cdn.steamstatic.com/steam/apps/1238820/header.jpg?t=1614945737")!) {
-                DispatchQueue.main.async {
-                    self.thumbnailImageView.image = UIImage(data: data)
-                    self.setImageConstraint()
-                    self.thumbnailImageView.layer.borderColor = UIColor.filterHorizontalLineColor.cgColor
-                }
-            }
-            
-        }
-        
-        text.loadDetailsData(currentPrice: "39.99", priceBeforeSale: "39.99", rating: 67, metacritic: 89)
-        
-        cheaperStoresView.loadData(cheaperStores: [DealCheaperStore(dealID: "YGD76K1QmbBlMj5R5pPOSKzz0Y%2F%2BTVDjQpJmjlnLnus%3D", storeID: "25", salePrice: "19.99", retailPrice: "19.99"),
-                                                   DealCheaperStore(dealID: "YGD76K1QmbBlMj5R5pPOSKzz0Y%2F%2BTVDjQpJmjlnLnus%3D", storeID: "8", salePrice: "19.99", retailPrice: "19.99"),
-                                                   DealCheaperStore(dealID: "YGD76K1QmbBlMj5R5pPOSKzz0Y%2F%2BTVDjQpJmjlnLnus%3D", storeID: "8", salePrice: "19.99", retailPrice: "19.99"),
-                                                   DealCheaperStore(dealID: "YGD76K1QmbBlMj5R5pPOSKzz0Y%2F%2BTVDjQpJmjlnLnus%3D", storeID: "8", salePrice: "19.99", retailPrice: "19.99"),
-                                                   DealCheaperStore(dealID: "YGD76K1QmbBlMj5R5pPOSKzz0Y%2F%2BTVDjQpJmjlnLnus%3D", storeID: "8", salePrice: "19.99", retailPrice: "19.99")])
-        
-
-    }
-    
+    }    
     
     func loadShopsData(shops: [Shop]) {
         self.shopsData = shops

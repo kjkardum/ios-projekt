@@ -143,7 +143,7 @@ class RecommendedCell: UICollectionViewCell {
         
         self.titleLabel.text = dealData.title
         self.priceLabel.text = dealData.salePrice + "$"
-//        self.retailPriceLabel.text =
+
         let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: dealData.normalPrice + "$")
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
         retailPriceLabel.attributedText = attributeString

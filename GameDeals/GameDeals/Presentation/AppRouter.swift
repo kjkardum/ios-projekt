@@ -10,12 +10,27 @@ import UIKit
 
 
 class AppRouter {
-    var tabBarViewControler: TabBarViewController
+    private var tabBarViewControler: TabBarViewController
     private let navigationController: UINavigationController
+    private var detailsViewController: DetailsViewController
+    private let dealsViewConntroller: DealsViewController
+    private let searchViewController: SearchViewController
     
-    init (tabBarViewController: TabBarViewController) {
+    
+    init (tabBarViewController: TabBarViewController,
+          detailsViewController: DetailsViewController,
+          dealsViewConntroller: DealsViewController,
+          searchViewController: SearchViewController) {
+        
         self.tabBarViewControler = tabBarViewController
+        self.detailsViewController = detailsViewController
+        self.dealsViewConntroller = dealsViewConntroller
+        self.searchViewController = searchViewController
         self.navigationController = UINavigationController.createAppNavigationController()
+        
+        self.dealsViewConntroller.appRouter = self
+        self.searchViewController.appRouter = self
+        self.detailsViewController.appRouter = self
     }
     
     func setScreen(window: UIWindow?) {
@@ -26,5 +41,10 @@ class AppRouter {
     
     func popBack() {
         navigationController.popViewController(animated: true)
+    }
+    
+    func showDeal(_ dealId: String) {
+        detailsViewController.loadData(dealId: dealId)
+        navigationController.pushViewController(detailsViewController, animated: true)
     }
 }

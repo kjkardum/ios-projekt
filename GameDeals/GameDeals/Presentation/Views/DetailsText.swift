@@ -76,7 +76,7 @@ class DetailsText: UIView {
     
     private func setLayout() {
         mainStack.snp.makeConstraints {make in
-            make.top.width.bottom.equalToSuperview()
+            make.top.leading.trailing.bottom.equalToSuperview()
         }
         
         upStack.snp.makeConstraints { make in

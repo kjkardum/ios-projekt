@@ -14,7 +14,6 @@ import SFSafeSymbols
 class RatingStackView: UIView {
     private let stackView = UIStackView()
     private var starSize: Int = 10
-    private var starIcons: [SFSymbol] = [.star, .star, .star, .star, .star]
     private let star0 = UIButton()
     private let star1 = UIButton()
     private let star2 = UIButton()
@@ -88,52 +87,42 @@ class RatingStackView: UIView {
     func editStars(rating: Double) {
         if rating >= 0.5 {
             star0.setImage(.starLeadinghalfFilled, for: .normal)
-//            starIcons[0] = .starLeadinghalfFilled
         }
         
         if rating >= 1 {
             star0.setImage(.starFill, for: .normal)
-//            starIcons[0] = .starFill
         }
         
         if rating >= 1.5 {
             star1.setImage(.starLeadinghalfFilled, for: .normal)
-//            starIcons[1] = .starLeadinghalfFilled
         }
         
         if rating >= 2 {
             star1.setImage(.starFill, for: .normal)
-//            starIcons[1] = .starFill
         }
         
         if rating >= 2.5 {
             star2.setImage(.starLeadinghalfFilled, for: .normal)
-//            starIcons[2] = .starLeadinghalfFilled
         }
         
         if rating >= 3 {
             star2.setImage(.starFill, for: .normal)
-//            starIcons[2] = .starFill
         }
         
         if rating >= 3.5 {
             star3.setImage(.starLeadinghalfFilled, for: .normal)
-//            starIcons[3] = .starLeadinghalfFilled
         }
         
         if rating >= 4 {
             star3.setImage(.starFill, for: .normal)
-//            starIcons[3] = .starFill
         }
         
         if rating >= 4.3 {
             star4.setImage(.starLeadinghalfFilled, for: .normal)
-//            starIcons[4] = .starLeadinghalfFilled
         }
         
         if rating >= 4.7 {
             star4.setImage(.starFill, for: .normal)
-//            starIcons[4] = .starFill
         }
     }
     
