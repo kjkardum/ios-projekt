@@ -39,24 +39,8 @@ class FilterViewController: UIViewController {
         super.viewDidLoad()
         buildViews()
         setLayout()
+        getShopData()
         loadData()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        shopsRepository.getListOfShops() {response in
-            switch (response) {
-            case .success(let data):
-                DispatchQueue.main.async {
-                    self.storeFilter.loadSelectionViewWithData(data: data.map {shop in
-                        return StringWithKey<Int>(id: Int(shop.storeID), name: shop.storeName)
-                    })
-                }
-
-            default:
-                return
-            }
-        }
     }
     
     private func buildViews() {
@@ -115,6 +99,22 @@ class FilterViewController: UIViewController {
             make.top.equalTo(filtersLabel.snp.bottom).offset(20)
             make.leading.width.equalToSuperview().inset(30)
             make.bottom.equalToSuperview().inset(10)
+        }
+    }
+    
+    private func getShopData() {
+        shopsRepository.getListOfShops() {response in
+            switch (response) {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    self.storeFilter.loadSelectionViewWithData(data: data.map {shop in
+                        return StringWithKey<Int>(id: Int(shop.storeID), name: shop.storeName)
+                    })
+                }
+
+            default:
+                return
+            }
         }
     }
     

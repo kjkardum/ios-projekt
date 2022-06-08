@@ -53,20 +53,20 @@ class RecommendedCell: UICollectionViewCell {
         img.clipsToBounds = true
         img.layer.cornerRadius = 10
         img.layer.borderWidth = 1
-        img.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7).cgColor
+        img.layer.borderColor = UIColor.searchAccentColor.cgColor
         
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
         titleLabel.textColor = .white
         titleLabel.numberOfLines = 2
         
         priceLabel.font = UIFont.systemFont(ofSize: 16)
-        priceLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7)
+        priceLabel.textColor = .searchAccentColor
         priceLabel.lineBreakMode = .byWordWrapping
         priceLabel.numberOfLines = 0
         
         
         likeButton.setImage(.heart, for: .normal)
-        likeButton.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7)
+        likeButton.tintColor = .searchAccentColor
         likeButton.addTarget(self, action: #selector(likeClicked), for: .touchUpInside)
 
         
@@ -113,7 +113,7 @@ class RecommendedCell: UICollectionViewCell {
             likeButton.tintColor = .heartColor
         } else {
             likeButton.setImage(.heart, for: .normal)
-            likeButton.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7)
+            likeButton.tintColor = .searchAccentColor
         }
     }
     
@@ -135,7 +135,7 @@ class RecommendedCell: UICollectionViewCell {
             likeButton.tintColor = .heartColor
         } else {
             likeButton.setImage(.heart, for: .normal)
-            likeButton.tintColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7)
+            likeButton.tintColor = .searchAccentColor
         }
         
     }

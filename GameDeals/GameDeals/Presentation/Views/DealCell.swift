@@ -105,7 +105,7 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         shopTitleAndChangeStackView.distribution = .fillEqually
         shopTitleAndChangeStackView.alignment = .leading
         
-        dealLastChanged.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.8)
+        dealLastChanged.textColor = .dealLastChangedColor
         dealLastChanged.font = UIFont.systemFont(ofSize: 14)
         
         shopImageView.clipsToBounds = true
@@ -200,7 +200,6 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
             }
         }
         
-        // CGRectContainsPoint(self.pannableView.frame, pan.locationInView(self.pannableView)) -> moguce za buducnost
 
         if gesture.state == .changed {
             dealCellView.frame.origin = CGPoint(x: dealCellView.frame.origin.x, y: self.pointOrigin!.y + translation.y)
@@ -262,8 +261,6 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
                     likeDealDelegate?.likeDeal(dealId: dealId, like: true)
                 }
             }
-            
-            
         }
     }
     

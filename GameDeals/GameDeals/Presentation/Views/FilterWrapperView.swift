@@ -16,12 +16,12 @@ class FilterWrapperView<TKey>: UIView {
     private var additionalSelectionView: UISegmentedControl?
     private let horizonalLineView : UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 0.32, green: 0.33, blue: 0.50, alpha: 1.00)
+        view.backgroundColor = .filterHorizontalLineColor
         return view
     }()
     private let additionalHorizontalLineView : UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(red: 0.32, green: 0.33, blue: 0.50, alpha: 1.00)
+        view.backgroundColor = .filterHorizontalLineColor
         return view
     }()
     private let titleLabel = UILabel()

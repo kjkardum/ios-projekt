@@ -19,7 +19,7 @@ class DealCellToolbarView: UIView {
     let priceBeforeSaleLabel = UILabel()
     
     let ratingLabel = UILabel()
-    let ratingPercentageLabel = UILabel()
+    let ratingPercentage = RatingStackView(starSize: 10)
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -60,7 +60,7 @@ class DealCellToolbarView: UIView {
         priceStackView.addArrangedSubview(currentPriceLabel)
         
         ratingStackView.addArrangedSubview(ratingLabel)
-        ratingStackView.addArrangedSubview(ratingPercentageLabel)
+        ratingStackView.addArrangedSubview(ratingPercentage)
         
         priceLabel.text = "Price"
         priceLabel.textColor = .subtextColorToolbar
@@ -73,8 +73,6 @@ class DealCellToolbarView: UIView {
         currentPriceLabel.textColor = .white
         currentPriceLabel.font = UIFont.boldSystemFont(ofSize: 20)
         
-        ratingPercentageLabel.textColor = .white
-        ratingPercentageLabel.font = UIFont.boldSystemFont(ofSize: 20)
     }
     
     
@@ -91,21 +89,28 @@ class DealCellToolbarView: UIView {
         
         ratingLabel.text = "Deal Rating"
         if Double(dealRating) == 0 {
-            ratingPercentageLabel.text = "No Rating"
+            ratingPercentage.resetStars()
+            ratingPercentage.editStars(rating: 0)
         } else {
-            ratingPercentageLabel.text = dealRating+"/10"
+            ratingPercentage.resetStars()
+            if let dealRating = Double(dealRating) {
+                ratingPercentage.editStars(rating: dealRating/2)
+            }
+            
         }
         
         
         if metaCriticRating != 0 {
             ratingLabel.text = "Metacritic Rating"
-            ratingPercentageLabel.text = String(metaCriticRating)+"/100"
+            ratingPercentage.resetStars()
+            ratingPercentage.editStars(rating: Double(metaCriticRating)/20)
         }
         
         if let steamRating = steamRating{
             if steamRating != 0 {
                 ratingLabel.text = "Steam Rating"
-                ratingPercentageLabel.text = String(steamRating)+"/100"
+                ratingPercentage.resetStars()
+                ratingPercentage.editStars(rating: Double(steamRating)/20)
             }
         }
     }

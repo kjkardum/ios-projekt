@@ -26,7 +26,7 @@ class SearchBarView: UIView, UITextFieldDelegate {
             string: "Search",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
         )
-        searchBox.backgroundColor = UIColor(red: 0.43, green: 0.47, blue: 0.96, alpha: 0.1)
+        searchBox.backgroundColor = .searchBoxBackgroundColor
         searchBox.layer.cornerRadius = 10
         searchBox.delegate = self
         searchBox.textColor = .white
@@ -43,7 +43,7 @@ class SearchBarView: UIView, UITextFieldDelegate {
         
         clearButton = UIButton.createIconButton(
             icon: .xmark,
-            backgroundColor: UIColor(white: 1, alpha: 0),
+            backgroundColor: .clear,
             color: .white,
             iconSize: 10,
             target: self,

@@ -46,6 +46,7 @@ class SearchViewController: UIViewController, SearchBoxDelegate, LikeDealDelegat
 //        }
     }
     
+    private var detailsViewController: DetailsViewController
     private var dealsRepository: DealsRepository
     private let searchBarView = SearchBarView()
     private let recommended = RecommendedView()
@@ -53,13 +54,14 @@ class SearchViewController: UIViewController, SearchBoxDelegate, LikeDealDelegat
     private let label = UILabel()
     private let statusBarColorView = UIView()
     private var searchResultsSpinner = UIActivityIndicatorView(style: .large)
-    var timer: Timer?
-    var lastQuery: String = ""
-    var numberOfAttempts = 0
+    private var timer: Timer?
+    private var lastQuery: String = ""
+    private var numberOfAttempts = 0
     
   
-    init(dealsRepository: DealsRepository) {
+    init(dealsRepository: DealsRepository, detailsViewController: DetailsViewController) {
         self.dealsRepository = dealsRepository
+        self.detailsViewController = detailsViewController
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -92,18 +94,14 @@ class SearchViewController: UIViewController, SearchBoxDelegate, LikeDealDelegat
         
         searchView.isHidden = true
         searchView.likeDealDelegate = self
+        searchView.dealclickDelegate = self
         recommended.likeDealDelegate = self
+        recommended.dealclickDelegate = self
         
         searchResultsSpinner.isHidden = true
         searchView.addSubview(searchResultsSpinner)
-        searchResultsSpinner.backgroundColor = UIColor(white: 0, alpha: 0.3)
-        
-//        searchResultsSpinner.isHidden = true
-//        res.addSubview(favoritesSpinner)
-//        favoritesSpinner.backgroundColor = UIColor(white: 0, alpha: 0.7)
-        
-//
-
+        searchResultsSpinner.backgroundColor = .spinnerBackgroundColor
+        searchResultsSpinner.color = .searchAccentColor
     }
     
     private func setLayout() {
@@ -149,7 +147,6 @@ class SearchViewController: UIViewController, SearchBoxDelegate, LikeDealDelegat
         searchResultsSpinner.startAnimating()
         searchResultsSpinner.isHidden = false
         
-        
         dealsRepository.getListOfDeals(parameters: ListOfDealsParameters(title: lastQuery)) { result in
             switch(result) {
             case .success(let deals):
@@ -160,10 +157,8 @@ class SearchViewController: UIViewController, SearchBoxDelegate, LikeDealDelegat
                         self.searchResultsSpinner.stopAnimating()
                         self.numberOfAttempts = 0
                     }
-                    DispatchQueue.main.sync {
-                        self.searchView.loadData(dealsData: deals)
-                    }
-                    
+                   
+                    self.searchView.loadData(dealsData: deals)
                 }
             default:
                 self.searchResultsSpinner.isHidden = true
@@ -184,9 +179,14 @@ class SearchViewController: UIViewController, SearchBoxDelegate, LikeDealDelegat
             default:
                 return
             }
-    }
-
+        }
     }
     
 }
-//
+
+extension SearchViewController: DealClickDelegate {
+    func dealClicked(dealId: String) {
+        detailsViewController.loadData(dealId: dealId)
+        navigationController?.pushViewController(detailsViewController, animated: true)
+    }
+}

@@ -73,6 +73,10 @@ class Services {
         return container.resolve(DealsViewController.self)!
     }
     
+    func getDetailsViewController() -> DetailsViewController {
+        return container.resolve(DetailsViewController.self)!
+    }
+    
     func getFilterViewController() -> FilterViewController {
         return container.resolve(FilterViewController.self)!
     }

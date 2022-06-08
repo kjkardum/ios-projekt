@@ -20,6 +20,7 @@ class RecommendedView: UIView {
     }()
     var dealsData : [Deal] = []
     weak var likeDealDelegate: LikeDealDelegate?
+    weak var dealclickDelegate: DealClickDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -92,6 +93,14 @@ extension RecommendedView: UICollectionViewDelegateFlowLayout {
         return 15
     }
 }
+
+
+extension RecommendedView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        dealclickDelegate?.dealClicked(dealId: dealsData[indexPath.row].dealID)
+    }
+}
+
 
 extension RecommendedView: LikeDealDelegate {
     func likeDeal(dealId: String, like: Bool) {

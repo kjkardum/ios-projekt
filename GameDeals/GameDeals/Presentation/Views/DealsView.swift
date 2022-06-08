@@ -18,9 +18,9 @@ class DealsView: UIView {
         return UICollectionView(frame: CGRect.zero, collectionViewLayout: flowlayout)
     }()
     var dealsData: [Deal] = []
-    var tmpDealsData: [Deal] = []
     var shops: [Int: Shop] = [:]
-    weak var likeDealDeleage: LikeDealDelegate?
+    weak var likeDealDelegate: LikeDealDelegate?
+    weak var clickDealDelegate: DealClickDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -114,6 +114,11 @@ extension DealsView: UICollectionViewDelegateFlowLayout {
     }
 }
 
+extension DealsView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        clickDealDelegate?.dealClicked(dealId: dealsData[indexPath.row].dealID)
+    }
+}
 
 extension DealsView: ScrollableCollectionViewDelegate {
     func setScrollViewEnabled(_ enabled: Bool) {
@@ -124,6 +129,6 @@ extension DealsView: ScrollableCollectionViewDelegate {
 
 extension DealsView: LikeDealDelegate {
     func likeDeal(dealId: String, like: Bool) {
-        likeDealDeleage?.likeDeal(dealId: dealId, like: like)
+        likeDealDelegate?.likeDeal(dealId: dealId, like: like)
     }
 }

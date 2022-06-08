@@ -16,13 +16,13 @@ class DetailsText: UIView {
     let upStack = UIStackView()
     let downStack = UIStackView()
     
-    let ratingStackView = CustomDetailsStackView()
+    let ratingStackView = CustomDetailsStackView(isText: false)
     
-    let priceStackView = CustomDetailsStackView()
+    let priceStackView = CustomDetailsStackView(isText: true)
     
-    let priceSaleStackView = CustomDetailsStackView()
+    let priceSaleStackView = CustomDetailsStackView(isText: true)
     
-    let releaseDateStackView = CustomDetailsStackView()
+    let secondRatingStackView = CustomDetailsStackView(isText: false)
     
     
     override init(frame: CGRect) {
@@ -40,7 +40,9 @@ class DetailsText: UIView {
     }
     
     private func buildViews() {
-        backgroundColor = .gray
+        backgroundColor = UIColor(red: 0.43, green: 0.47, blue: 0.96, alpha: 0.3)
+        clipsToBounds = true
+        layer.cornerRadius = 20
         
         addSubview(mainStack)
         mainStack.addArrangedSubview(upStack)
@@ -54,34 +56,55 @@ class DetailsText: UIView {
         upStack.distribution = .fillEqually
         upStack.alignment = .center
         
-        downStack.axis = .vertical
+        downStack.axis = .horizontal
         downStack.distribution = .fillEqually
         downStack.alignment = .center
         
-        upStack.addArrangedSubview(priceStackView)
-        priceStackView.nameLabel.text = "price"
         upStack.addArrangedSubview(priceSaleStackView)
-        priceSaleStackView.nameLabel.text = "sale price"
+        priceSaleStackView.editTextLabel("Sale Price")
+        
+        upStack.addArrangedSubview(priceStackView)
+        priceStackView.editTextLabel("Price Before Sale")
+        
         downStack.addArrangedSubview(ratingStackView)
-        ratingStackView.nameLabel.text = "rating"
-        downStack.addArrangedSubview(releaseDateStackView)
-        releaseDateStackView.nameLabel.text = "release date"
+        ratingStackView.editTextLabel("Steam Rating")
+        
+        downStack.addArrangedSubview(secondRatingStackView)
+        secondRatingStackView.editTextLabel("Metacritic Rating")
         
     }
     
     private func setLayout() {
         mainStack.snp.makeConstraints {make in
-            make.top.leading.trailing.bottom.equalToSuperview()
+            make.top.width.bottom.equalToSuperview()
+        }
+        
+        upStack.snp.makeConstraints { make in
+            make.width.equalToSuperview()
+        }
+        
+        downStack.snp.makeConstraints { make in
+            make.width.equalToSuperview()
         }
     }
     
+    private func createValueLabel(_ text: String) -> UILabel {
+        let label = UILabel()
+        label.text = text
+        label.font = UIFont.boldSystemFont(ofSize: 18)
+        label.textColor = .white
+        return label
+    }
     
-    func loadDetailsData(currentPrice: String, priceBeforeSale: String, rating: String,
-                         releaseDate: String) {
+    
+    func loadDetailsData(currentPrice: String, priceBeforeSale: String, rating: Int,
+                         metacritic: Int) {
+
+        priceStackView.editValueLabel(priceBeforeSale + "$")
+        priceSaleStackView.editValueLabel(currentPrice + "$")
         
-        priceStackView.valueLabel.text = priceBeforeSale + "$"
-        priceSaleStackView.valueLabel.text = currentPrice + "$"
-        releaseDateStackView.valueLabel.text = releaseDate
-        ratingStackView.valueLabel.text = rating
+        ratingStackView.editStarRating(Double(rating)/20)
+        secondRatingStackView.editStarRating(Double(metacritic)/20)
+
     }
 }

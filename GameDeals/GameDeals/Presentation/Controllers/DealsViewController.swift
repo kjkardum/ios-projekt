@@ -12,8 +12,9 @@ import SnapKit
 
 class DealsViewController: UIViewController {
     private let filterModal: FilterViewController
+    private let detailsViewController: DetailsViewController
     private let dealsView = DealsView()
-    private let filterView = UIView()
+//    private let filterView = UIView()
     private let statusBarColorView = UIView()
     //private let filterShowButton = UIButton()
     private var dealsRepository: DealsRepository
@@ -22,12 +23,13 @@ class DealsViewController: UIViewController {
     
     private var listOfParameters = ListOfDealsParameters(sortBy: .recent)
     private var spinner = UIActivityIndicatorView(style: .large)
-    var numberOfAttempts = 0
+    private var numberOfAttempts = 0
 
-    init(dealsRepository: DealsRepository, shopsRepository: ShopsRepository, filterModal: FilterViewController) {
+    init(dealsRepository: DealsRepository, shopsRepository: ShopsRepository, filterModal: FilterViewController, detailsViewController: DetailsViewController) {
         self.dealsRepository = dealsRepository
         self.shopsRepository = shopsRepository
         self.filterModal = filterModal
+        self.detailsViewController = detailsViewController
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
@@ -35,7 +37,8 @@ class DealsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         filterModal.filterDelegate = self
-        dealsView.likeDealDeleage = self
+        dealsView.likeDealDelegate = self
+        dealsView.clickDealDelegate = self
         buildViews()
         setLayout()
         getShopsData()
@@ -45,7 +48,7 @@ class DealsViewController: UIViewController {
     private func buildViews() {
         view.backgroundColor = UIColor.backgroundColor
         view.addSubview(dealsView)
-        view.addSubview(filterView)
+//        view.addSubview(filterView)
         
         //view.addSubview(filterShowButton)
         view.addSubview(statusBarColorView)
@@ -58,11 +61,12 @@ class DealsViewController: UIViewController {
         
         statusBarColorView.backgroundColor = .navbarBackgroundColor
         
-        filterView.backgroundColor = .clear
+//        filterView.backgroundColor = .clear
         
         spinner.isHidden = true
         dealsView.addSubview(spinner)
-        spinner.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        spinner.backgroundColor = .spinnerBackgroundColor
+        spinner.color = .searchAccentColor
     }
     
     private func setLayout() {
@@ -70,22 +74,22 @@ class DealsViewController: UIViewController {
             make.top.left.right.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
-        filterView.snp.makeConstraints {make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
-            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
-            make.height.equalTo(50)
-        }
+//        filterView.snp.makeConstraints {make in
+//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+//            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+//            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+//            make.height.equalTo(50)
+//        }
         
         dealsView.snp.makeConstraints {make in
-            make.top.equalTo(filterView.snp.bottom)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
             make.bottom.equalToSuperview()
         }
         
         spinner.snp.makeConstraints { make in
-            make.top.equalTo(filterView.snp.bottom)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
             make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
             make.bottom.equalToSuperview()
@@ -113,6 +117,9 @@ class DealsViewController: UIViewController {
     }
     
     private func loadData() {
+        spinner.startAnimating()
+        spinner.isHidden = false
+        
         dealsRepository.getListOfDeals(parameters: listOfParameters) {response in
             switch (response) {
             case .success(let data):
@@ -161,5 +168,12 @@ extension DealsViewController: LikeDealDelegate {
     func likeDeal(dealId: String, like: Bool) {
         dealsRepository.likeDeal(dealId: dealId, like: like) { result in
         }
+    }
+}
+
+extension DealsViewController: DealClickDelegate {
+    func dealClicked(dealId: String) {
+        detailsViewController.loadData(dealId: dealId)
+        navigationController?.pushViewController(detailsViewController, animated: true)
     }
 }
