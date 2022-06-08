@@ -15,11 +15,14 @@ class RecommendedCell: UICollectionViewCell {
     let img = UIImageView()
     let titleLabel = UILabel()
     let priceLabel = UILabel()
+    let retailPriceLabel = UILabel()
     let titleStackView = UIStackView()
     let likeButton = UIButton()
     var likeState = false
     weak var likeDealDelegate: LikeDealDelegate?
     var dealId: String?
+    let priceStackView = UIStackView()
+    
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -42,7 +45,7 @@ class RecommendedCell: UICollectionViewCell {
         recommendedCellView.addSubview(likeButton)
         
         titleStackView.addArrangedSubview(titleLabel)
-        titleStackView.addArrangedSubview(priceLabel)
+        titleStackView.addArrangedSubview(priceStackView)
         titleStackView.addArrangedSubview(UIView())
         titleStackView.axis = .vertical
         titleStackView.distribution = .fill
@@ -60,10 +63,24 @@ class RecommendedCell: UICollectionViewCell {
         titleLabel.numberOfLines = 2
         
         priceLabel.font = UIFont.systemFont(ofSize: 16)
-        priceLabel.textColor = .searchAccentColor
+        priceLabel.textColor = .white
         priceLabel.lineBreakMode = .byWordWrapping
         priceLabel.numberOfLines = 0
         
+        retailPriceLabel.font = UIFont.systemFont(ofSize: 14)
+        retailPriceLabel.textColor = .searchAccentColor
+        retailPriceLabel.lineBreakMode = .byWordWrapping
+        retailPriceLabel.numberOfLines = 0
+        
+        
+        
+        
+        priceStackView.addArrangedSubview(priceLabel)
+        priceStackView.addArrangedSubview(retailPriceLabel)
+        priceStackView.addArrangedSubview(UIView())
+        priceStackView.axis = .horizontal
+        priceStackView.distribution = .fill
+        priceStackView.spacing = 5
         
         likeButton.setImage(.heart, for: .normal)
         likeButton.tintColor = .searchAccentColor
@@ -99,7 +116,6 @@ class RecommendedCell: UICollectionViewCell {
             make.bottom.top.equalToSuperview()
             make.trailing.equalToSuperview()
             make.leading.equalTo(super.snp.trailing).offset(-60)
-            
         }
     }
     
@@ -127,6 +143,11 @@ class RecommendedCell: UICollectionViewCell {
         
         self.titleLabel.text = dealData.title
         self.priceLabel.text = dealData.salePrice + "$"
+//        self.retailPriceLabel.text =
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: dealData.normalPrice + "$")
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+        retailPriceLabel.attributedText = attributeString
+        
         
         likeState = dealData.liked
         

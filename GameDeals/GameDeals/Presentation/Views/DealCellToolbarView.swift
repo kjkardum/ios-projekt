@@ -83,9 +83,7 @@ class DealCellToolbarView: UIView {
         
         priceBeforeSaleLabel.textColor = .searchAccentColor
         priceBeforeSaleLabel.font = UIFont.systemFont(ofSize: 14)
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "Your String here")
-        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
-        priceBeforeSaleLabel.attributedText = attributeString
+
         
     }
     
@@ -99,8 +97,12 @@ class DealCellToolbarView: UIView {
     
     
     func loadToolbarData(currentPrice: String, priceBeforeSale: String, steamRating: Int?, metaCriticRating: Int, dealRating: String) {
+        
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "$"+priceBeforeSale)
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+        priceBeforeSaleLabel.attributedText = attributeString
+        
         currentPriceLabel.text = "$"+currentPrice
-        priceBeforeSaleLabel.text = "$"+priceBeforeSale
         
         ratingLabel.text = "Deal Rating"
         if Double(dealRating) == 0 {

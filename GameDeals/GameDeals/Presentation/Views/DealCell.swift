@@ -187,7 +187,6 @@ class DealCell: UICollectionViewCell, UIGestureRecognizerDelegate {
         guard translation.y >= 0 else { return }
         
         
-        
         if dealCellView.frame.origin.y > 120 {
             self.userSwiped()
             gestureIsEnabled = false

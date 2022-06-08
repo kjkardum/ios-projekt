@@ -63,11 +63,7 @@ class CheaperStoresCell: UICollectionViewCell {
         salePriceLabel.lineBreakMode = .byWordWrapping
         salePriceLabel.numberOfLines = 1
         
-        
-        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "Your String here")
-        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
         retailPriceLabel.font = UIFont.systemFont(ofSize: 15)
-        retailPriceLabel.attributedText = attributeString
         retailPriceLabel.textColor = .searchAccentColor
         retailPriceLabel.lineBreakMode = .byWordWrapping
         retailPriceLabel.numberOfLines = 1
@@ -124,7 +120,11 @@ class CheaperStoresCell: UICollectionViewCell {
             self.shopTitleLabel.text = shop.storeName
         }
         
+        let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: cheaperStoreData.retailPrice + "$")
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+        self.retailPriceLabel.attributedText = attributeString
+        
         self.salePriceLabel.text = cheaperStoreData.salePrice + "$"
-        self.retailPriceLabel.text = cheaperStoreData.retailPrice + "$"
+//        self.retailPriceLabel.text = cheaperStoreData.retailPrice + "$"
     }
 }
