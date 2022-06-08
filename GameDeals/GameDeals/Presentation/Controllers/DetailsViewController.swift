@@ -112,7 +112,6 @@ class DetailsViewController: UIViewController {
                     self.detailsView.isHidden = false
                 }
             case .failure(let error):
-                print(error)
                 DispatchQueue.main.async {
                     self.present(self.alert, animated: true, completion: nil)
                 }

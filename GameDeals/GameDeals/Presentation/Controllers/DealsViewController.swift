@@ -132,7 +132,6 @@ class DealsViewController: UIViewController {
 
 extension DealsViewController: FilterDelegate {
     func acceptFilters(_ listOfDealsParameters: ListOfDealsParameters) {
-        print(listOfDealsParameters)
         self.listOfParameters = listOfDealsParameters
         dealsView.removeAllData()
         loadData()
@@ -148,7 +147,6 @@ extension DealsViewController: LikeDealDelegate {
 
 extension DealsViewController: DealClickDelegate {
     func dealClicked(dealId: String) {
-        print(appRouter)
         appRouter?.showDeal(dealId)
     }
 }
